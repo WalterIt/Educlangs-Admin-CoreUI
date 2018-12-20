@@ -1,0 +1,71 @@
+####  PHP 7 CONFIGURATION ####
+
+Tutorial: https://www.youtube.com/watch?v=SHOO2nGZrCY
+
+###  C:\wamp64\bin\php\php7.0.23  ==> ORIGINAL
+
+C:\wamp64\bin\php\php7.1.9
+
+
+###  HOW TO INSTALL A SPECIFIC VERSION OF LARAVEL ###
+
+composer create-project --prefer-dist laravel/laravel backend "5.6"
+
+### TESTING DATABASE CONNECTION
+
+DB name: lng_hand_full_stack
+
+php artisan tinker
+DB::connection()->getPdo();
+
+
+######   Installing tymon-jwt-auth  #########
+
+TUTORIAL: https://www.youtube.com/watch?v=xvrTlxfd3DU
+
+Let's learn how to install and configure tymon/jwt-auth.
+The installation process is pretty simple, but, as the tymon/jwt-auth library is in constant development, we should take some care related what the version we will use:
+
+Open the project/composer.json file and add the following line of code, right after Laravel/Tinker:
+"tymon/jwt-auth": "1.0.*"
+
+Run:
+
+composer update 
+
+
+Now, it is time to publish the vendor package. Still in your Terminal window and inside the Tinker console, type the following command:
+
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+
+Note that we are using Laravel 5.6 and jwt-auth 1.0, so we don't need to perform any additional actions to load JWT providers. The jwt-auth documents sometimes look like a mess and are very confusing, but don't worry, just follow our steps and you will be safe from mismatching documentation.
+Let's generate the secret. Still in the Terminal window, type the following command:
+
+ php artisan jwt:secret
+
+
+The previous command will generate a secret key on your .env file, and will look something like the following line:
+JWT_SECRET=McR1It4Bw9G8jU1b4XJhDMeZs4Q5Zwear
+At this point, we have successfully installed jwt-auth, but we need to take some more steps to make our API secure.
+
+
+#############################################################################################
+
+git checkout -b backend_2/Models-Migrations-Controllers-Routes
+
+#############################################################################################
+
+git checkout -b backend_3/Validation-Erros_Msg-Token-Resources
+
+#############################################################################################
+
+curl -X GET "http://localhost:8000/api/bikes/3" -H "accept: application/json" -H "X-CSRF-TOKEN: "
+
+curl -X POST "http://localhost:8000/api/bikes/3" -H "accept: application/json" -H "X-CSRF-TOKEN: "
+
+#############################################################################################
+
+git checkout -b backend_4/Laravel-CORS
+
+#############################################################################################
