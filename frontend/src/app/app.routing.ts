@@ -86,6 +86,10 @@ export const routes: Routes = [
       {
         path: 'languages',
         loadChildren: './views/languages/languages.module#LanguagesModule'
+      },
+      {
+        path: 'terminology',
+        loadChildren: './views/terminology/terminology.module#TerminologyModule'
       }
 
     ]

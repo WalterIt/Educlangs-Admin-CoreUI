@@ -65,7 +65,7 @@ export const navItems = [
       },
       {
         name: 'Grammar Topic',
-        url: '/terminology/grammar-topic',
+        url: '/terminology/grammar-topics',
         icon: 'fa fa-book'
       },
       {
@@ -80,12 +80,12 @@ export const navItems = [
       },
       {
         name: 'Lessons',
-        url: '/terminology/Lessons',
+        url: '/terminology/lessons',
         icon: 'fa fa-book'
       },
       {
         name: 'Vocabulary Topic',
-        url: '/terminology/vocabulary-topic',
+        url: '/terminology/vocabulary-topics',
         icon: 'fa fa-book'
       },
       {
