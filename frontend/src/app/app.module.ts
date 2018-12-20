@@ -62,10 +62,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     LoginComponent,
     RegisterComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [
+   // { provide: LocationStrategy, useClass: HashLocationStrategy }  // Used to add Hash # to url
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
