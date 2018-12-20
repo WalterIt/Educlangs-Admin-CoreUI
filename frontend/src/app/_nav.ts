@@ -8,6 +8,82 @@ export const navItems = [
       text: 'NEW'
     }
   },
+  /*     DICTIONARY ITEM   */
+
+  {
+    title: true,
+    name: 'Dictionary'
+  },
+  // ----- LANGUAGES ---
+  {
+    name: 'Languages',
+    url: '/languages',
+    icon: 'fa fa-book',
+    children: [
+      {
+        name: 'Dicten',
+        url: '/languages/dicten',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'English',
+        url: '/languages/english',
+        icon: 'flag-icon flag-icon-us'
+      },
+      {
+        name: 'Portuguese',
+        url: '/languages/portuguese',
+        icon: 'flag-icon flag-icon-br'
+      },
+      {
+        name: 'French',
+        url: '/languages/french',
+        icon: 'flag-icon flag-icon-fr'
+      },
+      {
+        name: 'Spanish',
+        url: '/languages/spanish',
+        icon: 'flag-icon flag-icon-es'
+      },
+      {
+        name: 'Japanese',
+        url: '/languages/japanese',
+        icon: 'flag-icon flag-icon-jp'
+      }
+    ]
+  },
+   // ----- TERMINOLOGY ---
+   {
+    name: 'Terminology',
+    url: '/terminology',
+    icon: 'fa fa-book',
+    children: [
+      {
+        name: 'Grammar Class',
+        url: '/terminology/grammar-class',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Grammar Topic',
+        url: '/terminology/grammar-topic',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Languages',
+        url: '/terminology/languages',
+        icon: 'fa fa-book'      },
+      {
+        name: 'Vocabulary Topic',
+        url: '/terminology/vocabulary-topic',
+        icon: 'fa fa-book'
+      }
+
+    ]
+  },
+
+    /*   END OF   DICTIONARY ITEM   */
+
+
   {
     title: true,
     name: 'Theme'
