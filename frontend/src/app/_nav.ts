@@ -71,15 +71,32 @@ export const navItems = [
       {
         name: 'Languages',
         url: '/terminology/languages',
-        icon: 'fa fa-book'      },
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Levels',
+        url: '/terminology/levels',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Lessons',
+        url: '/terminology/Lessons',
+        icon: 'fa fa-book'
+      },
       {
         name: 'Vocabulary Topic',
         url: '/terminology/vocabulary-topic',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Units',
+        url: '/terminology/units',
         icon: 'fa fa-book'
       }
 
     ]
   },
+   // ----- END OF TERMINOLOGY ---
 
     /*   END OF   DICTIONARY ITEM   */
 

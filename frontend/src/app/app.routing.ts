@@ -81,7 +81,13 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
+      },
+      /* -----    DICTIONARY --- */
+      {
+        path: 'languages',
+        loadChildren: './views/languages/languages.module#LanguagesModule'
       }
+
     ]
   }
 ];
