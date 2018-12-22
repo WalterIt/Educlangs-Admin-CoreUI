@@ -35,6 +35,6 @@ FRONTEND: FRONTEND_05/login-implementation
         modified:   frontend/src/environments/environment.ts
         modified:   frontend/src/scss/_custom.scss
 
-git commit -m'Added AUTH FOLDER| Implemented Login/src/environments/environment.ts/ AuthModule/auth-routing/src/scss/_custom.scss'
+git commit -m'Added AUTH FOLDER/Dev_Notes| Implemented Login/src/environments/environment.ts/ AuthModule/auth-routing/src/scss/_custom.scss'
 
 #################################################################
