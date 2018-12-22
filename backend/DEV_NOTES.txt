@@ -1,3 +1,27 @@
+
+
+
+NEXT
+
+FRONTEND:
+
+- Login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ####  PHP 7 CONFIGURATION ####
 
 Tutorial: https://www.youtube.com/watch?v=SHOO2nGZrCY
