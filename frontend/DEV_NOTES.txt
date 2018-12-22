@@ -1,0 +1,40 @@
+
+
+#################################################################
+
+FRONTEND: FRONTEND_05/login-implementation
+
+- Login
+
+        modified:   frontend/src/app/app.module.ts
+        modified:   frontend/src/app/app.routing.ts
+        new file:   frontend/src/app/auth/_guards/auth.guard.spec.ts
+        new file:   frontend/src/app/auth/_guards/auth.guard.ts
+        new file:   frontend/src/app/auth/_services/auth.service.spec.ts
+        new file:   frontend/src/app/auth/_services/auth.service.ts
+        new file:   frontend/src/app/auth/auth-routing.module.ts
+        new file:   frontend/src/app/auth/auth.module.spec.ts
+        new file:   frontend/src/app/auth/auth.module.ts
+        new file:   frontend/src/app/auth/login/login.component.1.ts
+        new file:   frontend/src/app/auth/login/login.component.html
+        new file:   frontend/src/app/auth/login/login.component.scss
+        new file:   frontend/src/app/auth/login/login.component.spec.ts
+        new file:   frontend/src/app/auth/login/login.component.ts
+        new file:   frontend/src/app/auth/login/login1.component.html
+        new file:   frontend/src/app/auth/logout/logout.component.html
+        new file:   frontend/src/app/auth/logout/logout.component.scss
+        new file:   frontend/src/app/auth/logout/logout.component.spec.ts
+        new file:   frontend/src/app/auth/logout/logout.component.ts
+        new file:   frontend/src/app/auth/register/register.component.html
+        new file:   frontend/src/app/auth/register/register.component.scss
+        new file:   frontend/src/app/auth/register/register.component.spec.ts
+        new file:   frontend/src/app/auth/register/register.component.ts
+        new file:   frontend/src/app/auth/user.ts
+        modified:   frontend/src/app/views/login/login.component.ts
+        modified:   frontend/src/environments/environment.prod.ts
+        modified:   frontend/src/environments/environment.ts
+        modified:   frontend/src/scss/_custom.scss
+
+git commit -m'Added AUTH FOLDER| Implemented Login/src/environments/environment.ts/ AuthModule/auth-routing/src/scss/_custom.scss'
+
+#################################################################

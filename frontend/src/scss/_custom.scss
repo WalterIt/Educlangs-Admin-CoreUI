@@ -12,3 +12,26 @@
   align-items: center;
   padding-left: 4%;
 }
+
+form {
+  .form-signin,
+  .form-register {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    height: 80px;
+  }
+
+  .has-error {
+    .form-control {
+      border-color: red;
+    }
+
+    .form-feedback {
+      color: red;
+      font-size: 0.9rem;
+    }
+  }
+}
