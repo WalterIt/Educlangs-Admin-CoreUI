@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Http\Request;
 use App\Bike;
 use App\Http\Resources\BikesResource;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,7 +12,6 @@ use App\Http\Resources\BikesResource;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 // Register Routes
 Route::post('register', 'API\AuthController@register');
 Route::post('login', 'API\AuthController@login');
@@ -26,8 +23,6 @@ Route::apiResources([
     'items' => 'API\ItemController',
     'bikes/{bike}/ratings' => 'API\RatingController'
 ]);
-
 Route::middleware('jwt.auth')->get('me', function(Request $request) {
     return auth()->user();
 });
-

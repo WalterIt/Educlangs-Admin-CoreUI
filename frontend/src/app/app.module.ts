@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -39,7 +40,12 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+
+// Application Module
 import { AuthModule } from './auth/auth.module';
+
+import { HttpErrorHandler } from './shared/_services/http-handle-error.service';
+import { AppHttpInterceptorService } from './shared/_services/app-http-interceptor.service';
 
 @NgModule({
   imports: [
@@ -54,7 +60,8 @@ import { AuthModule } from './auth/auth.module';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -64,9 +71,24 @@ import { AuthModule } from './auth/auth.module';
     // LoginComponent,
     RegisterComponent
   ],
+
+
   providers: [
-   // { provide: LocationStrategy, useClass: HashLocationStrategy }  // Used to add Hash # to url
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }  // Used to add Hash # to url
+    // Title,
+    HttpErrorHandler,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptorService ,
+      multi: true
+    }
   ],
+
+
+
+
+
+
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
