@@ -3,6 +3,12 @@ NEXT
 
 BACKEND & FRONTEND:
 
+Logout implementation:
+
+- Clear localstorage
+
+
+READ ABOUT:
 Redirect User after login:
 Check ==>  backend/app/Http/Middleware/RedirectIfAuthenticated.php
 
