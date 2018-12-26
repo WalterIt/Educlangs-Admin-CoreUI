@@ -47,6 +47,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.auth.onLogout().subscribe();
+    localStorage.removeItem('token');
   }
 
 
