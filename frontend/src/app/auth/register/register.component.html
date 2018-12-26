@@ -1,41 +1,70 @@
-<main role="main">
-  <div class="container" >
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  class="form-register" novalidate>
-      <div class="text-center mb-4">
-        <h1 class="h3 mt-3 mb-3 font-weight-normal">Welcome</h1>
-        <p>Motorcycle builders and road lovers</p>
-        <hr>
-      </div>
-      <div class="form-group" [ngClass]="{ 'has-error': !registerForm.get('name').valid && (registerForm.get('name').dirty || registerForm.get('name').touched) }">
-        <label for="name">Name</label>
-        <input type="name" formControlName="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter your name">
-        <div class="form-feedback"
-          *ngIf="registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)">
-          <div *ngIf="registerForm.get('name').hasError('required')">Name is required</div>
+<div class="app-body">
+  <main class="main d-flex align-items-center" style=" background-color: 	#23282c;" >
+    <div class="container">
+      <div class="row">
+
+          <div class="col-md-8 mx-auto">
+              <div class="card-group">
+                <div class="card p-4 center" style="align-items: center;border: none;background-color: #23282c;">
+                  <img src="assets/img/logo.png" width="150px" class="user-avatar" />
+                  <h1 style="   color: white; padding-top: 20px;">ADMIN - EDUCLANGS</h1>
+                </div>
+              </div>
+            </div>
+
+
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form>
+                <h1>Register</h1>
+                <p class="text-muted">Create your account</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Username" autocomplete="username" required>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Email" autocomplete="email" required>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Password" autocomplete="new-password" required>
+                </div>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password" required>
+                </div>
+                <button type="button" class="btn btn-block btn-success">Create Account</button>
+              </form>
+              <div class="row loginbtn">
+                  <button type="button" class="btn btn-block btn-success" [routerLink]="['/login']" >Login</button>
+              </div>
+            </div>
+            <div class="card-footer p-4">
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
         </div>
       </div>
-      <div class="form-group" [ngClass]="{ 'has-error': !registerForm.get('email').valid && (registerForm.get('email').dirty || registerForm.get('email').touched) }">
-        <label for="email">Email address</label>
-        <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-        <div class="form-feedback"
-          *ngIf="registerForm.get('email').errors && (registerForm.get('email').dirty || registerForm.get('email').touched)">
-          <div *ngIf="registerForm.get('email').hasError('required')">Email is required</div>
-          <div *ngIf="registerForm.get('email').hasError('email')">Email must be a valid email address</div>
-        </div>
-      </div>
-      <div class="form-group" [ngClass]="{ 'has-error': !registerForm.get('password').valid && (registerForm.get('password').dirty || registerForm.get('password').touched) }">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password"  class="form-control" id="password" placeholder="Password">
-        <div class="form-feedback"
-          *ngIf="registerForm.get('password').errors && (registerForm.get('password').dirty || registerForm.get('password').touched)">
-          <p *ngIf="registerForm.get('password').hasError('required')">Password is required</p>
-          <p *ngIf="registerForm.get('password').hasError('minlength')">Password must be 6 characters long, we need another {{ registerForm.get('password').errors['minlength'].requiredLength - registerForm.get('password').errors['minlength'].actualLength }} characters </p>
-        </div>
-      </div>
-      <div  *ngIf="error" class="alert alert-danger" role="alert">
-        Ops: {{ error }}
-      </div>
-      <button [disabled]="!registerForm.valid" class="btn btn-lg btn-primary btn-block mt-5" type="submit">Register</button>
-    </form>
-  </div>
-</main>
+    </div>
+  </main>
+</div>
