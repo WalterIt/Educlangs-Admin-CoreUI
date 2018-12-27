@@ -21,7 +21,40 @@ Route::apiResources([
     'bikes' => 'API\BikeController',
     'builders' => 'API\BuilderController',
     'items' => 'API\ItemController',
+    'bikes/{bike}/ratings' => 'API\RatingController',
+
+/****     Dictionary            *****/
+    'dicten' => 'API\DictenController',
+    'english' => 'API\EnglishController',
+    'portuguese' => 'API\PortugueseController',
+    'french' => 'API\FrenchController',
+    'spanish' => 'API\SpanishController',
+    'japanese' => 'API\JapaneseController',
+
+
+/****     Terminology            *****/
+    'grammarclass' => 'API\GrammarClassController',
+    'grammartopic' => 'API\GrammarTopicController',
+    'languages' => 'API\LanguagesController',
+    'levels' => 'API\LevelsController',
+    'lessons' => 'API\LessonsController',
+    'vocabularytopic' => 'API\VocabularyTopicController',
+    'units' => 'API\UnitsController',
+
+
+    /*
+    'builders' => 'API\BuilderController',
+    'items' => 'API\ItemController',
+    'bikes/{bike}/ratings' => 'API\RatingController',
+    'bikes' => 'API\BikeController',
+    'builders' => 'API\BuilderController',
+    'items' => 'API\ItemController',
     'bikes/{bike}/ratings' => 'API\RatingController'
+    */
+
+
+
+
 ]);
 Route::middleware('jwt.auth')->get('me', function(Request $request) {
     return auth()->user();

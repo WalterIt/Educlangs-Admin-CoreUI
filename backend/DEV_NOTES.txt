@@ -1,12 +1,22 @@
-
-
-
 NEXT
 
-FRONTEND:
+BACKEND
 
-- Login
+- Routes -  Resources - Controllers - Models - Migrations
+- Languages API
 
+
+Creating and updating the controller function
+	1. Open your Terminal window and type the following command:
+
+    php artisan make:controller API/EnglishController --api
+
+
+Creating ratingResource
+Now, let's create a new Resource, this time for ratings:
+	1. Open your Terminal window and type the following command:
+
+    php artisan make:resource UnitsResource
 
 
 
