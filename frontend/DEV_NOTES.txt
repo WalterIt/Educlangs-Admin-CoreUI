@@ -1,5 +1,23 @@
 NEXT
 
+BACKEND
+
+- Languages API
+
+
+
+##################################################################
+
+FRONTEND:
+
+- Register
+
+   (- implementation of input match!)
+
+   - Redirect after registered
+
+
+###################################################################################
 
 BACKEND & FRONTEND:
 
@@ -7,19 +25,9 @@ Logout implementation:
 
 - Clear localstorage
 
-
 READ ABOUT:
 Redirect User after login:
 Check ==>  backend/app/Http/Middleware/RedirectIfAuthenticated.php
-
-
-
-
-FRONTEND:
-
-- Register
-
-
 
 #################################################################
 

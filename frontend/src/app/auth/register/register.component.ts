@@ -37,8 +37,9 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
 
     this.authService.onRegister(this.registerForm.value).subscribe(
+
       (response) => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['login']);
       },
       (response) => {
         if (response.status === 422) {
