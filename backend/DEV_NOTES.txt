@@ -2,8 +2,17 @@ NEXT
 
 BACKEND
 
-- Routes -  Resources - Controllers - Models - Migrations
 - Languages API
+
+
+
+
+#############################################################################
+
+BACKEND
+
+- Routes -  Resources - Controllers - Models - Migrations
+
 
 
 Creating and updating the controller function
@@ -20,15 +29,7 @@ Now, let's create a new Resource, this time for ratings:
 
 
 
-
-
-
-
-
-
-
-
-
+#############################################################################
 
 
 
