@@ -4,9 +4,25 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Dicten;
+use Validator;
+use App\Http\Resources\DictenResource;
 
 class DictenController extends Controller
 {
+    /**
+     * Protect update and delete methods, only for authenticated users.
+     *
+     * @ return Unauthorized
+     */
+    /*
+    public function __construct()
+    {
+      $this->middleware('auth:api')->except(['index']);
+    }
+    */
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,8 @@ class DictenController extends Controller
      */
     public function index()
     {
-        //
+        $listDicten = Dicten::all();
+        return $listDicten;
     }
 
     /**
@@ -25,7 +42,15 @@ class DictenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "user_id"    => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $createDicten = Dicten::create($request->all());
+        return  $createDicten;
     }
 
     /**
@@ -34,9 +59,9 @@ class DictenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Dicten $Dicten)
     {
-        //
+        return new DictenResource($Dicten);
     }
 
     /**
@@ -48,7 +73,17 @@ class DictenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "user_id"    => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $updateDictenById = Dicten::findOrFail($id);
+        $updateDictenById->update($request->all());
+        return $updateDictenById;
     }
 
     /**
@@ -59,6 +94,7 @@ class DictenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteDictenById = Dicten::find($id)->delete();
+        return response()->json([], 204);
     }
 }
