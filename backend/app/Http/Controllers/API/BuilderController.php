@@ -77,14 +77,14 @@ class BuilderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'description' => 'required',            
+            'description' => 'required',
             'location'=> 'required'
             ]);
-            
+
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);    
+            return response()->json($validator->errors(), 422);
         }
-            
+
         $createBuilder = Builder::create($request->all());
         return  $createBuilder;
     }
@@ -177,14 +177,14 @@ class BuilderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'description' => 'required',            
+            'description' => 'required',
             'location'=> 'required'
             ]);
-            
+
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);    
+            return response()->json($validator->errors(), 422);
         }
-        
+
         $updateBuilderById = Builder::findOrFail($id);
         $updateBuilderById->update($request->all());
         return $updateBuilderById;
