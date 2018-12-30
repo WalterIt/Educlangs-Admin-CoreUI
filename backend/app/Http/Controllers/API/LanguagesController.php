@@ -53,17 +53,6 @@ class LanguagesController extends Controller
 
         $createLanguage = Language::create($request->all());
         return  $createLanguage;
-
-        /*
-        // Creating a record in a different way
-        $createLanguage = Language::create([
-            // 'user_id' => $request->user()->id,
-            'user_id' => $request->user()->id,
-            'name' => $request->make
-        ]);
-
-        return new LanguagesResource($createLanguage);
-        */
     }
 
     /**
