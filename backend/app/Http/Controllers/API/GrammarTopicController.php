@@ -41,9 +41,9 @@ class GrammarTopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GrammarTopic $grammarTopic)
+    public function show(GrammarTopic $id)
     {
-        return new GrammarTopicResource($grammarTopic);
+        return new GrammarTopicResource($id);
     }
 
     /**
@@ -55,7 +55,7 @@ class GrammarTopicController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // "user_id"    => 'required'
+            "user_id"    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -84,9 +84,9 @@ class GrammarTopicController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $updateLanguageById = GrammarTopic::findOrFail($id);
-        $updateLanguageById->update($request->all());
-        return $updateLanguageById;
+        $updateById = GrammarTopic::findOrFail($id);
+        $updateById->update($request->all());
+        return $updateById;
     }
 
     /**
@@ -97,7 +97,7 @@ class GrammarTopicController extends Controller
      */
     public function destroy($id)
     {
-        $deleteLanguageById = GrammarTopic::find($id)->delete();
+        $deleteById = GrammarTopic::find($id)->delete();
         return response()->json([], 204);
     }
 }

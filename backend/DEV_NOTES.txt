@@ -12,6 +12,8 @@ BACKEND
 
 - Routes -  Resources - Controllers - Models - Migrations
 
+php artisan route:list
+
 
 $ php artisan make:model GrammarTopic
 
