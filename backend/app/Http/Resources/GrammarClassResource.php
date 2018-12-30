@@ -14,6 +14,11 @@ class GrammarClassResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "id"    => $this->id,
+            "user_id"    => $this->user_id,
+            "gc_id"  => $this->gc_id,
+            "gc_class"  => $this->gc_class
+        ];
     }
 }
