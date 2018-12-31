@@ -4,9 +4,25 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\VocabularyTopic;
+use Validator;
+use App\Http\Resources\VocabularyTopicsResource;
 
 class VocabularyTopicController extends Controller
 {
+    /**
+     * Protect update and delete methods, only for authenticated users.
+     *
+     * @ return Unauthorized
+     */
+    /*
+    public function __construct()
+    {
+      $this->middleware('auth:api')->except(['index']);
+    }
+    */
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,19 @@ class VocabularyTopicController extends Controller
      */
     public function index()
     {
-        //
+        $listVocabularyTopics = VocabularyTopic::all();
+        return $listVocabularyTopics;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(VocabularyTopic $vocabularytopic)
+    {
+        return new VocabularyTopicsResource($vocabularytopic);
     }
 
     /**
@@ -25,19 +53,18 @@ class VocabularyTopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "user_id"    => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $create = VocabularyTopic::create($request->all());
+        return  $create;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -48,7 +75,17 @@ class VocabularyTopicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "user_id"    => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $updateById = VocabularyTopic::findOrFail($id);
+        $updateById->update($request->all());
+        return $updateById;
     }
 
     /**
@@ -59,6 +96,8 @@ class VocabularyTopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteById = VocabularyTopic::find($id)->delete();
+        return response()->json([], 204);
     }
+
 }

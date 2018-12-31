@@ -13,5 +13,5 @@ class Level extends Model
     "user_id",
     "l_id",
     "l_name"
-];
+    ];
 }
