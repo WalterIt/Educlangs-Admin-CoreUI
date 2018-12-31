@@ -41,9 +41,9 @@ class GrammarTopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GrammarTopic $id)
+    public function show(GrammarTopic $grammartopic)
     {
-        return new GrammarTopicResource($id);
+        return new GrammarTopicResource($grammartopic);
     }
 
     /**

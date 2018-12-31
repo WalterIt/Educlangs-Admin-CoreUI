@@ -30,8 +30,8 @@ class GrammarClassController extends Controller
      */
     public function index()
     {
-        $listLanguages = GrammarClass::all();
-        return $listLanguages;
+        $listGrammarClass = GrammarClass::all();
+        return $listGrammarClass;
     }
 
     /**
@@ -40,9 +40,9 @@ class GrammarClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GrammarClass $GrammarClass)
+    public function show(GrammarClass $grammarclass)
     {
-        return new GrammarClassResource($GrammarClass);
+        return new GrammarClassResource($grammarclass);
     }
 
     /**
@@ -54,15 +54,14 @@ class GrammarClassController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required',
-            "name"  => 'required'
+            "user_id"    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $createLanguage = GrammarClass::create($request->all());
-        return  $createLanguage;
+        $create = GrammarClass::create($request->all());
+        return  $create;
     }
 
 
@@ -77,17 +76,16 @@ class GrammarClassController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required',
-            "name"  => 'required'
+            "user_id"    => 'required'
             ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $updateLanguageById = GrammarClass::findOrFail($id);
-        $updateLanguageById->update($request->all());
-        return $updateLanguageById;
+        $updateById = GrammarClass::findOrFail($id);
+        $updateById->update($request->all());
+        return $updateById;
     }
 
     /**
@@ -98,7 +96,7 @@ class GrammarClassController extends Controller
      */
     public function destroy($id)
     {
-        $deleteLanguageById = GrammarClass::find($id)->delete();
+        $deleteById = GrammarClass::find($id)->delete();
         return response()->json([], 204);
     }
 }
