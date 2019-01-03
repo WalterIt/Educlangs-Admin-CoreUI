@@ -1,5 +1,12 @@
 NEXT
 
+
+FRONTEND:
+
+- Language component
+
+################################################################
+
 BACKEND
 
 - Routes -  Resources - Controllers

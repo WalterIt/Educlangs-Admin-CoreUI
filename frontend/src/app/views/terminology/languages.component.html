@@ -1,3 +1,64 @@
-<p>
-  languages works!
-</p>
+<div class="row">
+
+  <div class="ui-widget-header align-globalfilter">
+      <i class="fa fa-search search-globalfilter"></i>
+      <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+  </div>
+
+  <div class="ui-helper-clearfix" style="width:100%">
+    <button type="button" pButton icon="fa fa-plus" style="float:right" (click)="addLanguage()" label="Add"></button>
+  </div>
+
+
+<p-dataTable [value]="languages" [editable]="true"
+  [globalFilter]="gb" #datatable
+  [rows]="10" [paginator]="true" [pageLinks]="10" [rowsPerPageOptions]="[25, 50, 100]"  paginatorPosition="bottom"
+  reorderableColumns="true" resizableColumns="true"
+
+ (onEditComplete)="onEditComplete($event)" >
+
+  <p-column field="id" header="Id"  [sortable]="true">
+    </p-column>
+
+  <p-column field="user_id" header="User Id" [editable]="true" [sortable]="true">
+    </p-column>
+
+  <p-column field="name" header="Language" [editable]="true" [sortable]="true">
+    </p-column>
+
+    <p-column header="Action" class="action">
+      <ng-template let-row="rowData" pTemplate="body">
+        <button pButton icon="fa fa-trash" (click)="delete(row)"  ></button>
+      </ng-template>
+    </p-column>
+
+<p-footer>
+  <div class="ui-helper-clearfix" style="width:100%">
+    <button type="button" pButton icon="fa fa-plus" style="float:left" (click)="addLanguage()" label="Add"></button>
+  </div>
+</p-footer>
+
+</p-dataTable>
+<!--
+<p-dialog header="Language Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="language">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="user_id">User ID</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="user_id" [(ngModel)]="language.user_id" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="name">Language</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="language.name" /></div>
+    </div>
+-->
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <!-- <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button> -->
+        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+      </div>
+    </p-footer>
+
+
+    <p-growl [value]="msgs"></p-growl>
+
+</div>

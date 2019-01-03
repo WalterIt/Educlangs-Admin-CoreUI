@@ -41,11 +41,24 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
+/**    PRIMENG IMPORTS   ***/
+import { TableModule } from 'primeng/table';
+import {DataTableModule} from 'primeng/components/datatable/datatable';
+import {ButtonModule} from 'primeng/components/button/button';
+import {DialogModule} from 'primeng/components/dialog/dialog';
+import {ContextMenuModule} from 'primeng/components/contextmenu/contextmenu';
+import {InputTextModule} from 'primeng/components/inputtext/inputtext';
+// import {MultiSelectModule} from 'primeng/components/multiselect/multiselect';
+import {SliderModule} from 'primeng/components/slider/slider';
+import {DropdownModule} from 'primeng/components/dropdown/dropdown';
+import {GrowlModule} from 'primeng/components/growl/growl';
+
 // Application Module
 import { AuthModule } from './auth/auth.module';
 
 import { HttpErrorHandler } from './shared/_services/http-handle-error.service';
 import { AppHttpInterceptorService } from './shared/_services/app-http-interceptor.service';
+import { LanguageService } from './views/terminology/shared/services/language.service';
 
 @NgModule({
   imports: [
@@ -61,7 +74,18 @@ import { AppHttpInterceptorService } from './shared/_services/app-http-intercept
     TabsModule.forRoot(),
     ChartsModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+
+    TableModule,
+    DataTableModule,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    ContextMenuModule,
+    SliderModule,
+    DropdownModule,
+   // MultiSelectModule,
+    GrowlModule
   ],
   declarations: [
     AppComponent,
@@ -76,6 +100,7 @@ import { AppHttpInterceptorService } from './shared/_services/app-http-intercept
   providers: [
     // { provide: LocationStrategy, useClass: HashLocationStrategy }  // Used to add Hash # to url
     // Title,
+    LanguageService,
     HttpErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,
