@@ -18,7 +18,7 @@ BACKEND
 php artisan route:list
 
 
-$ php artisan make:model GrammarTopic
+$ php artisan make:model GrammarTopic 
 
 Creating and updating the controller function
 	1. Open your Terminal window and type the following command:

@@ -59,9 +59,9 @@ class DictenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dicten $Dicten)
+    public function show(Dicten $dicten)
     {
-        return new DictenResource($Dicten);
+        return new DictenResource($dicten);
     }
 
     /**
