@@ -5,6 +5,10 @@ FRONTEND:
 
 - Language component
 
+BUG :
+ 2:8000/api/languages:1 PUT http://localhost:8000/api/languages 405 (Method Not Allowed)
+terminology/languages:1 Access to XMLHttpRequest at 'http://localhost:8000/api/languages' from origin 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
 ################################################################
 
 BACKEND

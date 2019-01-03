@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 /* ----------  PRIME COMPONENTS ---------- */
 import { SelectItem, Message } from 'primeng/components/common/api';
 import { Column } from 'primeng/components/common/shared';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
 import { Language } from './language';
 import { LanguageService } from './shared/services/language.service';
@@ -59,7 +58,7 @@ export class LanguagesComponent implements OnInit {
     // this.getLanguagesList();
 
     this.languageService.getLanguage().then(language => this.languages = language);
-    //  console.log(this.languageService.getLanguage().then(language => this.languages = language));
+    // console.log(this.languageService.getLanguage().then(language => this.languages = language));
 
     this.cols = [
       { field: 'id', header: 'Id' },

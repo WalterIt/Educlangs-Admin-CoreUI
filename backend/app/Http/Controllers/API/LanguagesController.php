@@ -30,8 +30,15 @@ class LanguagesController extends Controller
      */
     public function index()
     {
-        $listLanguages = Language::all();
-        return $listLanguages;
+        // $listLanguages = Language::all();
+        // return $listLanguages;
+
+        // --------------------------------------
+                // Get Language
+                $language = Language::paginate(100);
+
+                //  Return collection of Language as a resource
+                return LanguagesResource::collection($language);
     }
 
     /**

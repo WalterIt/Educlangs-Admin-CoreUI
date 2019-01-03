@@ -41,7 +41,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
-/**    PRIMENG IMPORTS   ***/
+/**    PRIMENG IMPORTS
+ *
 import { TableModule } from 'primeng/table';
 import {DataTableModule} from 'primeng/components/datatable/datatable';
 import {ButtonModule} from 'primeng/components/button/button';
@@ -53,16 +54,20 @@ import {SliderModule} from 'primeng/components/slider/slider';
 import {DropdownModule} from 'primeng/components/dropdown/dropdown';
 import {GrowlModule} from 'primeng/components/growl/growl';
 
+***/
+
 // Application Module
 import { AuthModule } from './auth/auth.module';
 
 import { HttpErrorHandler } from './shared/_services/http-handle-error.service';
 import { AppHttpInterceptorService } from './shared/_services/app-http-interceptor.service';
 import { LanguageService } from './views/terminology/shared/services/language.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
@@ -74,8 +79,9 @@ import { LanguageService } from './views/terminology/shared/services/language.se
     TabsModule.forRoot(),
     ChartsModule,
     AuthModule,
-    HttpClientModule,
+    HttpClientModule
 
+    /*
     TableModule,
     DataTableModule,
     ButtonModule,
@@ -86,6 +92,7 @@ import { LanguageService } from './views/terminology/shared/services/language.se
     DropdownModule,
    // MultiSelectModule,
     GrowlModule
+    */
   ],
   declarations: [
     AppComponent,

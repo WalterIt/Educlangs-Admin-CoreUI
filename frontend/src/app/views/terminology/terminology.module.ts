@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 /**    PRIMENG IMPORTS    ***/
-import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/components/button/button';
-import { DialogModule } from 'primeng/components/dialog/dialog';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { ContextMenuModule } from 'primeng/components/contextmenu/contextmenu';
-import { SliderModule } from 'primeng/components/slider/slider';
-import { DropdownModule } from 'primeng/components/dropdown/dropdown';
-import { GrowlModule } from 'primeng/components/growl/growl';
+import {GrowlModule} from 'primeng/components/growl/growl';
+import {TabViewModule} from 'primeng/components/tabview/tabview';
+import {CodeHighlighterModule} from 'primeng/components/codehighlighter/codehighlighter';
+import {ToolbarModule} from 'primeng/components/toolbar/toolbar';
+import {ButtonModule} from 'primeng/components/button/button';
+import {SplitButtonModule} from 'primeng/components/splitbutton/splitbutton';
+import { MultiSelectModule, DropdownModule, DataTableModule, DialogModule } from 'primeng/primeng';
+import {ContextMenuModule} from 'primeng/components/contextmenu/contextmenu';
+import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 
 import { TerminologyRoutingModule } from './terminology-routing.module';
 import { GrammarClassComponent } from './grammar-class.component';
@@ -34,17 +37,23 @@ import { UnitsComponent } from './units.component';
   imports: [
     CommonModule,
     TerminologyRoutingModule,
+   // BrowserAnimationsModule,
 
-    TableModule,
-    DataTableModule,
+    GrowlModule,
+    TabViewModule,
+    CodeHighlighterModule,
+    ToolbarModule,
     ButtonModule,
-    DialogModule,
+    SplitButtonModule,
+    TableModule,
+    MultiSelectModule,
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTableModule,
     InputTextModule,
     ContextMenuModule,
-    SliderModule,
-    DropdownModule,
-   // MultiSelectModule,
-    GrowlModule
+    DialogModule
   ]
 })
 export class TerminologyModule { }
