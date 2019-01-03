@@ -8,6 +8,99 @@ export const navItems = [
       text: 'NEW'
     }
   },
+  /*     DICTIONARY ITEM   */
+
+  {
+    title: true,
+    name: 'Dictionary'
+  },
+  // ----- LANGUAGES ---
+  {
+    name: 'Languages',
+    url: '/languages',
+    icon: 'fa fa-book',
+    children: [
+      {
+        name: 'Dicten',
+        url: '/languages/dicten',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'English',
+        url: '/languages/english',
+        icon: 'flag-icon flag-icon-us'
+      },
+      {
+        name: 'Portuguese',
+        url: '/languages/portuguese',
+        icon: 'flag-icon flag-icon-br'
+      },
+      {
+        name: 'French',
+        url: '/languages/french',
+        icon: 'flag-icon flag-icon-fr'
+      },
+      {
+        name: 'Spanish',
+        url: '/languages/spanish',
+        icon: 'flag-icon flag-icon-es'
+      },
+      {
+        name: 'Japanese',
+        url: '/languages/japanese',
+        icon: 'flag-icon flag-icon-jp'
+      }
+    ]
+  },
+   // ----- TERMINOLOGY ---
+   {
+    name: 'Terminology',
+    url: '/terminology',
+    icon: 'fa fa-book',
+    children: [
+      {
+        name: 'Grammar Class',
+        url: '/terminology/grammar-class',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Grammar Topic',
+        url: '/terminology/grammar-topics',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Languages',
+        url: '/terminology/languages',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Levels',
+        url: '/terminology/levels',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Lessons',
+        url: '/terminology/lessons',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Vocabulary Topic',
+        url: '/terminology/vocabulary-topics',
+        icon: 'fa fa-book'
+      },
+      {
+        name: 'Units',
+        url: '/terminology/units',
+        icon: 'fa fa-book'
+      }
+
+    ]
+  },
+   // ----- END OF TERMINOLOGY ---
+
+    /*   END OF   DICTIONARY ITEM   */
+
+
   {
     title: true,
     name: 'Theme'

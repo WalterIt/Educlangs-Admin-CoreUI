@@ -1,3 +1,43 @@
+NEXT
+
+BACKEND
+
+
+APIs: LESSONS & LEVELS - Implemented & Tested
+
+-
+POSTMAN : https://www.getpostman.com/collections/c4dd2e3df780552551e6
+
+
+#############################################################################
+
+BACKEND
+
+- Routes -  Resources - Controllers - Models - Migrations
+
+php artisan route:list
+
+
+$ php artisan make:model GrammarTopic
+
+Creating and updating the controller function
+	1. Open your Terminal window and type the following command:
+
+    php artisan make:controller API/EnglishController --api
+
+
+Creating ratingResource
+Now, let's create a new Resource, this time for ratings:
+	1. Open your Terminal window and type the following command:
+
+    php artisan make:resource UnitsResource
+
+
+
+#############################################################################
+
+
+
 ####  PHP 7 CONFIGURATION ####
 
 Tutorial: https://www.youtube.com/watch?v=SHOO2nGZrCY
@@ -31,7 +71,7 @@ Open the project/composer.json file and add the following line of code, right af
 
 Run:
 
-composer update 
+composer update
 
 
 Now, it is time to publish the vendor package. Still in your Terminal window and inside the Tinker console, type the following command:
@@ -48,6 +88,35 @@ Let's generate the secret. Still in the Terminal window, type the following comm
 The previous command will generate a secret key on your .env file, and will look something like the following line:
 JWT_SECRET=McR1It4Bw9G8jU1b4XJhDMeZs4Q5Zwear
 At this point, we have successfully installed jwt-auth, but we need to take some more steps to make our API secure.
+
+##########################################################################################
+
+###   LARAVEL CORS  - Setting up Laravel CORS
+
+Laravel has excellent support for using CORS in its applications. Let's see how we can configure it using a library called barryvdh/laravel-cors:
+
+	1. Inside the container's bash, type the following command:
+
+ composer require barryvdh/laravel-cors
+
+
+Thanks to the newest version of Laravel (5.6), our new library is already ready for use. Let's just make one more little change.
+	1. Open the ./Server/app/Http/Kernel.php file and add the following code to the middlewareGroup API:
+ protected $middlewareGroups = [
+'web'  => [
+                ...
+        ],
+        'api'  => [
+                \Barryvdh\Cors\HandleCors::class,
+                'throttle:60,1',
+                'bindings',
+        ],
+It is very important to note that we added \Barryvdh\Cors\HandleCors :: class to the first line of dependencies in the API tag. This is very important because we avoid getting errors with status code 0 on our frontend application.
+We are ready to go!
+
+
+
+
 
 
 #############################################################################################

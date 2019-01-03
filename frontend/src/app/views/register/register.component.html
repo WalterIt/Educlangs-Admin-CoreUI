@@ -1,7 +1,18 @@
 <div class="app-body">
-  <main class="main d-flex align-items-center">
+  <main class="main d-flex align-items-center" style=" background-color: 	#23282c;" >
     <div class="container">
       <div class="row">
+
+          <div class="col-md-8 mx-auto">
+              <div class="card-group">
+                <div class="card p-4 center" style="align-items: center;border: none;background-color: #23282c;">
+                  <img src="assets/img/logo.png" width="150px" class="user-avatar" />
+                  <h1 style="   color: white; padding-top: 20px;">ADMIN - EDUCLANGS</h1>
+                </div>
+              </div>
+            </div>
+
+
         <div class="col-md-6 mx-auto">
           <div class="card mx-4">
             <div class="card-body p-4">
@@ -34,6 +45,9 @@
                 </div>
                 <button type="button" class="btn btn-block btn-success">Create Account</button>
               </form>
+              <div class="row loginbtn">
+                  <button type="button" class="btn btn-block btn-success" [routerLink]="['/login']" >Login</button>
+              </div>
             </div>
             <div class="card-footer p-4">
               <div class="row">
@@ -44,6 +58,9 @@
                   <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
                 </div>
               </div>
+
+
+
             </div>
           </div>
         </div>

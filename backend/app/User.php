@@ -7,31 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-/**
- * @SWG\Definition(
- *     definition="User",
- *     required={"name", "email", "password"},
- *     @SWG\Property(
- *          property="name",
- *          type="string",
- *          description="User name",
- *          example="John Conor"
- *    ),
- *     @SWG\Property(
- *          property="email",
- *          type="string",
- *          description="Email Address",
- *          example="john.conor@terminator.com"
- *    ),
- *     @SWG\Property(
- *          property="password",
- *          type="string",
- *          description="A very secure password",
- *          example="123456"
- *    ),
- * )
- */
-
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -42,7 +17,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'user_id', 'email', 'password'
     ];
 
     /**
@@ -74,9 +49,10 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var string
      */
-
+    /*
     public function bikes()
     {
       return $this->hasMany(App\Bike);
     }
+    */
 }

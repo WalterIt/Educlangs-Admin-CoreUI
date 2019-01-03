@@ -6,12 +6,11 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
@@ -30,8 +29,8 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: '',
+    loadChildren: './auth/auth.module#AuthModule',
     data: {
       title: 'Login Page'
     }
@@ -81,7 +80,17 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
+      },
+      /* -----    DICTIONARY --- */
+      {
+        path: 'languages',
+        loadChildren: './views/languages/languages.module#LanguagesModule'
+      },
+      {
+        path: 'terminology',
+        loadChildren: './views/terminology/terminology.module#TerminologyModule'
       }
+
     ]
   }
 ];
