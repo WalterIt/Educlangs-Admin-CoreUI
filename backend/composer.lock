@@ -1681,19 +1681,6 @@
             "time": "2016-05-10T06:13:32+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "nikic/php-parser",
-            "version": "v4.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "8aae5b59b83bb4d0dbf07b0a835f2680a658f610"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8aae5b59b83bb4d0dbf07b0a835f2680a658f610",
-                "reference": "8aae5b59b83bb4d0dbf07b0a835f2680a658f610",
-=======
             "name": "php-http/httplug",
             "version": "v1.1.0",
             "source": {
@@ -1705,7 +1692,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-http/httplug/zipball/1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
                 "reference": "1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
->>>>>>> 089684adc9d038af1aad02e8c673cae950df77cd
                 "shasum": ""
             },
             "require": {
@@ -1748,11 +1734,7 @@
                 "client",
                 "http"
             ],
-<<<<<<< HEAD
-            "time": "2018-12-26T11:32:39+00:00"
-=======
             "time": "2016-08-31T08:30:17+00:00"
->>>>>>> 089684adc9d038af1aad02e8c673cae950df77cd
         },
         {
             "name": "php-http/promise",
@@ -3479,10 +3461,7 @@
                 "env",
                 "environment"
             ],
-<<<<<<< HEAD
             "time": "2018-10-30T17:29:25+00:00"
-=======
-            "time": "2018-07-29T20:33:41+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -3547,7 +3526,6 @@
                 "psr-7"
             ],
             "time": "2018-09-05T19:29:37+00:00"
->>>>>>> 089684adc9d038af1aad02e8c673cae950df77cd
         }
     ],
     "packages-dev": [
