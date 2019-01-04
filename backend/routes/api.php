@@ -51,11 +51,10 @@ Route::apiResources([
     'items' => 'API\ItemController',
     'bikes/{bike}/ratings' => 'API\RatingController'
     */
-
-
-
-
 ]);
+    // Update Language
+   //Route::put('language', 'LanguageController@update');
+
 Route::middleware('jwt.auth')->get('me', function(Request $request) {
     return auth()->user();
 });
