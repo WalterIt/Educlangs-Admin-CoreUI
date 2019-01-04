@@ -75,71 +75,21 @@ export class LanguagesComponent implements OnInit {
   }
 
 
-  /* TRY TO IMPLEMENT ADD NEW ROW
-  addNew(){
-    this.data.push({
-      name: '',
-      value: ''
-    })
-    this.data[this.data.length - 1].isEditable = true;
-  }
-
-  addLanguage() {
-    this.newLanguage = true;
-    this.language = new Language();
-    this.language = {
-      user_id: '',
-      name: ''
-    };
-
-    /// this.displayDialog = true;
-
-    this.cols = [
-      { field: 'id', header: 'Id' },
-
-      { field: 'user_id', header: 'User Id' },
-      { field: 'name', header: 'Language' }
-  ];
-    this.columnOptions = [];
-    for(let i = 0; i < this.cols.length; i++) {
-        this.columnOptions.push({label: this.cols.header, value: this.cols});
-    }
-  }
-
-  /*
-
-
-
-/*  THIS METHOD IS RETURNING {data: Array(10), links: {…}, meta: {…}}
-
-  getLanguagesList() {
-    this.spinnerService.show();
-    this.languageService.getListOfLanguages().subscribe(res => {
-      this.languagesData = res;
-      console.log(this.languagesData);
-      // this.total = this.usersData.length;
-      this.spinnerService.hide();
-    });
-  */
-
-
-  /*
-  onEdit(event: {originalEvent: any, column: Column, data: any}): void {
-    this.logs.push('onEdit -', JSON.stringify(event.data));
-    // console.log('onedit');
-  }
-  */
-
   onEditComplete(event: { column: Column, data: any }): void {
     this.logs.push('onEditComplete -', JSON.stringify(event.data));
     // let data = JSON.stringify(event.data);
-    let data = event.data;
-    console.log('onEditComplete -', data);
+    let language = event.data;
+    // console.log('onEditComplete -', language);
 
-    this.languageService.editLanguage(data).subscribe(response => {
-      // this.router.navigate(['/language']);
-      // this.spinnerService.hide();
-    });
+
+    let id = language.id;
+    // console.log('ID Accessed! ', id);
+    this.languageService.editLanguage(id, language)
+      .subscribe(response => {
+        // this.isLoading = false;
+        // this.language = response['data'];
+      });
+
   }
 
 
@@ -162,23 +112,15 @@ export class LanguagesComponent implements OnInit {
       this.languageService.addLanguage(data).subscribe(response => {
         // this.spinnerService.hide();
         // this.router.navigate(['/language']);
+        this.languageService.getLanguage().then(language => this.languages = language);
       });
+
     } else {
-      languages[this.findSelectedLanguageIndex()] = this.language;
-      /** BUG CROSS DOMAIN
-      * Access to XMLHttpRequest at 'http://localhost:8000/api/language' from origin 'http://localhost:4200'
-      * has been blocked by CORS policy: Method PUT is not allowed by Access-Control-Allow-Methods in preflight response.
-      */
-      /* UPDATE LANGUAGE */
-      let data1: any = this.language;
-      console.log(data1);
-      this.languageService.editLanguage(data1).subscribe(response => {
-        // this.router.navigate(['language']);
-        // this.spinnerService.hide();
-      });
-      // console.log(this.language);
+
       console.log('UPDATED Language!');
+
     }
+
     this.languages = languages;
     this.language = null;
     this.displayDialog = false;
@@ -201,39 +143,8 @@ export class LanguagesComponent implements OnInit {
     });
 
 
-
-
-
-
   }
 
-
-
-  /*
-  delete() {
-  this.spinnerService.show();
-  let index = this.findSelectedLanguageIndex();
-  this.languages = this.languages.filter( (val, i) => i !== index);
-  /* DELETE LANGUAGE */
-  /**
-  * BUG DELETING
-  * Access to XMLHttpRequest at 'http://localhost:8000/api/language/13' from origin 'http://localhost:4200'
-  * has been blocked by CORS policy: Method DELETE is not allowed by Access-Control-Allow-Methods in preflight response.
-
-  console.log(this.language);
-  let id = this.language.id;
-  // this.spinnerService.show();
-  this.languageService.deleteLanguage(id).subscribe(response => {
-  // this.growlAlertService.showSuccess("User Deleted Succefully");
-  // this.getUsersList();
-  this.spinnerService.hide();
-  });
-
-
-  this.language = null;
-  this.displayDialog = false;
-  }
-*/
 
   onRowSelectCRUD(event: any) {
     this.newLanguage = false;

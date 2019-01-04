@@ -75,7 +75,6 @@ class LanguagesController extends Controller
     }
 
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -83,6 +82,7 @@ class LanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -98,6 +98,7 @@ class LanguagesController extends Controller
         $updateLanguageById->update($request->all());
         return $updateLanguageById;
     }
+
 
     /**
      * Remove the specified resource from storage.

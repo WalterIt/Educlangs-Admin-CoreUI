@@ -4,7 +4,15 @@ FRONTEND:
 
 - Language component
 
+FIX DESIGN
 
+
+
+#######################################################################################
+
+FRONTEND:
+
+- Language component
 
 BUG :
  2:8000/api/languages:1 PUT http://localhost:8000/api/languages 405 (Method Not Allowed)
@@ -15,9 +23,8 @@ DEBUG :
 2 - Refactor LanguageControler  UPDATE |
 3 - Refactor FRONTEND Language component UPDATE
 
-
-
-FIX DESIGN
+SOLUTION:
+- IMPLEMENTED:   onEditComplete Method in Language component & LanguagesController
 
 ####################################################################################################
 
