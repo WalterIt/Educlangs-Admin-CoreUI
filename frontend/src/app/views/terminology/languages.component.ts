@@ -64,7 +64,11 @@ export class LanguagesComponent implements OnInit {
       { field: 'id', header: 'Id' },
 
       { field: 'user_id', header: 'User Id' },
-      { field: 'name', header: 'Language' }
+      { field: 'name', header: 'Language' },
+
+      { field: 'created_at', header: 'Creation' },
+      { field: 'updated_at', header: 'Updated' }
+
     ];
 
     // this.selectedColumns = this.cols;

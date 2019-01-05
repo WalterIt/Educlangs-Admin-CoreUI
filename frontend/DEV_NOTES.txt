@@ -6,6 +6,19 @@ FRONTEND:
 
 FIX DESIGN
 
+              <button  (click)="delete(row)"><i class="fa fa-trash fa-lg mt-40"
+                  style="color: red; background-color: transparent; border-color: #ac0505;"></i></button>
+
+style="background-color: #e4ab00; border-color: #c69500;"
+
+pButton icon="fa fa-trash"
+
+<i class="fa fa-trash fa-lg mt-40" style="color: red; background-color: transparent; border-color: #ac0505;"></i>
+
+&nbsp;
+
+              <button pButton icon="fa fa-trash"  style="background-color: #ff3434;"  (click)="delete(row)"></button>
+
 
 
 #######################################################################################
