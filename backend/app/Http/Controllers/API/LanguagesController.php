@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Language;
 use Validator;
 use App\Http\Resources\LanguagesResource;
+use Illuminate\Support\Facades\Auth;
 
 class LanguagesController extends Controller
 {
@@ -62,16 +63,35 @@ class LanguagesController extends Controller
      */
     public function store(Request $request)
     {
+        // $id1 = Auth::user();
+        // $id = strval($id1)
+        // $request += $id;
+
+
+
+        // $request = array_merge($candidate, ['purchase_order_number' => $purchaseOrderNumber]);
+        // $request += $id;
+
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required',
+
             "name"  => 'required'
         ]);
+
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $createLanguage = Language::create($request->all());
-        return  $createLanguage;
+        // $createLanguage = Language::create($request->all());
+       //  return  $createLanguage;
+
+        // Creating a record in a different way
+        $createLanguage = Language::create([
+            'user_id' => $request->user()->id,
+            'name' => $request->name
+        ]);
+        return new LanguagesResource($createLanguage);
+
     }
 
 
@@ -85,8 +105,9 @@ class LanguagesController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required',
+
             "name"  => 'required'
             ]);
 

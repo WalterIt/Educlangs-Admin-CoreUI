@@ -2,6 +2,15 @@ NEXT
 
 FRONTEND:
 
+- Language component : BACK_FRONT_01/Adding_User-Id-Languages-component
+
+
+
+
+##################################################################################
+
+FRONTEND:
+
 - Language component
 
 FIX DESIGN

@@ -26,7 +26,7 @@
           <p-column field="id" header="Id" [sortable]="true">
           </p-column>
 
-          <p-column field="user_id" header="User Id" [editable]="true" [sortable]="true">
+          <p-column field="user_id" header="User Id"  [sortable]="true">
           </p-column>
 
           <p-column field="name" header="Language" [editable]="true" [sortable]="true">
@@ -48,13 +48,13 @@
             </ng-template>
           </p-column>
 
-          <!--
+
           <p-footer>
             <div class="ui-helper-clearfix" style="width:100%">
-              <button type="button" pButton icon="fa fa-plus" style="float:left" (click)="addLanguage()" label="Add"></button>
+              <!-- <button type="button" pButton icon="fa fa-plus" style="float:left" (click)="addLanguage()" label="Add"></button> -->
             </div>
           </p-footer>
-          -->
+
 
 
 
@@ -62,14 +62,20 @@
 
         <p-dialog header="Language Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
           <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="language">
+
+            <!-- USER ID
             <div class="ui-grid-row">
               <div class="ui-grid-col-4"><label for="user_id">User ID</label></div>
               <div class="ui-grid-col-8"><input pInputText id="user_id" [(ngModel)]="language.user_id" /></div>
             </div>
+            -->
+
             <div class="ui-grid-row">
               <div class="ui-grid-col-4"><label for="name">Language</label></div>
               <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="language.name" /></div>
             </div>
+
+            <br>
 
             <p-footer>
                 <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
