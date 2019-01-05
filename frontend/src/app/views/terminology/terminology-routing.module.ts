@@ -18,7 +18,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'languages'
+        // redirectTo: 'languages'
+        redirectTo: 'levels'
       },
       {
         path: 'grammar-class',

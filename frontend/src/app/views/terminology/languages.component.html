@@ -21,22 +21,17 @@
         <p-dataTable class="table table-bordered table-striped table-sm"
           [value]="languages" [editable]="true" [globalFilter]="gb" #datatable [rows]="25" [paginator]="true"
           [pageLinks]="25" [rowsPerPageOptions]="[25, 50, 100]" paginatorPosition="bottom" reorderableColumns="true"
-          resizableColumns="true" (onEditComplete)="onEditComplete($event)">
+          resizableColumns="true" (onEditComplete)="onEditComplete($event)" >
 
-          <p-column field="id" header="Id" [sortable]="true">
-          </p-column>
+          <p-column field="id" header="Id" [sortable]="true">   </p-column>
 
-          <p-column field="user_id" header="User Id"  [sortable]="true">
-          </p-column>
+          <p-column field="user_id" header="User Id"  [sortable]="true">  </p-column>
 
-          <p-column field="name" header="Language" [editable]="true" [sortable]="true">
-          </p-column>
+          <p-column field="name" header="Language" [editable]="true" [sortable]="true">    </p-column>
 
-          <p-column field="created_at" header="Creation"  [sortable]="true">
-            </p-column>
+          <p-column field="created_at" header="Creation"  [sortable]="true">  </p-column>
 
-          <p-column field="updated_at" header="Updated" [sortable]="true">
-            </p-column>
+          <p-column field="updated_at" header="Updated" [sortable]="true">   </p-column>
 
           <p-column header="Action" class="action" >
             <ng-template let-row="rowData" pTemplate="body" style="align-content: center;">
@@ -59,6 +54,7 @@
 
 
         </p-dataTable>
+
 
         <p-dialog header="Language Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
           <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="language">

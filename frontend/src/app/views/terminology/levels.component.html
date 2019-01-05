@@ -1,3 +1,114 @@
-<p>
-  levels works!
-</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+
+        <div class="ui-widget-header align-globalfilter">
+            <i class="fa fa-search search-globalfilter"></i>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+        </div>
+
+        <div  style="width:100%;margin-top: -32px;">
+          <button type="button" pButton icon="fa fa-plus" style="float:right" (click)="addLevel()" label="Add"></button>
+        </div>
+
+      </div>
+
+
+      <div class="card-body">
+
+      <!--   DATATABLE  -->
+
+      <p-dataTable
+          class="table table-bordered table-striped table-sm"
+          [value]="languages" [editable]="true" [globalFilter]="gb" #datatable [rows]="25" [paginator]="true"
+          [pageLinks]="25" [rowsPerPageOptions]="[25, 50, 100]" paginatorPosition="bottom" reorderableColumns="true"
+          resizableColumns="true" (onEditComplete)="onEditComplete($event)">
+
+        <p-header>CRUD for browsers</p-header>
+
+        <p-column field="id" header="Id" [sortable]="true"></p-column>
+        <p-column field="user_id" header="User Id" [sortable]="true"></p-column>
+
+        <p-column field="l_id" header="Lesson Id" [editable]="true" [sortable]="true"></p-column>
+        <p-column field="l_name" header="Level Name" [editable]="true" [sortable]="true"></p-column>
+
+        <p-column field="created_at" header="Creation"  [sortable]="true"> </p-column>
+        <p-column field="updated_at" header="Updated" [sortable]="true"></p-column>
+
+        <p-column header="Action" class="action" >
+            <ng-template let-row="rowData" pTemplate="body" style="align-content: center;">
+
+              <button class="btn  btn-outline-danger ng-star-inserted" type="button" (click)="delete(row)">
+                <i class="fa fa-trash fa-lg mt-40" style="color: #fa0425;background-color: transparent;border-color: #ac0505;"></i>
+              </button>
+
+            </ng-template>
+          </p-column>
+
+
+        <p-footer>
+          <div class="ui-helper-clearfix" style="width:100%">
+
+            <!-- <button type="button" pButton icon="fa-plus" style="float:left" (click)="addBrowser()" label="Add"></button> -->
+
+          </div>
+        </p-footer>
+
+      </p-dataTable>
+
+
+      <!--   MODAL   DIALOG    -->
+
+      <p-dialog header="Levels Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+
+        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="level">
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="l_id">Level Id - EX. b1, int1, etc</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="l_id" [(ngModel)]="level.l_id" /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="l_name">Level Name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="l_name" [(ngModel)]="level.l_name" /></div>
+          </div>
+
+
+          <!--
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="platform">Platform</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="platform" [(ngModel)]="browser.platform" /></div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="grade">Grade</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="grade" [(ngModel)]="browser.grade" /></div>
+          </div>
+        -->
+
+        </div>
+
+
+        <p-footer>
+          <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+          </div>
+        </p-footer>
+      </p-dialog>
+      <!--   MODAL   DIALOG    -->
+
+
+
+
+
+      <!--     ENDO OF DATATABLE    -->
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

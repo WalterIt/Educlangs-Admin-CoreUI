@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -62,7 +63,7 @@ import { AuthModule } from './auth/auth.module';
 import { HttpErrorHandler } from './shared/_services/http-handle-error.service';
 import { AppHttpInterceptorService } from './shared/_services/app-http-interceptor.service';
 import { LanguageService } from './views/terminology/shared/services/language.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LevelService } from './views/terminology/shared/services/level.service';
 
 @NgModule({
   imports: [
@@ -108,6 +109,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // { provide: LocationStrategy, useClass: HashLocationStrategy }  // Used to add Hash # to url
     // Title,
     LanguageService,
+    LevelService,
     HttpErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,
