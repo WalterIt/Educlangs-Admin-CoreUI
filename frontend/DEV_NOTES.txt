@@ -24,6 +24,8 @@ FRONTEND FINISHED :
 wshir@DESKTOP-MTMVSEK MINGW64 /c/wamp64/www/2019/EDUCLANGS/ADMIN-COREUI_v1 (BACK_FRONT_02/Level-component)
 $ git commit -m'FRONTEND: Implemented terminology-routing.module.ts/level.ts/ levels-comp/level.service.ts/app.mod | BACK: Level.php'
 
+BACKEND: implementation of LevelsController - FINISHED | TESTED APP
+
 
 ########################################################################################
 

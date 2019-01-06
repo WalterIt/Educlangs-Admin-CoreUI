@@ -18,7 +18,10 @@ class LevelsResource extends JsonResource
             "id"    => $this->id,
             "user_id"    => $this->user_id,
             "l_id"  => $this->l_id,
-            "l_name"  => $this->l_name
+            "l_name"  => $this->l_name,
+            // Casting objects to string, to avoid receive create_at and update_at as object
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at
         ];
     }
 }

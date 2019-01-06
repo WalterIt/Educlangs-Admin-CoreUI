@@ -63,15 +63,6 @@ class LanguagesController extends Controller
      */
     public function store(Request $request)
     {
-        // $id1 = Auth::user();
-        // $id = strval($id1)
-        // $request += $id;
-
-
-
-        // $request = array_merge($candidate, ['purchase_order_number' => $purchaseOrderNumber]);
-        // $request += $id;
-
         $validator = Validator::make($request->all(), [
 
             "name"  => 'required'

@@ -15,7 +15,7 @@ import { LevelService } from './shared/services/level.service';
 })
 export class LevelsComponent implements OnInit {
 
-  levels: level[];
+  levels: Level[];
   levelsData: any;
   msgs: Message[] = [];
   // public editTrue;
@@ -160,7 +160,7 @@ export class LevelsComponent implements OnInit {
   }
   selectLevel(level: Level) {
     this.msgs = [];
-    this.msgs.push({ severity: 'info', summary: 'Level selected', detail: 'Level: ' + level.name });
+    this.msgs.push({ severity: 'info', summary: 'Level selected', detail: 'Level: ' + level.l_name });
   }
   toggle() {
     this.stacked = !this.stacked;

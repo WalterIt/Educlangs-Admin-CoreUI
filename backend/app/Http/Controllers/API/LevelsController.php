@@ -30,8 +30,11 @@ class LevelsController extends Controller
      */
     public function index()
     {
-        $listLevels = Level::all();
-        return $listLevels;
+        // Get Level
+        $level = Level::paginate(100);
+
+        //  Return collection of Language as a resource
+        return LevelsResource::collection($level);
     }
 
     /**
@@ -54,14 +57,20 @@ class LevelsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'l_id'    => 'required',
+            'l_name'    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $create = Level::create($request->all());
-        return  $create;
+        // Creating a record in a different way
+        $createLevel = Level::create([
+            'user_id' => $request->user()->id,
+            'l_id' => $request->l_id,
+            'l_name' => $request->l_name
+        ]);
+        return new LevelsResource($createLevel);
     }
 
 
