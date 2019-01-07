@@ -1,11 +1,22 @@
 NEXT
 
+BACK_FRONT
+
+- Unit  component
+
+git checkout -b BACK_FRONT_04/Unit-component
+
+
+
+
+########################################################################
 
 BACK_FRONT
 
 - Lesson  component
 
-FRONTEND
+BACK: Implemented LessonsController.php/LessonsResource.php |
+FRONT: Implemented Lessons Comp
 
 
 
