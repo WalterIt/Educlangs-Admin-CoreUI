@@ -64,6 +64,7 @@ import { HttpErrorHandler } from './shared/_services/http-handle-error.service';
 import { AppHttpInterceptorService } from './shared/_services/app-http-interceptor.service';
 import { LanguageService } from './views/terminology/shared/services/language.service';
 import { LevelService } from './views/terminology/shared/services/level.service';
+import { LessonService } from './views/terminology/shared/services/lesson.service';
 
 @NgModule({
   imports: [
@@ -110,6 +111,7 @@ import { LevelService } from './views/terminology/shared/services/level.service'
     // Title,
     LanguageService,
     LevelService,
+    LessonService,
     HttpErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,

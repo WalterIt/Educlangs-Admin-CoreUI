@@ -30,8 +30,11 @@ class LessonsController extends Controller
      */
     public function index()
     {
-        $listLessons = Lesson::all();
-        return $listLessons;
+        // Get Lesson
+        $item = Lesson::paginate(100);
+
+        //  Return collection of Language as a resource
+        return LessonsResource::collection($item);
     }
 
     /**
@@ -54,14 +57,20 @@ class LessonsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'l_id'    => 'required',
+            'lss_name'    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $create = Lesson::create($request->all());
-        return  $create;
+        // Creating a record in a different way
+        $createItem = Lesson::create([
+            'user_id' => $request->user()->id,
+            'l_id' => $request->l_id,
+            'lss_name' => $request->lss_name
+        ]);
+        return new LessonsResource($createItem);
     }
 
 
