@@ -85,8 +85,9 @@ class LessonsController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
-            ]);
+            'l_id'    => 'required',
+            'lss_name'    => 'required'
+        ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);

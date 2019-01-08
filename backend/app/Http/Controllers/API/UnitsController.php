@@ -30,8 +30,11 @@ class UnitsController extends Controller
      */
     public function index()
     {
-        $listUnits = Unit::all();
-        return $listUnits;
+        // Get Lesson
+        $item = Unit::paginate(100);
+
+        //  Return collection of Language as a resource
+        return UnitsResource::collection($item);
     }
 
     /**
@@ -54,14 +57,20 @@ class UnitsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'u_name'    => 'required',
+            'l_id'    => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $create = Unit::create($request->all());
-        return  $create;
+        // Creating a record in a different way
+        $createItem = Unit::create([
+            'user_id' => $request->user()->id,
+            'u_name' => $request->u_name,
+            'l_id' => $request->l_id,
+        ]);
+        return new UnitsResource($createItem);
     }
 
 
@@ -76,8 +85,9 @@ class UnitsController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
-            ]);
+            'u_name'    => 'required',
+            'l_id'    => 'required',
+        ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);

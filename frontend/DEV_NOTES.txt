@@ -2,9 +2,20 @@ NEXT
 
 BACK_FRONT
 
+Unit : Update user_id when updating unit  row
+
+- GrammarClass  component
+
+- GrammarTopic  component
+
+###############################################################################
+
+BACK_FRONT
+
 - Unit  component
 
 git checkout -b BACK_FRONT_04/Unit-component
+
 
 
 
@@ -17,18 +28,6 @@ BACK_FRONT
 
 BACK: Implemented LessonsController.php/LessonsResource.php |
 FRONT: Implemented Lessons Comp
-
-
-
-
-
-
-- Unit  component
-
-- GrammarClass  component
-
-- GrammarTopic  component
-
 
 
 ##################################################################################

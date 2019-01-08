@@ -65,6 +65,7 @@ import { AppHttpInterceptorService } from './shared/_services/app-http-intercept
 import { LanguageService } from './views/terminology/shared/services/language.service';
 import { LevelService } from './views/terminology/shared/services/level.service';
 import { LessonService } from './views/terminology/shared/services/lesson.service';
+import { UnitService } from './views/terminology/shared/services/unit.service';
 
 @NgModule({
   imports: [
@@ -112,6 +113,7 @@ import { LessonService } from './views/terminology/shared/services/lesson.servic
     LanguageService,
     LevelService,
     LessonService,
+    UnitService,
     HttpErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,
