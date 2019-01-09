@@ -13,6 +13,15 @@ class Unit extends Model
     protected $fillable = [
         "user_id",
         "u_name",
-        "l_id"
+        "l_id"     // Level Id
     ];
+
+    /**
+     * Get the level that owns the unit.
+     */
+    public function level()
+    {
+        return $this->belongsTo('App\Level', 'l_id');
+        // return $this->belongsTo('App\Level', 'id', 'l_name');
+    }
 }
