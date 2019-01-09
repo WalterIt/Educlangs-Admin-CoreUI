@@ -106,6 +106,9 @@ class LanguagesController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        // Updating user_id
+        $request['user_id'] = $request->user()->id;
+
         $updateLanguageById = Language::findOrFail($id);
         $updateLanguageById->update($request->all());
         return $updateLanguageById;

@@ -93,6 +93,9 @@ class UnitsController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        // Updating user_id
+        $request['user_id'] = $request->user()->id;
+
         $updateById = Unit::findOrFail($id);
         $updateById->update($request->all());
         return $updateById;
