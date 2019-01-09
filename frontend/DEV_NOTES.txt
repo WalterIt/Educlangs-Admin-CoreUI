@@ -2,6 +2,16 @@ NEXT
 
 BACK_FRONT
 
+BACK: Implement Relationship between unit and level tables (1.5h)
+
+FRONT: Unit component (Implement drop-down in level_id column) | Study how to implement this in PrimeNg in Datatable example  - ( See OneNote : Dropdown Implementation ) (1.5h)
+
+git checkout -b BACK_FRONT_06/UNIT_Relationship-implementation
+
+###########################################################################
+
+BACK_FRONT
+
 - GrammarClass  component
 
 - GrammarTopic  component
