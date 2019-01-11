@@ -7,6 +7,9 @@ import { Column } from 'primeng/components/common/shared';
 
 import { Unit } from './unit';
 import { UnitService } from './shared/services/unit.service';
+import { Level } from './level';
+import { LevelService } from './shared/services/level.service';
+import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-units',
@@ -37,16 +40,35 @@ export class UnitsComponent implements OnInit {
   // grades: SelectItem[];
   // expandedRows: any[];
 
-  // --------------------------------------------------------//
+  // -------------------------------------------------------//
 
   logs: string[] = [];
 
   data: any = [];
   delRow;
 
+  // ----------------------  LEVELS ------------------------//
+
+  levels: Level[];
+  colsLevels: any[];
+  level: any[];
+
+  levelTable: SelectItem[];
+
+  /** -----------   CITIES       ----------------   */
+  cities1: SelectItem[];
+
+  cities2: City[];
+
+  selectedCity1: City;
+
+  selectedCity2: City;
+
+
 
   constructor(
     private unitService: UnitService,
+    private levelService: LevelService,
     //  private spinnerService: NgxSpinnerService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -58,7 +80,7 @@ export class UnitsComponent implements OnInit {
     // this.getUnitsList();
 
     this.unitService.getUnit().then(unit => this.units = unit);
-    // console.log(this.unitService.getUnit().then(unit => this.units = unit));
+
 
     this.cols = [
       { field: 'id', header: 'Id' },
@@ -70,11 +92,61 @@ export class UnitsComponent implements OnInit {
 
     ];
 
-    // this.selectedColumns = this.cols;
+
     this.columnOptions = [];
     for (let i = 0; i < this.cols.length; i++) {
       this.columnOptions.push({ label: this.cols[i].header, value: this.cols[i] });
     }
+
+
+    this.levelService.getLevel().then(
+      (data) => {
+
+        this.levels = data;
+
+        // console.log('TEST 0 : ', this.levels.length);
+
+        for (let i = 0; i < this.levels.length; i++) {
+          this.colsLevels.push({ label: this.levels[i].l_name, value: this.levels[i].l_id });
+        }
+        // console.log('COLUMNS : ', this.colsLevels);
+
+        this.levelTable = this.colsLevels;
+
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.levels = [];
+
+    // this.levels.push({field: 'All Levels', value: null});
+
+    this.colsLevels = [
+      {label : 'ALL LEVELS', value: ''}
+      // {field : 'l_name', header: 'level Name'}
+
+    ];
+
+  }
+
+
+
+  updateDropdown(data: { column: Column, data: any }): void {
+
+    let unit = data;
+    // console.log('updateDropdown -', unit);
+
+    let id = unit['id'];
+    // console.log('ID Accessed! ', id);
+
+    this.unitService.editUnit(id, unit)
+      .subscribe(response => {
+        // this.isLoading = false;
+        // this.unit = response['data'];
+      });
+
   }
 
 
@@ -82,11 +154,12 @@ export class UnitsComponent implements OnInit {
     this.logs.push('onEditComplete -', JSON.stringify(event.data));
     // let data = JSON.stringify(event.data);
     let unit = event.data;
-    // console.log('onEditComplete -', unit);
+    console.log('onEditComplete -', unit);
 
 
     let id = unit.id;
     // console.log('ID Accessed! ', id);
+
     this.unitService.editUnit(id, unit)
       .subscribe(response => {
         // this.isLoading = false;
@@ -120,7 +193,9 @@ export class UnitsComponent implements OnInit {
 
     } else {
 
-      console.log('UPDATED Unit!');
+      units.push(this.unit);
+      let data: any = this.unit;
+      console.log('UPDATED Unit!', data );
 
     }
 
