@@ -2,12 +2,19 @@ NEXT
 
 BACK_FRONT
 
-- GrammarClass  component
-
 - GrammarTopic  component
 
 
 ##########################################################################
+
+BACK_FRONT
+
+- GrammarClass  component
+
+git checkout -b BACK_FRONT_07/GrammarClass-component
+
+
+#########################################################################
 
 BACK_FRONT
 

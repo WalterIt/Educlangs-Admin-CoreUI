@@ -18,7 +18,10 @@ class GrammarClassResource extends JsonResource
             "id"    => $this->id,
             "user_id"    => $this->user_id,
             "gc_id"  => $this->gc_id,
-            "gc_class"  => $this->gc_class
+            "gc_class"  => $this->gc_class,
+            // Casting objects to string, to avoid receive create_at and update_at as object
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at
         ];
     }
 }

@@ -30,8 +30,11 @@ class GrammarClassController extends Controller
      */
     public function index()
     {
-        $listGrammarClass = GrammarClass::all();
-        return $listGrammarClass;
+        // Get Lesson
+        $item = GrammarClass::paginate(100);
+
+        //  Return collection of Language as a resource
+        return GrammarClassResource::collection($item);
     }
 
     /**
@@ -54,14 +57,20 @@ class GrammarClassController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'gc_id'    => 'required',
+            'gc_class'    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $create = GrammarClass::create($request->all());
-        return  $create;
+        // Creating a record in a different way
+        $createItem = GrammarClass::create([
+            'user_id' => $request->user()->id,
+            'gc_id' => $request->gc_id,
+            'gc_class' => $request->gc_class
+        ]);
+        return new GrammarClassResource($createItem);
     }
 
 
@@ -76,7 +85,8 @@ class GrammarClassController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'gc_id'    => 'required',
+            'gc_class'    => 'required'
             ]);
 
         if ($validator->fails()) {
