@@ -9,7 +9,6 @@ import { Unit } from './unit';
 import { UnitService } from './shared/services/unit.service';
 import { Level } from './level';
 import { LevelService } from './shared/services/level.service';
-import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-units',
@@ -55,16 +54,6 @@ export class UnitsComponent implements OnInit {
 
   levelTable: SelectItem[];
 
-  /** -----------   CITIES       ----------------   */
-  cities1: SelectItem[];
-
-  cities2: City[];
-
-  selectedCity1: City;
-
-  selectedCity2: City;
-
-
 
   constructor(
     private unitService: UnitService,
@@ -73,7 +62,8 @@ export class UnitsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
 
-  ) { }
+  ) {  }
+
 
   ngOnInit() {
 
@@ -121,17 +111,12 @@ export class UnitsComponent implements OnInit {
 
     this.levels = [];
 
-    // this.levels.push({field: 'All Levels', value: null});
-
     this.colsLevels = [
-      {label : 'ALL LEVELS', value: ''}
+      { label: 'Select Level', value: null }
       // {field : 'l_name', header: 'level Name'}
-
     ];
 
   }
-
-
 
   updateDropdown(data: { column: Column, data: any }): void {
 
@@ -195,7 +180,7 @@ export class UnitsComponent implements OnInit {
 
       units.push(this.unit);
       let data: any = this.unit;
-      console.log('UPDATED Unit!', data );
+      console.log('UPDATED Unit!', data);
 
     }
 
@@ -220,29 +205,11 @@ export class UnitsComponent implements OnInit {
       // this.spinnerService.hide();
     });
 
-
   }
 
 
-  onRowSelectCRUD(event: any) {
-    this.newUnit = false;
-    this.unit = Object.assign({}, event.data);
-    this.displayDialog = true;
-  }
   findSelectedUnitIndex(): number {
     return this.units.indexOf(this.selectedUnit);
-  }
-  selectUnit(unit: Unit) {
-    this.msgs = [];
-    this.msgs.push({ severity: 'info', summary: 'Unit selected', detail: 'Unit: ' + unit.u_name });
-  }
-  toggle() {
-    this.stacked = !this.stacked;
-  }
-  onChangeStep(label: string) {
-    this.msgs.length = 0;
-    this.msgs.push({ severity: 'info', summary: label });
-    console.log('changed');
   }
 
 

@@ -90,7 +90,7 @@
 
       <p-dialog header="Units Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" >
 
-        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="unit">
+        <div class="ui-grid ui-grid-responsive ui-fluid" style="height: 140px;" *ngIf="unit">
 
           <div class="ui-grid-row">
             <div class="ui-grid-col-4"><label for="u_name">Unit Name</label></div>
@@ -98,33 +98,14 @@
           </div>
 
           <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="l_id">Level </label></div>
-
+            <div class="ui-grid-col-4"><label for="l_id">Level ID </label></div>
             <div class="ui-grid-col-8">
-                <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" optionLabel="name"
-                    [showClear]="true"></p-dropdown>
-                <p>Selected City: {{selectedCity ? selectedCity.name : 'none'}}</p>
+                <p-dropdown [options]="levelTable" [(ngModel)]="unit.l_id"   [style]="{'width':'100%'}"
+                required="true"    ></p-dropdown>
 
             </div>
 
-            <!--
-            <div class="ui-grid-col-4"><label for="l_id">Level Id - EX. b1, int1, etc</label></div>
-            <div class="ui-grid-col-8">  <input pInputText id="l_id" [(ngModel)]="unit.l_id" />  </div>
-            -->
-
           </div>
-
-
-          <!--
-          <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="platform">Platform</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="platform" [(ngModel)]="browser.platform" /></div>
-          </div>
-          <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="grade">Grade</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="grade" [(ngModel)]="browser.grade" /></div>
-          </div>
-        -->
 
         </div>
 
@@ -143,14 +124,11 @@
 
             {{  levelTable |  json }}
 
-
           </pre>
       </div>
        END OF   DEBUG   -->
 
-
       <!--     ENDO OF DATATABLE    -->
-
 
       </div>
     </div>
