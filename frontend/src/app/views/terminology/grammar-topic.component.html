@@ -45,6 +45,14 @@
         <p-column field="u_id" [sortable]="true" header="Unit Id" [filter]="false" filterMatchMode="equals"
                       [style]=" {'overflow':'visible'}" [editable]="true">
 
+          <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+            <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedUnit" [autoWidth]="false"
+                        [style]="{'width':'100%'}"
+                        required="true"  (click)="updateDropdown(browserRef)"   >
+            </p-dropdown>
+
+          </ng-template>
+
         </p-column>
 
         <!--  END OF DROPDOWN  u_id  -->
@@ -55,16 +63,14 @@
         <p-column field="l_id" [sortable]="true" header="Lesson Id" [filter]="false" filterMatchMode="equals"
                       [style]=" {'overflow':'visible'}" [editable]="true">
 
-
-            <!--
               <ng-template let-col let-browserRef="rowData" pTemplate="editor">
-                <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="levelTable" [autoWidth]="false"
+                <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedLesson" [autoWidth]="false"
                             [style]="{'width':'100%'}"
                             required="true"  (click)="updateDropdown(browserRef)"   >
                 </p-dropdown>
 
               </ng-template>
-            -->
+
         </p-column>
 
         <p-column field="gt_description" header="Description" [sortable]="true" [editable]="true"></p-column>
@@ -88,8 +94,6 @@
         <p-footer>
           <div class="ui-helper-clearfix" style="width:100%; padding-bottom: 40px;">
 
-            <!-- <button type="button" pButton icon="fa fa-plus" style="float:left" (click)="addBrowser()" label="Add"></button> -->
-
             <button type="button" pButton icon="fa fa-plus"  style="float:left" (click)="addGrammarTopic()" label="Add"></button>
 
           </div>
@@ -105,18 +109,38 @@
         <div class="ui-grid ui-grid-responsive ui-fluid" style="height: 140px;" *ngIf="grammarTopic">
 
           <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="u_name">GrammarTopic Name</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="u_name" [(ngModel)]="grammarTopic.u_name"  /></div>
+            <div class="ui-grid-col-4"><label for="u_id">Unit ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedUnit" [(ngModel)]="grammarTopic.u_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
+            </div>
           </div>
 
           <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="l_id">Level ID </label></div>
+            <div class="ui-grid-col-4"><label for="l_id">Lesson ID </label></div>
             <div class="ui-grid-col-8">
-                <p-dropdown [options]="levelTable" [(ngModel)]="grammarTopic.l_id"   [style]="{'width':'100%'}"
-                required="true"    ></p-dropdown>
-
+                <p-dropdown [options]="selectedLesson" [(ngModel)]="grammarTopic.l_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
             </div>
+          </div>
 
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="gt_description">Description</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="gt_description" [(ngModel)]="grammarTopic.gt_description"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="gr_explanation"> Explanation</label></div>
+            <div class="ui-grid-col-8">
+              <textarea [rows]="4" [cols]="50" pInputTextarea autoResize="autoResize" id="gr_explanation" [(ngModel)]="grammarTopic.gr_explanation"   ></textarea>
+              <!-- <input pInputText id="gr_explanation" [(ngModel)]="grammarTopic.gr_explanation"  /> -->
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="examples"> Examples</label></div>
+            <div class="ui-grid-col-8">
+              <textarea [rows]="5" [cols]="50" pInputTextarea autoResize="autoResize" id="examples"  [(ngModel)]="grammarTopic.examples" ></textarea>
+              <!--<input pInputTextarea id="examples" [(ngModel)]="grammarTopic.examples"  />-->
+            </div>
           </div>
 
         </div>
@@ -130,15 +154,16 @@
       </p-dialog> <!--  END OF   MODAL   DIALOG    -->
 
 
-     <!--  DEBUG    -->
+     <!--  DEBUG
       <div class="row">
           <pre>
 
-            {{  units |  json }}
+            {{  selectedUnit |  json }}
 
           </pre>
       </div>
        END OF   DEBUG  {{ units }}
+       -->
 
       <!--     ENDO OF DATATABLE    -->
 

@@ -23,7 +23,10 @@ class GrammarTopicResource extends JsonResource
             'lesson'   => $this->lesson, // Retrive all  obj of lesson table as an array
             'gt_description'   => $this->gt_description,
             'gr_explanation'   => $this->gr_explanation ,
-            'examples'   => $this->examples
+            'examples'   => $this->examples,
+            // Casting objects to string, to avoid receive create_at and update_at as object
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at
         ];
     }
 }

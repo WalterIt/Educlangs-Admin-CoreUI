@@ -7,8 +7,9 @@ import { Column } from 'primeng/components/common/shared';
 
 import { GrammarTopic } from './grammar-topic';
 import { GrammarTopicService } from './shared/services/grammar-topic.service';
-// import { Level } from './level';
-// import { LevelService } from './shared/services/level.service';
+import { UnitService } from './shared/services/unit.service';
+import { LessonService } from './shared/services/lesson.service';
+
 
 @Component({
   selector: 'app-grammar-topic',
@@ -48,14 +49,21 @@ export class GrammarTopicComponent implements OnInit {
 
   // ----------------------  UNITS ------------------------//
 
-  // units: any[];
-  units: GrammarTopic[];
-  selectedUnit: GrammarTopic;
+  units: any[];
+  colUnit: any[];
+  selectedUnit: SelectItem[];
+
+    // ----------------------  LESSONS DROPDOWN ------------------------//
+
+    lessons: any[];
+    colLesson: any[];
+    selectedLesson: SelectItem[];
 
 
   constructor(
     private grammarTopicService: GrammarTopicService,
-    // private levelService: LevelService,
+    private unitService: UnitService,
+    private lessonService: LessonService,
     //  private spinnerService: NgxSpinnerService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -68,6 +76,7 @@ export class GrammarTopicComponent implements OnInit {
     // this.getGrammarTopicsList();
 
     this.grammarTopicService.getGrammarTopic().then(grammarTopic => this.grammarTopics = grammarTopic);
+
 
 
     this.cols = [
@@ -89,33 +98,18 @@ export class GrammarTopicComponent implements OnInit {
       this.columnOptions.push({ label: this.cols[i].header, value: this.cols[i] });
     }
 
-
-
-    /*
-    this.units = [
-      { label: 'Id', value: 'id' },
-      { label: 'Unit Name', value: 'u_name' }
-
-    ];
-    */
-
-
-
-
-    /*
-    this.levelService.getLevel().then(
+    /*  --- UNIT DROPDOWN --- */
+    this.unitService.getUnit().then(
       (data) => {
 
-        this.levels = data;
+        this.units = data;
 
         // console.log('TEST 0 : ', this.levels.length);
-
-        for (let i = 0; i < this.levels.length; i++) {
-          this.colsLevels.push({ label: this.levels[i].l_name, value: this.levels[i].l_id });
+        for (let i = 0; i < this.units.length; i++) {
+          this.colUnit.push({ label: this.units[i].u_name, value: this.units[i].id });
         }
         // console.log('COLUMNS : ', this.colsLevels);
-
-        this.levelTable = this.colsLevels;
+        this.selectedUnit = this.colUnit;
 
       },
       (error) => {
@@ -123,13 +117,80 @@ export class GrammarTopicComponent implements OnInit {
       }
     );
 
-    this.levels = [];
+    this.units = [];
 
-    this.colsLevels = [
-      { label: 'Select Level', value: null }
+    this.colUnit = [
+      { label: 'Select Unit', value: null }
+      // {field : 'l_name', header: 'level Name'}
+    ];
+
+
+
+    /*  --- LESSONS DROPDOWN --- */
+    this.lessonService.getLesson().then(
+      (data) => {
+
+        this.lessons = data;
+
+        // console.log('TEST 0 : ', this.levels.length);
+        for (let i = 0; i < this.lessons.length; i++) {
+          this.colLesson.push({ label: this.lessons[i].lss_name, value: this.lessons[i].l_id });
+        }
+        // console.log('COLUMNS : ', this.colsLevels);
+        this.selectedLesson = this.colLesson;
+
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.lessons = [];
+
+    this.colLesson = [
+      { label: 'Select Lesson', value: null }
+      // {field : 'l_name', header: 'level Name'}
+    ];
+
+
+
+    /*  THE CODE BELOW WORKED BUT IT ONLY GET UNITS THAT EXIST IN GRAMMARTOPIC NOT THE UNITS THAT EXIST IN UNIT TABLE
+
+    this.grammarTopicService.getGrammarTopic().then(
+      (data) => {
+
+        this.units = data;
+
+        console.log(this.units.length);
+
+        console.log(this.units[0]);
+
+        console.log(this.units[0]['unit']['u_name']);
+
+
+      for (let i = 0; i < this.units.length; i++) {
+         this.colUnit.push({ label: this.units[i]['unit']['u_name'], value: this.units[i]['unit']['id'] });
+         console.log(this.units[i]['unit']['id'] + ' - ' + this.units[i]['unit']['u_name']);
+       }
+      console.log('COLUMNS : ', this.colUnit);
+
+        this.selectedUnit = this.colUnit;
+
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.units = [];
+
+    this.colUnit = [
+      { label: 'Select Unit', value: null }
       // {field : 'l_name', header: 'level Name'}
     ];
     */
+
+
 
   }
 
@@ -169,7 +230,7 @@ export class GrammarTopicComponent implements OnInit {
   }
 
 
-  addgrammarTopic() {
+  addGrammarTopic() {
     this.newGrammarTopic = true;
     this.grammarTopic = new GrammarTopic();
     this.displayDialog = true;
@@ -178,7 +239,7 @@ export class GrammarTopicComponent implements OnInit {
 
   save() {
     let grammarTopics = [...this.grammarTopics];
-    if (this.newgrammarTopic) {
+    if (this.newGrammarTopic) {
       // this.spinnerService.show();
       grammarTopics.push(this.grammarTopic);
       let data: any = this.grammarTopic;

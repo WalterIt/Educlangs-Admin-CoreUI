@@ -59,7 +59,7 @@ class GrammarTopicController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'u_id'    => 'required',
-            'lss_id'    => 'required',
+            'l_id'    => 'required',
             'gt_description'    => 'required'
         ]);
         if ($validator->fails()) {

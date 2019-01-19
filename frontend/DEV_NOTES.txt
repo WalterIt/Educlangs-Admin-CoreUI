@@ -2,6 +2,13 @@ NEXT
 
 BACK_FRONT
 
+- VocabularyTopic  component
+
+
+#####################################################################################
+
+BACK_FRONT
+
 - GrammarTopic  component
 
 git checkout -b BACK_FRONT_08/GrammarTopic-component
@@ -9,10 +16,8 @@ git checkout -b BACK_FRONT_08/GrammarTopic-component
 BACK:
 - Implemented Relationship between GrammarTopic  and Lesson/Unit | TESTED API
 
-FRONT:
-
-
-
+FRONT: (THINK IT OVER : Maybe Relationship is not necessary!! Save Time ??? )
+- git commit -m 'FRONT: Implemented Dropdown & Modal Dialog (save)'
 
 ##########################################################################
 
