@@ -67,6 +67,7 @@ import { LevelService } from './views/terminology/shared/services/level.service'
 import { LessonService } from './views/terminology/shared/services/lesson.service';
 import { UnitService } from './views/terminology/shared/services/unit.service';
 import { GrammarClassService } from './views/terminology/shared/services/grammar-class.service';
+import { GrammarTopicService } from './views/terminology/shared/services/grammar-topic.service';
 
 @NgModule({
   imports: [
@@ -116,6 +117,7 @@ import { GrammarClassService } from './views/terminology/shared/services/grammar
     LessonService,
     UnitService,
     GrammarClassService,
+    GrammarTopicService,
     HttpErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,
