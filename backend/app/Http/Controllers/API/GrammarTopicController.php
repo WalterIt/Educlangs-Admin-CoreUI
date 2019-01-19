@@ -31,8 +31,11 @@ class GrammarTopicController extends Controller
      */
     public function index()
     {
-        $listGrammarTopic = GrammarTopic::all();
-        return $listGrammarTopic;
+        // Get Lesson
+        $item = GrammarTopic::paginate(100);
+
+        //  Return collection of Language as a resource
+        return GrammarTopicResource::collection($item);
     }
 
     /**
@@ -55,14 +58,24 @@ class GrammarTopicController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'u_id'    => 'required',
+            'lss_id'    => 'required',
+            'gt_description'    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $create = GrammarTopic::create($request->all());
-        return  $create;
+        // Creating a record in a different way
+        $createItem = GrammarTopic::create([
+            'user_id' => $request->user()->id,
+            'u_id' => $request->u_id,
+            'l_id' => $request->l_id,
+            'gt_description' => $request->gt_description,
+            'gr_explanation' => $request->gr_explanation,
+            'examples' => $request->examples
+        ]);
+        return new GrammarTopicResource($createItem);
     }
 
 
@@ -77,7 +90,9 @@ class GrammarTopicController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'u_id'    => 'required',
+            'l_id'    => 'required',
+            'gt_description'    => 'required'
             ]);
 
         if ($validator->fails()) {
