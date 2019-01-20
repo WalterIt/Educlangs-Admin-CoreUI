@@ -30,8 +30,11 @@ class VocabularyTopicController extends Controller
      */
     public function index()
     {
-        $listVocabularyTopics = VocabularyTopic::all();
-        return $listVocabularyTopics;
+        // Get Lesson
+        $item = VocabularyTopic::paginate(100);
+
+        //  Return collection of Language as a resource
+        return VocabularyTopicsResource::collection($item);
     }
 
     /**
@@ -54,14 +57,28 @@ class VocabularyTopicController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'u_id'    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $create = VocabularyTopic::create($request->all());
-        return  $create;
+        // Creating a record in a different way
+        $createItem = VocabularyTopic::create([
+            'user_id' => $request->user()->id,
+            'u_id' => $request->u_id,
+
+            'lss_id' => $request->lss_id,  // Lesson Id
+            'gt_id' => $request->gt_id,
+            'vt_topic' => $request->vt_topic,
+            'vtpt_id' => $request->vtpt_id,
+
+            'vtes_id' => $request->vtes_id,  // Lesson Id
+            'vtfr_id' => $request->vtfr_id,
+            'vtja_id' => $request->vtja_id,
+            'vtzh_id' => $request->vtzh_id
+        ]);
+        return new VocabularyTopicsResource($createItem);
     }
 
 
