@@ -19,7 +19,7 @@ const routes: Routes = [
       {
         path: '',
         // redirectTo: 'languages'
-        redirectTo: 'grammar-topics'
+        redirectTo: 'vocabulary-topics'
       },
       {
         path: 'grammar-class',

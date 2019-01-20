@@ -93,7 +93,7 @@ class VocabularyTopicController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'u_id'    => 'required'
             ]);
 
         if ($validator->fails()) {

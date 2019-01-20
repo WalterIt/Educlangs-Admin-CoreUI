@@ -24,7 +24,7 @@ class VocabularyTopicsResource extends JsonResource
             "vtpt_id"  => $this->vtpt_id,
             "vtes_id"    => $this->vtes_id,
             "vtfr_id"    => $this->vtfr_id,
-            "vtja_id"    => $this->vtjp_id,
+            "vtja_id"    => $this->vtja_id,
             "vtzh_id"  => $this->vtzh_id,
             // Casting objects to string, to avoid receive create_at and update_at as object
             'created_at' => (string) $this->created_at,

@@ -1,3 +1,210 @@
-<p>
-  vocabulary-topic works!
-</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+
+        <div class="ui-widget-header align-globalfilter">
+            <i class="fa fa-search search-globalfilter"></i>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+        </div>
+
+        <div  style="width:100%;margin-top: -32px;">
+          <button type="button" pButton icon="fa fa-plus" style="float:right" (click)="addVocabularyTopic()" label="Add"></button>
+        </div>
+
+      </div>
+
+
+      <div class="card-body">
+
+      <!--   DATATABLE  -->
+
+      <p-dataTable
+          class="table table-bordered table-striped table-sm"
+          [value]="vocabularyTopics" [editable]="true" [globalFilter]="gb" #datatable [rows]="25" [paginator]="true"
+          [pageLinks]="25" [rowsPerPageOptions]="[25, 50, 100]" paginatorPosition="bottom" reorderableColumns="true"
+          resizableColumns="true" (onEditComplete)="onEditComplete($event)">
+
+
+        <!--
+        <p-header>
+            <div class="algin-left">
+                <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+            </div>
+        </p-header>
+
+        -->
+
+        <!-- <p-header>CRUD for browsers</p-header> -->
+
+        <p-column field="id" header="Id" [sortable]="true"></p-column>
+        <p-column field="user_id" header="User Id" [sortable]="true"></p-column>
+
+        <!--   DROPDOWN  u_id
+        <p-column field="u_id" header="VocabularyTopic Name" [editable]="true" [sortable]="true"></p-column> -->
+        <p-column field="u_id" [sortable]="true" header="Unit Id" [filter]="false" filterMatchMode="equals"
+                      [style]=" {'overflow':'visible'}" [editable]="true">
+
+          <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+            <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedUnit" [autoWidth]="false"
+                        [style]="{'width':'100%'}"
+                        required="true"  (click)="updateDropdown(browserRef)"   >
+            </p-dropdown>
+          </ng-template>
+
+        </p-column>   <!--  END OF DROPDOWN  u_id  -->
+
+
+        <!--  DROPDOWN  l_id -->
+        <!--  <p-column field="l_id" header="Level Id" [editable]="true" [sortable]="true">  -->
+        <p-column field="lss_id" [sortable]="true" header="Lesson Id" [filter]="false" filterMatchMode="equals"
+                      [style]=" {'overflow':'visible'}" [editable]="true">
+
+              <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+                <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedLesson" [autoWidth]="false"
+                            [style]="{'width':'100%'}"
+                            required="true"  (click)="updateDropdown(browserRef)"   >
+                </p-dropdown>
+
+              </ng-template>
+
+        </p-column>
+
+        <!--  DROPDOWN  gt_id
+        <p-column field="gt_id" header="GT ID" [sortable]="true" [editable]="true"></p-column>-->
+        <p-column field="gt_id" [sortable]="true" header="GT ID" [filter]="false" filterMatchMode="equals"
+                      [style]=" {'overflow':'visible'}" [editable]="true">
+
+              <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+                <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedGrammarTopic" [autoWidth]="false"
+                            [style]="{'width':'100%'}"
+                            required="true"  (click)="updateDropdown(browserRef)"   >
+                </p-dropdown>
+
+              </ng-template>
+
+        </p-column>
+
+
+        <!-- END OF DROPDOWN  gt_id -->
+
+        <p-column field="vt_topic" header="Topic Title" [sortable]="true" [editable]="true"></p-column>
+
+        <p-column field="vtpt_id" header="Portuguese Topic" [sortable]="true" [editable]="true" ></p-column>
+        <p-column field="vtes_id" header="Spanish Topic" [sortable]="true" [editable]="true" ></p-column>
+        <p-column field="vtfr_id" header="French Topic" [sortable]="true" [editable]="true" ></p-column>
+        <p-column field="vtja_id" header="Japanese Topic" [sortable]="true" [editable]="true" ></p-column>
+        <p-column field="vtzh_id" header="Chinese Topic" [sortable]="true" [editable]="true" ></p-column>
+
+        <p-column field="created_at" header="Creation"  [sortable]="true"> </p-column>
+        <p-column field="updated_at" header="Updated" [sortable]="true"></p-column>
+
+        <p-column header="Action" class="action" >
+            <ng-template let-row="rowData" pTemplate="body" style="align-content: center;">
+
+              <button class="btn  btn-outline-danger ng-star-inserted" type="button" (click)="delete(row)">
+                <i class="fa fa-trash fa-lg mt-40" style="color: #fa0425;background-color: transparent;border-color: #ac0505;"></i>
+              </button>
+
+            </ng-template>
+        </p-column>
+
+
+        <p-footer>
+          <div class="ui-helper-clearfix" style="width:100%; padding-bottom: 40px;">
+
+            <button type="button" pButton icon="fa fa-plus"  style="float:left" (click)="addVocabularyTopic()" label="Add"></button>
+
+          </div>
+        </p-footer>
+
+      </p-dataTable>
+
+
+      <!--   MODAL   DIALOG    -->
+
+      <p-dialog header="VocabularyTopics Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" >
+
+        <div class="ui-grid ui-grid-responsive ui-fluid" style="height: 140px;" *ngIf="vocabularyTopic">
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="u_id">Unit ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedUnit" [(ngModel)]="vocabularyTopic.u_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="lss_id">Lesson ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedLesson" [(ngModel)]="vocabularyTopic.lss_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
+            </div>
+          </div>
+
+          <!--   GT ID -->
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="gt_id">Topic ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedGrammarTopic" [(ngModel)]="vocabularyTopic.gt_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vt_topic">Topic Title</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vt_topic" [(ngModel)]="vocabularyTopic.vt_topic"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vtpt_id">Portuguese Title</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vtpt_id" [(ngModel)]="vocabularyTopic.vtpt_id"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vtes_id">Spanish Title</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vtes_id" [(ngModel)]="vocabularyTopic.vtes_id"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vtfr_id">French Title</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vtfr_id" [(ngModel)]="vocabularyTopic.vtfr_id"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vtja_id">Japanese Title</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vtja_id" [(ngModel)]="vocabularyTopic.vtja_id"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vtzh_id">Chinese Title</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vtzh_id" [(ngModel)]="vocabularyTopic.vtzh_id"  /></div>
+          </div>
+
+
+        </div>
+
+
+        <p-footer>
+          <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" >
+            <button style="width:60%;" type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+          </div>
+        </p-footer>
+      </p-dialog> <!--  END OF   MODAL   DIALOG    -->
+
+
+     <!--  DEBUG
+      <div class="row">
+          <pre>
+
+            {{  selectedUnit |  json }}
+
+          </pre>
+      </div>
+       END OF   DEBUG  {{ units }}
+       -->
+
+      <!--     ENDO OF DATATABLE    -->
+
+      </div>
+    </div>
+  </div>
+</div>
