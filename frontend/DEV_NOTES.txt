@@ -1,5 +1,14 @@
 NEXT
 
+
+BACK_FRONT  DEBUG:
+
+LEVEL :
+
+git checkout -b BACK_FRONT_11/Level-component_DEBUG
+
+
+#######################################################################################
 BACK_FRONT
 - Test All components created till now
 
