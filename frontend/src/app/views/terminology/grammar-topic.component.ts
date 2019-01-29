@@ -80,13 +80,13 @@ export class GrammarTopicComponent implements OnInit {
 
 
     this.cols = [
-      { field: 'id', header: 'Id' },
+      // { field: 'id', header: 'Id' },
       { field: 'user_id', header: 'User Id' },
-      { field: 'u_id', header: 'Unit Id' },
-      { field: 'l_id', header: 'Lesson Id' },
-      { field: 'gt_description', header: 'Description' },
-      { field: 'gr_explanation', header: 'Explanation' },
-      { field: 'examples', header: 'Examples' },
+      // { field: 'u_id', header: 'Unit Id' },
+      // { field: 'l_id', header: 'Lesson Id' },
+      // { field: 'gt_description', header: 'Description' },
+      { field: 'gr_explanation', header: 'Explanation', editable: true },
+      { field: 'examples', header: 'Examples', editable: true },
       { field: 'created_at', header: 'Creation' },
       { field: 'updated_at', header: 'Updated' }
 
