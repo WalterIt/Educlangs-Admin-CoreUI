@@ -1,10 +1,15 @@
 NEXT
 
+
+#####################################################################
+
 BACK_FRONT
 
 - VocabularyTopic  component
 
 git checkout -b BACK_FRONT_09/VocabularyTopic-component
+
+- Implemented FRONT & BACK SUCCESSFULLY | Tested APP
 
 
 #####################################################################################

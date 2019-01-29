@@ -82,18 +82,21 @@ export class VocabularyTopicComponent implements OnInit {
 
 
     this.cols = [
-      { field: 'id', header: 'Id' },
-      { field: 'user_id', header: 'User Id' },
-      { field: 'u_id', header: 'Unit Id' },
-      { field: 'lss_id', header: 'Lesson Id' },
-      { field: 'gt_id', header: 'GT Id' },  // GrammarTopic Id
-      { field: 'vt_topic', header: 'Topic Title' },
+      // { field: 'id', header: 'Id' },
 
-      { field: 'vtpt_id', header: 'Portuguese Topic' },
-      { field: 'vtes_id', header: 'Spanish Topic' },
-      { field: 'vtfr_id', header: 'French Topic' },
-      { field: 'vtja_id', header: 'Japanese Topic' },
-      { field: 'vtzh_id', header: 'Chinese Topic' },
+      { field: 'user_id', header: 'User Id' },
+
+      // { field: 'u_id', header: 'Unit Id' },
+      // { field: 'lss_id', header: 'Lesson Id' },
+      // { field: 'gt_id', header: 'GT Id' },  // GrammarTopic Id
+
+      // { field: 'vt_topic', header: 'Topic Title', editable: true },
+
+      { field: 'vtpt_id', header: 'Portuguese Topic', editable: true  },
+      { field: 'vtes_id', header: 'Spanish Topic', editable: true  },
+      { field: 'vtfr_id', header: 'French Topic', editable: true  },
+      { field: 'vtja_id', header: 'Japanese Topic', editable: true  },
+      { field: 'vtzh_id', header: 'Chinese Topic', editable: true  },
 
       { field: 'created_at', header: 'Creation' },
       { field: 'updated_at', header: 'Updated' }
@@ -179,7 +182,7 @@ export class VocabularyTopicComponent implements OnInit {
     this.grammarTopics = [];
 
     this.colGrammarTopic = [
-      { label: 'CHOOSE A TOPIC', value: null }
+      { label: 'Choose a Topic', value: null }
     ];
   }
 
