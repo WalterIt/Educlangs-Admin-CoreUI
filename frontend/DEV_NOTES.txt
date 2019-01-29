@@ -3,6 +3,9 @@ NEXT
 BACK_FRONT
 - Test All components created till now
 
+LEVEL :
+BUG  Not Updating :  PUT http://localhost:8000/api/levels/18 404 (Not Found)
+
 
 
 ####################################################################################
