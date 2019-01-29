@@ -1,5 +1,9 @@
 NEXT
 
+Dynamic Columns Selection Implementation:
+
+git checkout -b BACK_FRONT_10/GrammarTopic-component_Dynamic-Columns-Selection
+
 
 #####################################################################
 
