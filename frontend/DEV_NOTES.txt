@@ -12,7 +12,7 @@ Organize NavBar routing  Alphabetic Order _nav.ts
 
 Replace URL Languages by Dictionary
 
-git commit -m'Language/Level/Lesson : Add  'ADD BUTTON' in the Footer | Organize NavBar routing in Alphabetic Order | Rename Languages folder by Dictionaries Folder | Replace URL Languages by Dictionary'
+git commit -m"Language/Level/Lesson : Add  'ADD BUTTON' in the Footer | Organize NavBar routing in Alphabetic Order | Rename Languages folder by Dictionaries Folder | Replace URL Languages by Dictionary"
 
 ###########################################################################
 
