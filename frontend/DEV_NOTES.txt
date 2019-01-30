@@ -1,5 +1,18 @@
 NEXT
 
+FRONT : DESIGN
+
+Language : Add  'ADD BUTTON' in the Footer
+
+Level : Add  'ADD BUTTON' in the Footer
+
+Lesson : Add  'ADD BUTTON' in the Footer
+
+Organize Terminology routing  Alphabetic Order
+
+Replace URL Languages by Dictionary
+
+###########################################################################
 
 BACK_FRONT  DEBUG:
 

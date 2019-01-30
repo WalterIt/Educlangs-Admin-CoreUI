@@ -25,10 +25,14 @@
           [pageLinks]="25" [rowsPerPageOptions]="[25, 50, 100]" paginatorPosition="bottom" reorderableColumns="true"
           resizableColumns="true" (onEditComplete)="onEditComplete($event)">
 
+        <span><small>**You can choose specific columns below: </small></span><br>
+
 
         <!--  -->
         <p-header>
+
             <div class="algin-left">
+
                 <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
             </div>
         </p-header>
