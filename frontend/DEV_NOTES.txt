@@ -7,6 +7,10 @@ LEVEL :
 
 git checkout -b BACK_FRONT_11/Level-component_DEBUG
 
+ git commit -m'Set ID as PRIMARY KEY of LESSON /LESSON/ Unit BACK 36 min | Removed Relationship from Unit/ Level / Lesson  | - TEST All Components that use LEVEL component'
+
+ -  19 min - TOTAL TIME -  58  min
+
 
 #######################################################################################
 BACK_FRONT

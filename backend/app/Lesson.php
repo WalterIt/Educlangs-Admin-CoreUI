@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     protected $table = 'lesson';
-    public $primaryKey = 'l_id';
-    public $incrementing = false;
+    // public $primaryKey = 'l_id';
+    // public $incrementing = false;
 
     protected $fillable = [
         "user_id",
@@ -25,9 +25,13 @@ class Lesson extends Model
      * return $this->hasOne('App\Phone', 'foreign_key');
 
      */
+
+
+    /*
     public function grammarTopic()
     {
         return $this->hasOne('App\GrammarTopic', 'l_id');
     }
+    */
 
 }

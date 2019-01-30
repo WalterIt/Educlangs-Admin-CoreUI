@@ -19,6 +19,8 @@ class Unit extends Model
     /**
      * Get the level that owns the unit.
      */
+
+     /*
     public function level()
     {
         return $this->belongsTo('App\Level', 'l_id');
@@ -36,9 +38,12 @@ class Unit extends Model
      */
 
 
+
+    /*
     public function grammarTopic()
     {
         return $this->hasOne('App\GrammarTopic', 'u_id');
     }
+    */
 
 }

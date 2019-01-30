@@ -18,9 +18,9 @@ class GrammarTopicResource extends JsonResource
             'id'    => $this->id,
             'user_id'    => $this->user_id,
             'u_id'   => $this->u_id,
-            'unit'   => $this->unit, // Retrive all  obj of unit table as an array
+            // 'unit'   => $this->unit, // Retrive all  obj of unit table as an array
             'l_id'  => $this->l_id,  // Lesson Id
-            'lesson'   => $this->lesson, // Retrive all  obj of lesson table as an array
+            // 'lesson'   => $this->lesson, // Retrive all  obj of lesson table as an array
             'gt_description'   => $this->gt_description,
             'gr_explanation'   => $this->gr_explanation ,
             'examples'   => $this->examples,

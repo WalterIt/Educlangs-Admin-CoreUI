@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Level extends Model
 {
    protected $table = 'level';
-   public $primaryKey = 'l_id';
-   public $incrementing = false;
+   // public $primaryKey = 'l_id';
+   // public $incrementing = false;
    // protected $casts = ['id' => 'string'];
 
    protected $fillable = [
@@ -26,8 +26,12 @@ class Level extends Model
      * return $this->hasOne('App\Phone', 'foreign_key');
 
      */
+
+    /*
     public function unit()
     {
         return $this->hasOne('App\Unit', 'l_id');
     }
+    */
+
 }
