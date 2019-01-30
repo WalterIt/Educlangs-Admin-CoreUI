@@ -14,7 +14,7 @@ import { MultiSelectModule, DropdownModule, DataTableModule, DialogModule } from
 import {ContextMenuModule} from 'primeng/components/contextmenu/contextmenu';
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 
-import { LanguagesRoutingModule } from './languages-routing.module';
+import { DictionariesRoutingModule } from './dictionaries-routing.module';
 import { DictenComponent } from './dicten.component';
 import { EnglishComponent } from './english.component';
 import { FrenchComponent } from './french.component';
@@ -34,7 +34,7 @@ import { JapaneseComponent } from './japanese.component';
 
   imports: [
     CommonModule,
-    LanguagesRoutingModule,
+    DictionariesRoutingModule,
 
     GrowlModule,
     TabViewModule,
@@ -53,4 +53,4 @@ import { JapaneseComponent } from './japanese.component';
     DialogModule
   ]
 })
-export class LanguagesModule { }
+export class DictionariesModule { }

@@ -14,40 +14,40 @@ export const navItems = [
     title: true,
     name: 'Dictionary'
   },
-  // ----- LANGUAGES ---
+  // ----- DICTIONARIES ---
   {
-    name: 'Languages',
-    url: '/languages',
+    name: 'All Dictionaries',
+    url: '/dictionary',
     icon: 'fa fa-book',
     children: [
       {
-        name: 'Dicten',
-        url: '/languages/dicten',
-        icon: 'fa fa-book'
+        name: 'Gen. Dictionary',
+        url: '/dictionary/dicten',
+        icon: 'flag-icon flag-icon-us'
       },
       {
         name: 'English',
-        url: '/languages/english',
+        url: '/dictionary/english',
         icon: 'flag-icon flag-icon-us'
       },
       {
         name: 'Portuguese',
-        url: '/languages/portuguese',
+        url: '/dictionary/portuguese',
         icon: 'flag-icon flag-icon-br'
       },
       {
         name: 'French',
-        url: '/languages/french',
+        url: '/dictionary/french',
         icon: 'flag-icon flag-icon-fr'
       },
       {
         name: 'Spanish',
-        url: '/languages/spanish',
+        url: '/dictionary/spanish',
         icon: 'flag-icon flag-icon-es'
       },
       {
         name: 'Japanese',
-        url: '/languages/japanese',
+        url: '/dictionary/japanese',
         icon: 'flag-icon flag-icon-jp'
       }
     ]
@@ -74,23 +74,26 @@ export const navItems = [
         icon: 'fa fa-book'
       },
       {
-        name: 'Levels',
-        url: '/terminology/levels',
-        icon: 'fa fa-book'
-      },
-      {
         name: 'Lessons',
         url: '/terminology/lessons',
         icon: 'fa fa-book'
       },
+
       {
-        name: 'Vocabulary Topic',
-        url: '/terminology/vocabulary-topics',
+        name: 'Levels',
+        url: '/terminology/levels',
         icon: 'fa fa-book'
       },
+
       {
         name: 'Units',
         url: '/terminology/units',
+        icon: 'fa fa-book'
+      },
+
+      {
+        name: 'Vocabulary Topic',
+        url: '/terminology/vocabulary-topics',
         icon: 'fa fa-book'
       }
 

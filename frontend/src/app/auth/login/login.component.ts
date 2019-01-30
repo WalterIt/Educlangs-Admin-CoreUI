@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService.onLogin(this.user).subscribe(
       (response) => {
         // get return url from route parameters or default to '/'
-        this.router.navigate(['/languages']);
+        this.router.navigate(['/dictionary']);
       },
       (error) => {
         this.error = error.error;

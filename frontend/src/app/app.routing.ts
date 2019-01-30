@@ -83,8 +83,8 @@ export const routes: Routes = [
       },
       /* -----    DICTIONARY --- */
       {
-        path: 'languages',
-        loadChildren: './views/languages/languages.module#LanguagesModule'
+        path: 'dictionary',
+        loadChildren: './views/dictionaries/dictionaries.module#DictionariesModule'
       },
       {
         path: 'terminology',
