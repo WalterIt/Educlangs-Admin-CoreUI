@@ -30,8 +30,11 @@ class DictenController extends Controller
      */
     public function index()
     {
-        $listDicten = Dicten::all();
-        return $listDicten;
+        // Get Lesson
+        $item = Dicten::paginate(17376);  // 5.09 MB
+
+        //  Return collection of Language as a resource
+        return DictenResource::collection($item);
     }
 
     /**
@@ -43,14 +46,30 @@ class DictenController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'u_id'    => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $createDicten = Dicten::create($request->all());
-        return  $createDicten;
+        // Creating a record in a different way
+        $createItem = Dicten::create([
+            'user_id' => $request->user()->id,
+            'domain'  => $request->domain,
+            'u_id'  => $request->u_id,
+            'vt_id'  => $request->vt_id,
+            'lss_id'  => $request->lss_id,
+            'gc_id'  => $request->gc_id,
+            'den_word'  => $request->den_word,
+            'dpt_word'  => $request->dpt_word,
+            'dfr_word'  => $request->dfr_word,
+            'des_word'  => $request->des_word,
+            'dja_word'  => $request->dja_word,
+            'dzh_word'  => $request->dzh_word,
+            'd_audio' => $request->d_audio,
+            'image' => $request->image
+        ]);
+        return new DictenResource($createItem);
     }
 
     /**
@@ -74,7 +93,7 @@ class DictenController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            'user_id'    => 'required'
             ]);
 
         if ($validator->fails()) {

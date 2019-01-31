@@ -3,51 +3,112 @@
     <div class="card">
       <div class="card-header">
 
-
         <div class="ui-widget-header align-globalfilter">
-          <i class="fa fa-search search-globalfilter"></i>
-          <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+            <i class="fa fa-search search-globalfilter"></i>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
         </div>
 
         <div  style="width:100%;margin-top: -32px;">
-          <button type="button" pButton icon="fa fa-plus" style="float:right" (click)="addLanguage()" label="Add"></button>
+          <button type="button" pButton icon="fa fa-plus" style="float:right" (click)="addDicten()" label="Add"></button>
         </div>
 
-
       </div>
+
+
       <div class="card-body">
 
+      <!--   DATATABLE  -->
 
-        <p-dataTable class="table table-bordered table-striped table-sm"
-          [value]="languages" [editable]="true" [globalFilter]="gb" #datatable [rows]="25" [paginator]="true"
+      <p-dataTable
+          class="table table-bordered table-striped table-sm"
+          [value]="dictens" [editable]="true" [globalFilter]="gb" #datatable [rows]="25" [paginator]="true"
           [pageLinks]="25" [rowsPerPageOptions]="[25, 50, 100]" paginatorPosition="bottom" reorderableColumns="true"
-          resizableColumns="true" (onEditComplete)="onEditComplete($event)" >
+          resizableColumns="true" (onEditComplete)="onEditComplete($event)">
 
-          <p-header>
+
+        <!--  -->
+        <p-header>
             <div class="algin-left">
                 <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
             </div>
-          </p-header>
-
-          <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [editable]="col.editable" [sortable]="true"></p-column>
+        </p-header>
 
 
-          <!--
-          <p-column field="id" header="Id" [sortable]="true">   </p-column>
 
-          <p-column field="user_id" header="User Id"  [sortable]="true">  </p-column>
+        <!-- <p-header>CRUD for browsers</p-header> -->
 
-          <p-column field="name" header="Language" [editable]="true" [sortable]="true">    </p-column>
+        <p-column field="id" header="Id" [sortable]="true"></p-column>
 
-          <p-column field="created_at" header="Creation"  [sortable]="true">  </p-column>
+        <!--   <p-column field="user_id" header="User Id" [sortable]="true"></p-column> -->
 
-          <p-column field="updated_at" header="Updated" [sortable]="true">   </p-column>
+        <!--   DROPDOWN  u_id
+        <p-column field="u_id" header="VocabularyTopic Name" [editable]="true" [sortable]="true"></p-column> -->
+        <p-column field="u_id" [sortable]="true" header="Unit Id" [filter]="false" filterMatchMode="equals"
+                      [style]=" {'overflow':'visible'}" [editable]="true">
+
+          <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+            <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedUnit" [autoWidth]="false"
+                        [style]="{'width':'100%'}"
+                        required="true"  (click)="updateDropdown(browserRef)"   >
+            </p-dropdown>
+          </ng-template>
+
+        </p-column>   <!--  END OF DROPDOWN  u_id  -->
+
+        <!--    DROPDOWN VT ID
+        <p-column field="vt_id" header="VT ID" [sortable]="true" [editable]="true"></p-column> -->
+        <p-column field="vt_id" [sortable]="true" header="VT ID" [filter]="false" filterMatchMode="equals"
+                      [style]=" {'overflow':'visible'}" [editable]="true">
+
+              <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+                <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedVocabularyTopic" [autoWidth]="false"
+                            [style]="{'width':'100%'}"
+                            required="true"  (click)="updateDropdown(browserRef)"   >
+                </p-dropdown>
+
+              </ng-template>
+
+        </p-column>
+        <!--  END OF  DROPDOWN VT ID    -->
+
+        <!--  DROPDOWN  LESSON ID -->
+        <!--  <p-column field="l_id" header="Level Id" [editable]="true" [sortable]="true">  -->
+        <p-column field="lss_id" [sortable]="true" header="Lesson Id" [filter]="false" filterMatchMode="equals"
+                      [style]=" {'overflow':'visible'}" [editable]="true">
+
+              <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+                <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedLesson" [autoWidth]="false"
+                            [style]="{'width':'100%'}"
+                            required="true"  (click)="updateDropdown(browserRef)"   >
+                </p-dropdown>
+
+              </ng-template>
+
+        </p-column>
+
+        <!--  DROPDOWN  gc_id
+        <p-column field="gt_id" header="GT ID" [sortable]="true" [editable]="true"></p-column>-->
+        <p-column field="gc_id" [sortable]="true" header="GC ID" [filter]="false" filterMatchMode="equals"
+                      [style]=" {'overflow':'visible'}" [editable]="true">
+
+              <ng-template let-col let-browserRef="rowData" pTemplate="editor">
+                <p-dropdown [(ngModel)]="browserRef[col.field]" [options]="selectedGrammarClass" [autoWidth]="false"
+                            [style]="{'width':'100%'}"
+                            required="true"  (click)="updateDropdown(browserRef)"   >
+                </p-dropdown>
+
+              </ng-template>
+
+        </p-column>
+        <!-- END OF DROPDOWN  gt_id -->
+
+        <p-column field="den_word" header="English" [sortable]="true"></p-column>
 
 
-          -->
+        <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [editable]="col.editable" [sortable]="true"></p-column>
 
 
-          <p-column header="Action" class="action" >
+        <p-column header="Action" class="action" >
             <ng-template let-row="rowData" pTemplate="body" style="align-content: center;">
 
               <button class="btn  btn-outline-danger ng-star-inserted" type="button" (click)="delete(row)">
@@ -55,46 +116,127 @@
               </button>
 
             </ng-template>
-          </p-column>
+        </p-column>
 
 
-          <p-footer>
-            <div class="ui-helper-clearfix" style="width:100%">
-              <!-- <button type="button" pButton icon="fa fa-plus" style="float:left" (click)="addLanguage()" label="Add"></button> -->
+        <p-footer>
+          <div class="ui-helper-clearfix" style="width:100%; padding-bottom: 40px;">
+
+            <button type="button" pButton icon="fa fa-plus"  style="float:left" (click)="addDicten()" label="Add"></button>
+
+          </div>
+        </p-footer>
+
+      </p-dataTable>
+
+
+      <!--   MODAL   DIALOG    -->
+
+      <p-dialog header="Dicten Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" >
+
+        <div class="ui-grid ui-grid-responsive ui-fluid" style="height: 140px;" *ngIf="dicten">
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="domain">Domain</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="domain" [(ngModel)]="dicten.domain"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="u_id">Unit ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedUnit" [(ngModel)]="dicten.u_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
             </div>
-          </p-footer>
-
-
-
-
-        </p-dataTable>
-
-
-        <p-dialog header="Language Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-          <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="language">
-
-            <!-- USER ID
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-4"><label for="user_id">User ID</label></div>
-              <div class="ui-grid-col-8"><input pInputText id="user_id" [(ngModel)]="language.user_id" /></div>
+          </div>
+          <!--   VT ID -->
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vt_id">Topic ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedVocabularyTopic" [(ngModel)]="dicten.vt_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
             </div>
-            -->
+          </div>
 
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-4"><label for="name">Language</label></div>
-              <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="language.name" /></div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="lss_id">Lesson ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedLesson" [(ngModel)]="dicten.lss_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
             </div>
+          </div>
 
-            <br>
+          <!--   GC ID -->
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="gc_id">GC ID </label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="selectedGrammarClass" [(ngModel)]="dicten.gc_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
+            </div>
+          </div>
 
-            <p-footer>
-                <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
 
-                  <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
-                </div>
-              </p-footer>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="den_word"> English </label></div>
+            <div class="ui-grid-col-8"><input pInputText id="den_word" [(ngModel)]="dicten.den_word"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="dpt_word"> Portuguese </label></div>
+            <div class="ui-grid-col-8"><input pInputText id="dpt_word" [(ngModel)]="dicten.dpt_word"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="dfr_word"> French </label></div>
+            <div class="ui-grid-col-8"><input pInputText id="dfr_word" [(ngModel)]="dicten.dfr_word"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="des_word"> Spanish </label></div>
+            <div class="ui-grid-col-8"><input pInputText id="des_word" [(ngModel)]="dicten.des_word"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="dja_word"> Japanese </label></div>
+            <div class="ui-grid-col-8"><input pInputText id="dja_word" [(ngModel)]="dicten.dja_word"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="dzh_word"> Chinese </label></div>
+            <div class="ui-grid-col-8"><input pInputText id="dzh_word" [(ngModel)]="dicten.dzh_word"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="d_audio">Audio </label></div>
+            <div class="ui-grid-col-8"><input pInputText id="d_audio" [(ngModel)]="dicten.d_audio"  /></div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="image">Picture</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="image" [(ngModel)]="dicten.image"  /></div>
+          </div>
+
+        </div>
 
 
-            <p-growl [value]="msgs"></p-growl>
+        <p-footer>
+          <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" >
+            <button style="width:60%;" type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+          </div>
+        </p-footer>
+      </p-dialog> <!--  END OF   MODAL   DIALOG    -->
 
+
+     <!--  DEBUG
+      <div class="row">
+          <pre>
+
+            {{  selectedUnit |  json }}
+
+          </pre>
+      </div>
+       END OF   DEBUG  {{ units }}
+       -->
+
+      <!--     ENDO OF DATATABLE    -->
+
+      </div>
+    </div>
+  </div>
 </div>

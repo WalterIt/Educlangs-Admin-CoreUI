@@ -1,6 +1,3 @@
-import { Lesson } from './lesson';
-import { Unit } from './unit';
-
 export class VocabularyTopic {
   constructor(
     public id?: any,

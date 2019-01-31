@@ -65,7 +65,7 @@ export class VocabularyTopicComponent implements OnInit {
     private vocabularyTopicService: VocabularyTopicService,
     private grammarTopicService: GrammarTopicService,
     private unitService: UnitService,
-    private lessonService: LessonService,
+    private lessonService: LessonService
     //  private spinnerService: NgxSpinnerService,
     // private router: Router,
     // private activatedRoute: ActivatedRoute,

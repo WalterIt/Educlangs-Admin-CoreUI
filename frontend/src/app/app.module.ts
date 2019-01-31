@@ -69,6 +69,7 @@ import { UnitService } from './views/terminology/shared/services/unit.service';
 import { GrammarClassService } from './views/terminology/shared/services/grammar-class.service';
 import { GrammarTopicService } from './views/terminology/shared/services/grammar-topic.service';
 import { VocabularyTopicService } from './views/terminology/shared/services/vocabulary-topic.service';
+import { DictenService } from './views/dictionaries/dicten.service';
 
 @NgModule({
   imports: [
@@ -120,6 +121,7 @@ import { VocabularyTopicService } from './views/terminology/shared/services/voca
     GrammarClassService,
     GrammarTopicService,
     VocabularyTopicService,
+    DictenService,
     HttpErrorHandler,
     {
       provide: HTTP_INTERCEPTORS,
