@@ -3,7 +3,7 @@ NEXT
 
 BACK_FRONT
 
-Dicten Component   $item = Dicten::paginate(17376);  // 5.09 MB
+Dicten Component   $item = Dicten::paginate(17300);  // 5.07 MB
 BUG: API SIZE CROSS DOMAIN
 
 

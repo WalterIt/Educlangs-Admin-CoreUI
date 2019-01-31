@@ -31,7 +31,7 @@ class DictenController extends Controller
     public function index()
     {
         // Get Lesson
-        $item = Dicten::paginate(17376);  // 5.09 MB
+        $item = Dicten::paginate(17300);  // 5.07 MB
 
         //  Return collection of Language as a resource
         return DictenResource::collection($item);
