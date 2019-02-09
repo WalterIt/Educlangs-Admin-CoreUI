@@ -6,6 +6,29 @@ BACK_FRONT
 Dicten Component   $item = Dicten::paginate(17300);  // 5.07 MB
 BUG: API SIZE CROSS DOMAIN
 
+!! SOLUTION !!
+BACKEND:
+  CHANGED in index function of DictenController  :
+          $list = Dicten::all();
+          return  $list;
+
+FRONTEND:
+
+  CHANGED code in dicten.service:
+    getDicten() {
+    return this.http.get<any>(`${this.baseUrl}/dicten`)
+    .toPromise()
+    .then(res => <Dicten[]>res)    //  <=== INSTEAD OF .then(res => <Dicten[]>res.data)
+    .then(data => data);
+    }
+
+wshir@DESKTOP-MTMVSEK MINGW64 /c/wamp64/www/2019/EDUCLANGS/ADMIN-COREUI_v1 (BACK_FRONT_12/dicten-component)
+$ git add .
+warning: LF will be replaced by CRLF in .angulardoc.json.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in backend/app/Http/Controllers/API/DictenController.php.
+The file will have its original line endings in your working directory.
+
 
 
 ########################################################################################

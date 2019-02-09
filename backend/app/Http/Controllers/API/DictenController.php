@@ -30,11 +30,18 @@ class DictenController extends Controller
      */
     public function index()
     {
-        // Get Lesson
-        $item = Dicten::paginate(17300);  // 5.07 MB
 
-        //  Return collection of Language as a resource
-        return DictenResource::collection($item);
+        $list = Dicten::all();
+        return  $list;
+
+        /*
+        // Get Dicten
+        $dicten = Dicten::paginate(50000);
+
+        //  Return collection of dicten words as a resource
+        return DictenResource::collection($dicten);
+        */
+
     }
 
     /**
@@ -99,6 +106,9 @@ class DictenController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
+
+        // Updating user_id
+        $request['user_id'] = $request->user()->id;
 
         $updateDictenById = Dicten::findOrFail($id);
         $updateDictenById->update($request->all());

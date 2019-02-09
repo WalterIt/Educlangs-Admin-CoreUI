@@ -16,7 +16,7 @@ export class DictenService {
   getDicten() {
     return this.http.get<any>(`${this.baseUrl}/dicten`)
     .toPromise()
-    .then(res => <Dicten[]>res.data)
+    .then(res => <Dicten[]>res)
     .then(data => data);
 
   }
