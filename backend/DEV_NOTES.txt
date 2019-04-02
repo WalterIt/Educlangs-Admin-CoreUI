@@ -12,6 +12,10 @@ php artisan make:controller API/UserController --api
 
 php artisan make:resource UsersResource
 
+git commit -m'Created: UserController, UsersResource, User Model | Updated: routes/api.php'
+
+git push
+
 
 
 #############################################################################
