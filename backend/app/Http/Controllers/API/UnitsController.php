@@ -11,7 +11,7 @@ use App\Http\Resources\UnitsResource;
 class UnitsController extends Controller
 {
     /**
-     * Protect update and delete methods, only for authenticated users.
+     * Protect update and delete methods, only for authenticated users. 
      *
      * @ return Unauthorized
      */

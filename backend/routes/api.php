@@ -42,6 +42,10 @@ Route::apiResources([
     'units' => 'API\UnitsController',
 
 
+/****     Users            *****/
+'users' => 'API\UserController'
+
+
     /*
     'builders' => 'API\BuilderController',
     'items' => 'API\ItemController',
