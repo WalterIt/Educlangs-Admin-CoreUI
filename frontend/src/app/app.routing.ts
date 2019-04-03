@@ -15,6 +15,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'users',
+    redirectTo: 'users',
+    pathMatch: 'full',
+  },
+  {
     path: '404',
     component: P404Component,
     data: {
@@ -81,11 +86,20 @@ export const routes: Routes = [
         path: 'widgets',
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
       },
+      /* -----    USERS   --- */
+      {
+        path: 'users',
+        loadChildren: './views/users/users.module#UsersModule'
+      },
+
+
       /* -----    DICTIONARY --- */
       {
         path: 'dictionary',
         loadChildren: './views/dictionaries/dictionaries.module#DictionariesModule'
       },
+
+      /* -----    TERMINOLOGY --- */
       {
         path: 'terminology',
         loadChildren: './views/terminology/terminology.module#TerminologyModule'

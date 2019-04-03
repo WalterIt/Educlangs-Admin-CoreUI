@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+
 /**    PRIMENG IMPORTS    ***/ 
 import { TableModule } from 'primeng/table';
 import {GrowlModule} from 'primeng/components/growl/growl';
@@ -15,29 +16,18 @@ import { MultiSelectModule, DropdownModule, DataTableModule, DialogModule } from
 import {ContextMenuModule} from 'primeng/components/contextmenu/contextmenu';
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 
-import { TerminologyRoutingModule } from './terminology-routing.module';
-import { GrammarClassComponent } from './grammar-class.component';
-import { GrammarTopicComponent } from './grammar-topic.component';
-import { LanguagesComponent } from './languages.component';
-import { LevelsComponent } from './levels.component';
-import { LessonsComponent } from './lessons.component';
-import { VocabularyTopicComponent } from './vocabulary-topic.component';
-import { UnitsComponent } from './units.component';
+
+
+import { UsersRoutingModule } from './users-routing.module';
+
+
+import { UsersComponent } from './users.component';
 
 @NgModule({
-  declarations: [
-    GrammarClassComponent,
-    GrammarTopicComponent,
-    LanguagesComponent,
-    LevelsComponent,
-    LessonsComponent,
-    VocabularyTopicComponent,
-    UnitsComponent
-  ],
+  declarations: [UsersComponent], 
   imports: [
     CommonModule,
-    TerminologyRoutingModule,
-   // BrowserAnimationsModule, 
+    UsersRoutingModule,
 
     GrowlModule,
     TabViewModule,
@@ -56,4 +46,4 @@ import { UnitsComponent } from './units.component';
     DialogModule
   ]
 })
-export class TerminologyModule { }
+export class UsersModule { }

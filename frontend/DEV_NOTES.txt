@@ -1,7 +1,24 @@
 NEXT
 
+FRONTEND
 
-BACK_FRONT
+- CREATE 
+ 
+USERS Component
+
+FRONT: Create and Implement Components (1.5h) -
+
+ng g c users --spec false
+
+ ng g m users --routing
+
+ git commit -m"Create and Implement Components | Updated: App-Routing/Default-layout.component.html"
+
+
+
+#################################################3
+
+BACK_FRONT 
 
 Dicten Component   $item = Dicten::paginate(17300);  // 5.07 MB
 BUG: API SIZE CROSS DOMAIN
