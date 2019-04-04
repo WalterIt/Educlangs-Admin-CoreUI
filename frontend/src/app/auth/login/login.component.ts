@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+/**    PRIMENG     */
+import {Message, SelectItem} from 'primeng/components/common/api';
+
 // App imports
 import { AuthService } from '../_services/auth.service';
 import { User } from '../user';
@@ -16,6 +19,11 @@ export class LoginComponent implements OnInit {
   error: any;
   returnUrl: string;
 
+  msgs: Message[] = [];
+  messages: Message[] = [];
+
+
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -30,11 +38,16 @@ export class LoginComponent implements OnInit {
     this.authService.onLogin(this.user).subscribe(
       (response) => {
         // get return url from route parameters or default to '/'
-        this.router.navigate(['/dictionary']);
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         this.error = error.error;
+        // this.msgs = this.error;
+        this.messages = [];
+        this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['error'] });
+        // console.log(this.error);
       }
+
     );
     // Clear form fields
     loginForm.reset();

@@ -1,5 +1,16 @@
 NEXT
 
+ FRONT- IMPLEMENT HANDLE ERRORS TO ALL Components
+
+- Implement Error Msgs in Grammar Class Comp (0.5h) -
+
+
+#################################################################
+
+ - Implement Error  Msgs in Login Comp (0.5h) - 1h
+
+##############################################################
+
 php artisan route:list
 
 
