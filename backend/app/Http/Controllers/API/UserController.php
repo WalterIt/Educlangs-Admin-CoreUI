@@ -34,7 +34,7 @@ class UserController extends Controller
      {
          return new UsersResource($user);
      }
- 
+
      /**
       * Store a newly created resource in storage.
       *
@@ -53,7 +53,7 @@ class UserController extends Controller
          if ($validator->fails()) {
              return response()->json($validator->errors(), 422);
          }
- 
+
          // Creating a record in a different way
          $createItem = Unit::create([
              'user_id' => $request->user()->id,
@@ -63,9 +63,9 @@ class UserController extends Controller
          return new UnitsResource($createItem);
          */
      }
- 
- 
- 
+
+
+
      /**
       * Update the specified resource in storage.
       *
@@ -76,24 +76,24 @@ class UserController extends Controller
      public function update(Request $request, $id)
      {
          $validator = Validator::make($request->all(), [
-             'status'    => 'required'
-             // 'name'    => 'required',
+
+             'status'    => 'required',
              // 'email'    => 'required',
              // 'password'    => 'required',
          ]);
- 
+
          if ($validator->fails()) {
              return response()->json($validator->errors(), 422);
          }
- 
+
          // Updating user_id
          $request['user_id'] = $request->user()->id;
- 
-         $updateById = Unit::findOrFail($id);
+
+         $updateById = User::findOrFail($id);
          $updateById->update($request->all());
          return $updateById;
      }
- 
+
      /**
       * Remove the specified resource from storage.
       *
@@ -102,9 +102,8 @@ class UserController extends Controller
       */
      public function destroy($id)
      {
-         $deleteById = Unit::find($id)->delete();
+         $deleteById = User::find($id)->delete();
          return response()->json([], 204);
      }
- 
+
  }
- 

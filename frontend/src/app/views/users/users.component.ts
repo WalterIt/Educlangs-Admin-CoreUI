@@ -14,7 +14,7 @@ import { UserService } from './user.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit { 
+export class UsersComponent implements OnInit {
 
   users: User[];
   usersData: any;
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   cols: any[];
   // selectedColumns: any[];
   columnOptions: SelectItem[];
-  /* -------------------------------------------------------- */ 
+  /* -------------------------------------------------------- */
   activeIndex: number = 0;
   user: User = new User();
   // basicBrowsers: Browser[];
