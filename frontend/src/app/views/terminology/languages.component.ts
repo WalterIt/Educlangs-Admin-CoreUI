@@ -16,7 +16,9 @@ import { LanguageService } from './shared/services/language.service';
 export class LanguagesComponent implements OnInit {
   languages: Language[];
   languagesData: any;
+  messages: Message[] = [];
   msgs: Message[] = [];
+  error: any;
   // public editTrue;
   cols: any[];
   // selectedColumns: any[];
@@ -92,8 +94,15 @@ export class LanguagesComponent implements OnInit {
       .subscribe(response => {
         // this.isLoading = false;
         // this.language = response['data'];
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+        if ((this.error['name'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['name'] });
+        }
 
+      });
   }
 
 
@@ -117,6 +126,13 @@ export class LanguagesComponent implements OnInit {
         // this.spinnerService.hide();
         // this.router.navigate(['/language']);
         this.languageService.getLanguage().then(language => this.languages = language);
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+        if ((this.error['name'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['name'] });
+        }
       });
 
     } else {

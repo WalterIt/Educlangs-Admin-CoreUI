@@ -19,26 +19,22 @@ import { LessonService } from './shared/services/lesson.service';
 export class GrammarTopicComponent implements OnInit {
   grammarTopics: GrammarTopic[];
   grammarTopicsData: any;
-  msgs: Message[] = [];
-  // public editTrue;
+  messages: Message[] = [];
+  error: any;
   cols: any[];
   // selectedColumns: any[];
   columnOptions: SelectItem[];
   /* -------------------------------------------------------- */
   activeIndex: number = 0;
   grammarTopic: GrammarTopic = new GrammarTopic();
-  // basicBrowsers: Browser[];
-  // browsers: Browser[];
+
   selectedGrammarTopic: GrammarTopic;
   selectedGrammarTopics: GrammarTopic[];
   displayDialog: boolean;
   stacked: boolean;
   // newBrowser: boolean;
   newGrammarTopic: boolean;
-  // totalRecords: number = 100;
-  // engines: SelectItem[];
-  // grades: SelectItem[];
-  // expandedRows: any[];
+
 
   // -------------------------------------------------------//
 
@@ -120,7 +116,7 @@ export class GrammarTopicComponent implements OnInit {
     this.units = [];
 
     this.colUnit = [
-      { label: 'Select Unit', value: null }
+      { label: 'Select Unit*', value: null }
       // {field : 'l_name', header: 'level Name'}
     ];
 
@@ -148,49 +144,9 @@ export class GrammarTopicComponent implements OnInit {
     this.lessons = [];
 
     this.colLesson = [
-      { label: 'Select Lesson', value: null }
+      { label: 'Select Lesson*', value: null }
       // {field : 'l_name', header: 'level Name'}
     ];
-
-
-
-    /*  THE CODE BELOW WORKED BUT IT ONLY GET UNITS THAT EXIST IN GRAMMARTOPIC NOT THE UNITS THAT EXIST IN UNIT TABLE
-
-    this.grammarTopicService.getGrammarTopic().then(
-      (data) => {
-
-        this.units = data;
-
-        console.log(this.units.length);
-
-        console.log(this.units[0]);
-
-        console.log(this.units[0]['unit']['u_name']);
-
-
-      for (let i = 0; i < this.units.length; i++) {
-         this.colUnit.push({ label: this.units[i]['unit']['u_name'], value: this.units[i]['unit']['id'] });
-         console.log(this.units[i]['unit']['id'] + ' - ' + this.units[i]['unit']['u_name']);
-       }
-      console.log('COLUMNS : ', this.colUnit);
-
-        this.selectedUnit = this.colUnit;
-
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
-    this.units = [];
-
-    this.colUnit = [
-      { label: 'Select Unit', value: null }
-      // {field : 'l_name', header: 'level Name'}
-    ];
-    */
-
-
 
   }
 
@@ -225,7 +181,25 @@ export class GrammarTopicComponent implements OnInit {
       .subscribe(response => {
         // this.isLoading = false;
         // this.grammarTopic = response['data'];
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['u_id']) && (this.error['l_id']) &&  (this.error['gt_description'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gt_description'] });
+
+        } else if (this.error['u_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_id'] });
+        } else if (this.error['l_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+        } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gt_description'] });
+        }
+      }
+      );
 
   }
 
@@ -250,6 +224,23 @@ export class GrammarTopicComponent implements OnInit {
         // this.spinnerService.hide();
         // this.router.navigate(['/grammarTopic']);
         this.grammarTopicService.getGrammarTopic().then(grammarTopic => this.grammarTopics = grammarTopic);
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['u_id']) && (this.error['l_id']) &&  (this.error['gt_description'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gt_description'] });
+
+        } else if (this.error['u_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_id'] });
+        } else if (this.error['l_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+        } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gt_description'] });
+        }
       });
 
     } else {
