@@ -43,7 +43,7 @@
 
         <!--   DROPDOWN  u_id
         <p-column field="u_id" header="VocabularyTopic Name" [editable]="true" [sortable]="true"></p-column> -->
-        <p-column field="u_id" [sortable]="true" header="Unit Id" [filter]="false" filterMatchMode="equals"
+        <p-column field="u_id" [sortable]="true" header="Unit Id*" [filter]="false" filterMatchMode="equals"
                       [style]=" {'overflow':'visible'}" [editable]="true">
 
           <ng-template let-col let-browserRef="rowData" pTemplate="editor">
@@ -102,7 +102,7 @@
         </p-column>
         <!-- END OF DROPDOWN  gt_id -->
 
-        <p-column field="den_word" header="English" [sortable]="true"></p-column>
+        <p-column field="den_word" header="English" [sortable]="true" [editable]="true" ></p-column>
 
 
         <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [editable]="col.editable" [sortable]="true"></p-column>
@@ -142,7 +142,7 @@
           </div>
 
           <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="u_id">Unit ID </label></div>
+            <div class="ui-grid-col-4"><label for="u_id">Unit ID<span class="asterisk">*</span> </label></div>
             <div class="ui-grid-col-8">
                 <p-dropdown [options]="selectedUnit" [(ngModel)]="dicten.u_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
             </div>
@@ -221,6 +221,8 @@
           </div>
         </p-footer>
       </p-dialog> <!--  END OF   MODAL   DIALOG    -->
+
+      <p-growl [value]="messages" name="lifespan" life="9999"></p-growl>
 
 
      <!--  DEBUG

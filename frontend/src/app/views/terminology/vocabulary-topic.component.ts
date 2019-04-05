@@ -18,7 +18,9 @@ import { LessonService } from './shared/services/lesson.service';
 export class VocabularyTopicComponent implements OnInit {
   vocabularyTopics: VocabularyTopic[];
   vocabularyTopicsData: any;
+  messages: Message[] = [];
   msgs: Message[] = [];
+  error: any;
   // public editTrue;
   cols: any[];
   // selectedColumns: any[];
@@ -217,7 +219,17 @@ export class VocabularyTopicComponent implements OnInit {
       .subscribe(response => {
         // this.isLoading = false;
         // this.vocabularyTopic = response['data'];
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        // this.msgs = this.error;
+        this.messages = [];
+        // console.log(this.error);
+        if ((this.error['u_id'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_id'] });
+        }
+      }
+      );
 
   }
 
@@ -242,7 +254,17 @@ export class VocabularyTopicComponent implements OnInit {
         // this.spinnerService.hide();
         // this.router.navigate(['/vocabularyTopic']);
         this.vocabularyTopicService.getVocabularyTopic().then(vocabularyTopic => this.vocabularyTopics = vocabularyTopic);
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        // this.msgs = this.error;
+        this.messages = [];
+        // console.log(this.error);
+        if ((this.error['u_id'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_id'] });
+        }
+      }
+      );
 
     } else {
 

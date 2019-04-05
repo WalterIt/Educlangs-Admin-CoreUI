@@ -43,7 +43,7 @@
 
         <!--   DROPDOWN  u_id
         <p-column field="u_id" header="VocabularyTopic Name" [editable]="true" [sortable]="true"></p-column> -->
-        <p-column field="u_id" [sortable]="true" header="Unit Id" [filter]="false" filterMatchMode="equals"
+        <p-column field="u_id" [sortable]="true" header="Unit Id*" [filter]="false" filterMatchMode="equals"
                       [style]=" {'overflow':'visible'}" [editable]="true">
 
           <ng-template let-col let-browserRef="rowData" pTemplate="editor">
@@ -93,21 +93,6 @@
 
         <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [editable]="col.editable" [sortable]="true"></p-column>
 
-
-
-        <!--
-        <p-column field="vt_topic" header="Topic Title" [sortable]="true" [editable]="true"></p-column>
-
-        <p-column field="vtpt_id" header="Portuguese Topic" [sortable]="true" [editable]="true" ></p-column>
-        <p-column field="vtes_id" header="Spanish Topic" [sortable]="true" [editable]="true" ></p-column>
-        <p-column field="vtfr_id" header="French Topic" [sortable]="true" [editable]="true" ></p-column>
-        <p-column field="vtja_id" header="Japanese Topic" [sortable]="true" [editable]="true" ></p-column>
-        <p-column field="vtzh_id" header="Chinese Topic" [sortable]="true" [editable]="true" ></p-column>
-
-        <p-column field="created_at" header="Creation"  [sortable]="true"> </p-column>
-        <p-column field="updated_at" header="Updated" [sortable]="true"></p-column>
-        -->
-
         <p-column header="Action" class="action" >
             <ng-template let-row="rowData" pTemplate="body" style="align-content: center;">
 
@@ -137,7 +122,7 @@
         <div class="ui-grid ui-grid-responsive ui-fluid" style="height: 140px;" *ngIf="vocabularyTopic">
 
           <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="u_id">Unit ID </label></div>
+            <div class="ui-grid-col-4"><label for="u_id">Unit ID<span class="asterisk">*</span> </label></div>
             <div class="ui-grid-col-8">
                 <p-dropdown [options]="selectedUnit" [(ngModel)]="vocabularyTopic.u_id"   [style]="{'width':'100%'}" required="true" ></p-dropdown>
             </div>
@@ -199,6 +184,8 @@
         </p-footer>
       </p-dialog> <!--  END OF   MODAL   DIALOG    -->
 
+
+      <p-growl [value]="messages" name="lifespan" life="9999"></p-growl>
 
      <!--  DEBUG
       <div class="row">
