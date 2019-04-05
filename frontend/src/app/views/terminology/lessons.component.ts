@@ -17,6 +17,8 @@ export class LessonsComponent implements OnInit {
   lessons: Lesson[];
   lessonsData: any;
   msgs: Message[] = [];
+  messages: Message[] = [];
+  error: any;
   // public editTrue;
   cols: any[];
   // selectedColumns: any[];
@@ -91,6 +93,20 @@ export class LessonsComponent implements OnInit {
       .subscribe(response => {
         // this.isLoading = false;
         // this.lesson = response['data'];
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['l_id']) && (this.error['lss_name'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['lss_name'] });
+
+        } else if (this.error['l_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+        } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['lss_name'] });
+        }
       });
 
   }
@@ -116,6 +132,20 @@ export class LessonsComponent implements OnInit {
         // this.spinnerService.hide();
         // this.router.navigate(['/lesson']);
         this.lessonService.getLesson().then(lesson => this.lessons = lesson);
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['l_id']) && (this.error['lss_name'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['lss_name'] });
+
+        } else if (this.error['l_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+        } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['lss_name'] });
+        }
       });
 
     } else {

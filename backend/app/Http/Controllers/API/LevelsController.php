@@ -85,7 +85,9 @@ class LevelsController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "user_id"    => 'required'
+            "user_id"    => 'required',
+            'l_id'    => 'required',
+            'l_name'    => 'required'
             ]);
 
         if ($validator->fails()) {

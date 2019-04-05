@@ -19,6 +19,8 @@ export class UnitsComponent implements OnInit {
   units: Unit[];
   unitsData: any;
   msgs: Message[] = [];
+  messages: Message[] = [];
+  error: any;
   // public editTrue;
   cols: any[];
   // selectedColumns: any[];
@@ -112,7 +114,7 @@ export class UnitsComponent implements OnInit {
     this.levels = [];
 
     this.colsLevels = [
-      { label: 'Select Level', value: null }
+      { label: 'Select Level*', value: null }
       // {field : 'l_name', header: 'level Name'}
     ];
 
@@ -139,8 +141,7 @@ export class UnitsComponent implements OnInit {
     this.logs.push('onEditComplete -', JSON.stringify(event.data));
     // let data = JSON.stringify(event.data);
     let unit = event.data;
-    console.log('onEditComplete -', unit);
-
+    // console.log('onEditComplete -', unit);
 
     let id = unit.id;
     // console.log('ID Accessed! ', id);
@@ -149,7 +150,22 @@ export class UnitsComponent implements OnInit {
       .subscribe(response => {
         // this.isLoading = false;
         // this.unit = response['data'];
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['l_id']) && (this.error['u_name'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
+
+        } else if (this.error['l_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+        } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
+        }
+      }
+      );
 
   }
 
@@ -174,7 +190,22 @@ export class UnitsComponent implements OnInit {
         // this.spinnerService.hide();
         // this.router.navigate(['/unit']);
         this.unitService.getUnit().then(unit => this.units = unit);
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['l_id']) && (this.error['u_name'])) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
+
+        } else if (this.error['l_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+        } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
+        }
+      }
+      );
 
     } else {
 
