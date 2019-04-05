@@ -4,6 +4,9 @@ NEXT
 
 - Implement Error Msgs in Grammar Class Comp (0.5h) -
 
+'gc_id'    => 'required',
+'gc_class'    => 'required'
+
 
 #################################################################
 

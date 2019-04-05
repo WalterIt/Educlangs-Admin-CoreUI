@@ -16,7 +16,9 @@ import { GrammarClassService } from './shared/services/grammar-class.service';
 export class GrammarClassComponent implements OnInit {
   grammarClasses: GrammarClass[];
   grammarClassesData: any;
+  error: any;
   msgs: Message[] = [];
+  messages: Message[] = [];
   // public editTrue;
   cols: any[];
   // selectedColumns: any[];
@@ -91,7 +93,26 @@ export class GrammarClassComponent implements OnInit {
       .subscribe(response => {
         // this.isLoading = false;
         // this.grammarClass = response['data'];
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['gc_id']) && (this.error['gc_class']) ) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_class'] });
+
+        } else{
+
+              if (this.error['gc_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_id'] });
+              } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_class'] });
+              }
+      }
+      }
+
+      );
 
   }
 
@@ -109,19 +130,33 @@ export class GrammarClassComponent implements OnInit {
       // this.spinnerService.show();
       grammarClasses.push(this.grammarClass);
       let data: any = this.grammarClass;
-      console.log('ADDED New GrammarClass!', data);
+      // console.log('ADDED New GrammarClass!', data);
       // console.log('ADDED New GrammarClass!');
       /* ADD GrammarClass */
       this.grammarClassService.addGrammarClass(data).subscribe(response => {
         // this.spinnerService.hide();
         // this.router.navigate(['/grammarClass']);
         this.grammarClassService.getGrammarClass().then(grammarClass => this.grammarClasses = grammarClass);
-      });
+      },
+      (error) => {
+        this.error = error.error;
+        this.messages = [];
+
+        if ((this.error['gc_id']) && (this.error['gc_class']) ) {
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_id'] });
+          this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_class'] });
+        } else {
+              if (this.error['gc_id']) {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_id'] });
+              } else {
+                this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['gc_class'] });
+              }
+        }
+      }
+      );
 
     } else {
-
-      console.log('UPDATED GrammarClass!');
-
+      // console.log('UPDATED GrammarClass!');
     }
 
     this.grammarClasses = grammarClasses;

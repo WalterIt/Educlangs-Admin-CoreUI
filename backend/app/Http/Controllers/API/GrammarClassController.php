@@ -64,7 +64,7 @@ class GrammarClassController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        // Creating a record in a different way
+        // Creating a record in a different way 
         $createItem = GrammarClass::create([
             'user_id' => $request->user()->id,
             'gc_id' => $request->gc_id,
