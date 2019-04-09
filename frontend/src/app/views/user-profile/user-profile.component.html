@@ -1,140 +1,330 @@
+<div class="animated fadeIn">
+
 
 <p-tabView>
-    <p-tabPanel header="User Profile" leftIcon="pi pi-calendar">
-
+    <p-tabPanel header="User Profile" leftIcon="pi pi-user">
 
 
 
         <div class="row">
-            <div class="col-sm-10"><h1>User name</h1></div>
-            <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
+
+
+
+          <!--left col-->
+          <div class="col-sm-3">
+
+
+
+            <div class="text-center">
+              <img src="assets/img/avatars/5.jpg" class="avatar1 img-circle1 img-thumbnail1" alt="avatar">
+
+
+
+
+              <h6>Upload a different photo...</h6>
+              <input type="file" class="text-center center-block file-upload">
+            </div><br>
+
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+              <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+            </div>
+
+
+            <ul class="list-group">
+              <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            </ul>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Social Media</div>
+              <div class="panel-body">
+                <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i
+                  class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header"><strong>USER PROFILE</strong> </div>
+              <div class="card-body">
+                <form action="" class="form-horizontal ng-untouched ng-pristine ng-valid" enctype="multipart/form-data"
+                  method="post" novalidate="">
+
+
+
+            <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend"><span class="input-group-text">Gender</span></div>
+
+                  <div class="col-md-9 col-form-label">
+                      <div class="form-check form-check-inline mr-1" id="inline-radios">
+
+                        <input class="form-check-input"  id="inlineRadio1" name="inline-radios" type="radio" value="option1" checked="checked">
+                        <label class="form-check-label" for="inlineRadio1">Male</label></div>
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input" id="inlineRadio2" name="inline-radios" type="radio" value="option2">
+                        <label class="form-check-label"    for="inlineRadio2">Female</label></div>
+                      <div class="form-check form-check-inline mr-1">
+                        <input class="form-check-input" id="inlineRadio3"   name="inline-radios" type="radio" value="option3">
+                        <label class="form-check-label"  for="inlineRadio3">Other</label></div>
+                    </div>
+                </div>
+              </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">Firstname</span></div><input
+                              class="form-control" id="firstname" name="firstname" type="text">
+                            <div class="input-group-append"><span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend"><span class="input-group-text">Lastname</span></div><input
+                                class="form-control" id="lastname" name="lastname" type="text">
+                              <div class="input-group-append"><span class="input-group-text"><i class="fa fa-user"></i></span>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend"><span class="input-group-text">Email</span></div><input
+                            autocomplete="email" class="form-control" id="email3" name="email3" type="email">
+                          <div class="input-group-append"><span class="input-group-text"><i
+                                class="fa fa-envelope"></i></span></div>
+                        </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">Birthday</span></div>
+                            <input class="form-control" id="birthday" name="birthday"
+                          placeholder="Birthday" type="date">
+                            <div class="input-group-append"><span class="input-group-text"><i class="fa fa-birthday-cake"></i></span></div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">Phone number</span></div><input
+                              autocomplete="email" class="form-control" id="phone" name="phone" type="text">
+                            <div class="input-group-append"><span class="input-group-text">
+                              <i class="fa fa-phone fa-1x" style="font-size: 20px;"></i></span></div>
+                          </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend"><span class="input-group-text">Mobile Number</span></div>
+                                  <input  class="form-control" id="mobile" name="mobile" type="text" placeholder="Primary Mobile number " >
+                                  <div class="input-group-append"><span class="input-group-text"><i class="fa fa-mobile fa-1x" style="font-size: 23px;"></i></span>
+                                  </div>
+                                </div>
+                              </div>
+
+                        </div>
+                      </div>
+
+
+                    <h3>Address</h3>
+
+
+
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend"><span class="input-group-text">Street</span></div><input
+                            class="form-control" id="street" name="street" type="text">
+                          <div class="input-group-append"><span class="input-group-text">
+                              <i class="fa fa-home fa-1x" style="font-size: 23px;"></i> </span>
+                          </div>
+                        </div>
+                  </div>
+
+
+
+
+
+                    <div class="row">
+                      <div class="form-group col-sm-8">
+
+
+
+
+                          <div class="input-group">
+                              <div class="input-group-prepend"><span class="input-group-text">City</span></div><input
+                                class="form-control" id="city" name="city" type="text">
+                              <div class="input-group-append"><span class="input-group-text">
+                                  <i class="fa fa-map-marker fa-1x" ></i> </span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-sm-4">
+
+                          <div class="input-group">
+                              <div class="input-group-prepend"><span class="input-group-text">Postal Code</span></div><input
+                                class="form-control" id="postalCode" name="postalCode" type="text">
+                              <div class="input-group-append"><span class="input-group-text">
+                                  <i class="fa fa-location-arrow  fa-1x" ></i> </span>
+                              </div>
+                          </div>
+
+
+
+                      </div>
+                    </div>
+                    <div class="form-group">
+
+
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">Country</span></div><input
+                              class="form-control" id="country" name="country" type="text">
+                            <div class="input-group-append"><span class="input-group-text">
+                                <i class="fa fa-flag fa-md "></i> </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </form>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-md btn-primary" type="submit">
+                  <i class="fa fa-dot-circle-o"></i> Submit</button> &nbsp;
+                  <button class="btn btn-md btn-danger" type="reset"><i class="fa fa-ban"></i> Reset</button>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
         </div>
 
-        <div class="text-center">
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-            <h6>Upload a different photo...</h6>
-            <input type="file" class="text-center center-block file-upload">
-        </div><hr><br>
-
-
-                    <div class="ui-g ui-fluid">
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>First name</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Firstname" size="35px">
-                            </div>
-                        </div>
-
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>Last name</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Lastname"   size="35px">
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="ui-g ui-fluid">
-
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>Phone</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Phone" size="35px">
-                            </div>
-                        </div>
-
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>Mobile</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Mobile"   size="35px">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="ui-g ui-fluid">
-
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>Address</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Address" size="100px">
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <div class="ui-g ui-fluid">
-                      <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>City</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="City"   size="35px">
-                            </div>
-                        </div>
-
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>Postal Code</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Postal Code" size="35px">
-                            </div>
-                        </div>
-
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>Country</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Country"   size="35px">
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="ui-g ui-fluid">
-
-                        <div class="ui-g-12 ui-md-4">
-                            <label for="first_name"><h4>Email</h4></label>
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" pInputText placeholder="Email" size="35px">
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-
-
-                    <div class="ui-g ui-fluid">
-
-                        <div class="ui-g-12 ui-md-4">
-                            <div class="ui-inputgroup">
-                                <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                        </div>
-                    </div>
-
 
 
 
 
 
     </p-tabPanel>
+
+
+
     <p-tabPanel header="Change Password" leftIcon="pi pi-inbox">
-        CHANGE YOUR PASSWORD HERE!  Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+
+        <div class="row">
+
+
+          <div class="col-sm-12">
+              <div class="card">
+                <div class="card-header"> <strong>CHANGE PASSWORD</strong></div>
+                <div class="card-body">
+                  <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid">
+
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text">Current Password</span></div><input
+                           class="form-control" id="currentPassword" name="currentPassword"
+                          type="password">
+                        <div class="input-group-append"><span class="input-group-text"><i
+                              class="fa fa-asterisk"></i></span></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend"><span class="input-group-text">New Password</span></div><input
+                           class="form-control" id="password" name="password"
+                            type="password">
+                          <div class="input-group-append"><span class="input-group-text"><i
+                                class="fa fa-asterisk"></i></span></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">Confirm Password</span></div>
+                            <input class="form-control" id="confirmPassword" name="confirmPassword" type="password">
+                            <div class="input-group-append"><span class="input-group-text"><i
+                                  class="fa fa-asterisk"></i></span></div>
+                          </div>
+                        </div>
+
+
+                    <div class="form-group form-actions"><button class="btn btn-md btn-primary"
+                        type="submit">Submit</button></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+        </div>
     </p-tabPanel>
-    <p-tabPanel header="Godfather III" leftIcon="pi pi-user" rightIcon="pi pi-star">
+
+
+
+
+
+
+    <!--
+      <p-tabPanel header="Godfather III" leftIcon="pi pi-user" rightIcon="pi pi-star">
         After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
     </p-tabPanel>
+
+    -->
 </p-tabView>
 
+
+
+
+
+
+</div>
