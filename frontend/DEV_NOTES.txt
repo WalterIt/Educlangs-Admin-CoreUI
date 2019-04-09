@@ -1,8 +1,12 @@
 NEXT
 
+FRONT: USER PROFILE  Create and Implement Components  BASED IN ADMIN CORE UI FORMS (2h) -
+
+###################################################################
 
 FRONT: USER PROFILE  Create and Implement Components (1.5h) -
 
+ng g c user-profile  --inline-style --spec false  --flat
 
 ###################################################################
 
