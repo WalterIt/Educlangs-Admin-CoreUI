@@ -1,5 +1,11 @@
 NEXT
 
+
+FRONT: USER PROFILE  Create and Implement Components (1.5h) -
+
+
+###################################################################
+
  FRONT- IMPLEMENT HANDLE ERRORS TO ALL Components
 
 - Implement Error Msgs in Grammar Class Comp (0.5h) -
