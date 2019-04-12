@@ -1,11 +1,21 @@
 NEXT
 
+BACK: Users Profile
 
+- Implement Controller, Model, Resources (7h)#Implementing
+
+
+-Planning  | - Modeling Database | Updated small changes in Design FRONTEND (30min)  -  48 min
+
+
+
+
+#############################################################
 
 BACKEND
 
-- CREATE 
- 
+- CREATE
+
 APIs: USERS
 
 php artisan make:controller API/UserController --api
@@ -22,7 +32,7 @@ git push
 
 
 BACKEND
- 
+
 
 APIs: LESSONS & LEVELS - Implemented & Tested
 
@@ -39,7 +49,7 @@ BACKEND
 php artisan route:list
 
 
-$ php artisan make:model GrammarTopic 
+$ php artisan make:model GrammarTopic
 
 Creating and updating the controller function
 	1. Open your Terminal window and type the following command:
