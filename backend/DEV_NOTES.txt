@@ -8,7 +8,22 @@ BACK: Users Profile
 -Planning  | - Modeling Database | Updated small changes in Design FRONTEND (30min)  -  48 min
 
 
+php artisan make:controller API/UserProfileController --api
 
+php artisan make:controller API/UserAddressController --api -crm
+
+
+php artisan make:resource UserProfileResource
+
+php artisan make:resource UsersResource
+
+php artisan make:resource UsersAddressResource
+
+###  Laravel Create Controller, Model and migration in one Artisan Command :
+
+php artisan make:model UserProfile -crm
+
+php artisan make:model UserAddress
 
 #############################################################
 
