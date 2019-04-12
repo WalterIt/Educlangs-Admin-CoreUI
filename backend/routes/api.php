@@ -43,7 +43,11 @@ Route::apiResources([
 
 
 /****     Users            *****/
-'users' => 'API\UserController'
+'users' => 'API\UserController',
+
+/****     User Profile            *****/
+'userprofile' => 'API\UserProfileController'
+
 
 
     /*

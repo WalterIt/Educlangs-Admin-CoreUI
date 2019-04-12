@@ -32,4 +32,5 @@ class UserProfileResource extends JsonResource
 
 
         ];
+    }
 }

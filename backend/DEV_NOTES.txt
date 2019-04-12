@@ -1,5 +1,12 @@
 NEXT
 
+
+BACK: Users Profile
+
+- Implement Controller/Model/Resource: UserAddress   (2h)  -
+
+###########################################################################33
+
 BACK: Users Profile
 
 - Implement Controller, Model, Resources (7h)#Implementing
@@ -24,6 +31,9 @@ php artisan make:resource UsersAddressResource
 php artisan make:model UserProfile -crm
 
 php artisan make:model UserAddress
+
+
+TESTED API
 
 #############################################################
 
