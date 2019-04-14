@@ -3,7 +3,11 @@ NEXT
 
 BACK: Users Profile
 
-- Implement Controller/Model/Resource: UserAddress   (2h)  -
+- Implement Controller/Model/Resource: UserAddress   (2h) | TEST API  -
+
+php artisan route:list
+
+
 
 ###########################################################################33
 

@@ -13,6 +13,8 @@ class UserProfile extends Model
     // public $timestamps = false;
     protected $fillable = [
         'user_id'   ,
+        'user_address_id',
+        'gender'   ,
         'firstName' ,
         'lastName'  ,
         'phoneHome' ,
@@ -23,6 +25,16 @@ class UserProfile extends Model
         'lang_id'   ,  // System language
         'birthdate' ,
     ];
+
+    /**
+     * Relationship.
+     *
+     * @var string
+     */
+
+    public function userAddress() {
+        return $this->belongsTo('App\UserAddress');
+    }
 
 
 

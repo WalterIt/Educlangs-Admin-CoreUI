@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\UserAddress;
+use Validator;
+use App\Http\Resources\UsersAddressResource;
 
 class UserAddressController extends Controller
 {
@@ -15,6 +18,11 @@ class UserAddressController extends Controller
     public function index()
     {
         //
+        // Get Lesson
+        $item = UserAddress::paginate(100);
+
+        //  Return collection of Language as a resource
+        return UsersAddressResource::collection($item);
     }
 
     /**
@@ -25,7 +33,27 @@ class UserAddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'country'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // Creating a record in a different way
+        $createItem = UserAddress::create([
+            'user_id' => $request->user,
+            // 'user_id' => $request->user()->id,
+
+            'houseApNum' =>$request->houseApNum,
+            'street' =>$request->street,
+            'city' =>$request->city,
+            'zip' =>$request->zip,
+            'state' =>$request->state,
+            'country' =>$request->country,
+        ]);
+        return new UsersAddressResource($createItem);
+
     }
 
     /**
@@ -34,9 +62,9 @@ class UserAddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UserAddress $useraddress)
     {
-        //
+        return new UsersAddressResource($useraddress);
     }
 
     /**
@@ -49,6 +77,20 @@ class UserAddressController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'country'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        // Updating user_id
+       // $request['user_id'] = $request->user()->id;
+
+        $updateById = UserAddress::findOrFail($id);
+        $updateById->update($request->all());
+        return $updateById;
     }
 
     /**
@@ -59,6 +101,8 @@ class UserAddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        /**   */
+        $deleteById = UserAddress::find($id)->delete();
+        return response()->json([], 204);
     }
 }

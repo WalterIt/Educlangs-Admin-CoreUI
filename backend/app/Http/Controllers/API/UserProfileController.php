@@ -45,7 +45,7 @@ class UserProfileController extends Controller
         // Creating a record in a different way
         $createItem = UserProfile::create([
             'user_id' => $request->user()->id,
-            //'user_id' => $request->user_id,
+            'gender' => $request->gender,
             'firstName'  => $request->firstName,
             'lastName'   => $request->lastName,
             'phoneHome'  => $request->phoneHome,
@@ -67,10 +67,9 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UserProfile $userprofile)
     {
-        $showById = UserProfile::with('User')->findOrFail($id);
-        return $showById;
+        return new UserProfileResource($userprofile);
     }
 
     /**
