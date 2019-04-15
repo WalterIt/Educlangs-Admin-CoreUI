@@ -1,4 +1,5 @@
-import { UserAddress } from './userAddress';
+import { UserAddress } from './user-address';
+
 
 export class UserProfile {
   constructor(
