@@ -13,7 +13,9 @@ class UserProfile extends Model
     // public $timestamps = false;
     protected $fillable = [
         'user_id'   ,
-        'user_address_id',
+
+        // 'user_address_user_id',
+
         'gender'   ,
         'firstName' ,
         'lastName'  ,
@@ -33,7 +35,7 @@ class UserProfile extends Model
      */
 
     public function userAddress() {
-        return $this->belongsTo('App\UserAddress');
+        return $this->belongsTo('App\UserAddress', 'user_id');
     }
 
 

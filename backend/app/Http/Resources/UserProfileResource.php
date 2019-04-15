@@ -19,7 +19,7 @@ class UserProfileResource extends JsonResource
             'id'  => $this->id,
             'user_id' => $this->user_id,
 
-            'user_address_id' => $this->user_address_id,
+            // 'user_address_user_id' => $this->user_address_user_id,
 
             'userAddress'   => $this->userAddress, // Retrive all  obj of user_address table as an array
             'firstName' => $this->firstName,
