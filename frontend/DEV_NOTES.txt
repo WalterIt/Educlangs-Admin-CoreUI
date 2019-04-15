@@ -1,5 +1,14 @@
 NEXT
 
+
+
+FRONT: USER PROFILE Implement Components Model Service (4h) - TOTAL TIME:
+
+
+
+
+###################################################################
+
 FRONT: USER PROFILE  Create and Implement Components  BASED IN ADMIN CORE UI FORMS (2h) - TOTAL TIME: 8H 30 MIN
 
 
