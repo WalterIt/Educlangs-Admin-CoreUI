@@ -5,7 +5,7 @@ export class UserProfile {
   constructor(
     public id?: any,
     public user_id?: any,
-    public userAddress?: any, // Array
+    public userAddress?: UserAddress, // Array
     public gender?: string,    // 0 - Female  1- Male  2-Other
     public firstName?: string,
     public lastName?: string,

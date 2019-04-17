@@ -2,7 +2,7 @@
 
 
     <div class="card">
-        <div class="card-header"><strong>USER PROFILE NAME</strong> </div>
+        <div class="card-header"><strong>USER NAME {{userProfile.firstname}}</strong> </div>
 
         <div class="card-body">
 
@@ -59,8 +59,11 @@
                         <div class="card">
                           <!--  <div class="card-header"><strong>USER PROFILE</strong> </div> -->
                           <div class="card-body">
-                            <form action="" class="form-horizontal ng-untouched ng-pristine ng-valid" enctype="multipart/form-data"
+                            <!--
+                              <form action="" class="form-horizontal ng-untouched ng-pristine ng-valid" enctype="multipart/form-data"
                               method="post" novalidate="">
+                            -->
+
 
 
                         <div class="form-group">
@@ -86,8 +89,11 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                       <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Firstname</span></div><input
-                                          class="form-control" id="firstname" name="firstname" type="text">
+                                        <div class="input-group-prepend"><span class="input-group-text">Firstname</span></div>
+                                        <!--
+                                          <input class="form-control" id="firstname" name="firstname" type="text">
+                                        -->
+                                        <input class="form-control"  pInputText id="firstname" [(ngModel)]="userProfile.firstname" required />
                                         <div class="input-group-append"><span class="input-group-text"><i class="fa fa-user"></i></span>
                                         </div>
                                       </div>
@@ -97,8 +103,11 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                         <div class="input-group">
-                                          <div class="input-group-prepend"><span class="input-group-text">Lastname</span></div><input
-                                            class="form-control" id="lastname" name="lastname" type="text">
+                                          <div class="input-group-prepend"><span class="input-group-text">Lastname</span></div>
+                                          <!--
+                                            <input class="form-control" id="lastname" name="lastname" type="text">
+                                          -->
+                                          <input class="form-control"  pInputText id="lastname" [(ngModel)]="userProfile.lastname" required />
                                           <div class="input-group-append"><span class="input-group-text"><i class="fa fa-user"></i></span>
                                           </div>
                                         </div>
@@ -111,8 +120,14 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                     <div class="input-group">
-                                      <div class="input-group-prepend"><span class="input-group-text">Email</span></div><input
-                                        autocomplete="email" class="form-control" id="email3" name="email3" type="email">
+                                      <div class="input-group-prepend"><span class="input-group-text">Email</span></div>
+                                      <!--
+                                        <input autocomplete="email" class="form-control" id="email3" name="email3" type="email">
+                                      -->
+                                      <input  autocomplete="email" class="form-control"  pInputText id="email" [(ngModel)]="userProfile.email" type="email" required />
+
+
+
                                       <div class="input-group-append"><span class="input-group-text"><i
                                             class="fa fa-envelope"></i></span></div>
                                     </div>
@@ -137,8 +152,11 @@
                                     <div class="col-md-6">
                                       <div class="form-group">
                                       <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Phone</span></div><input
-                                          autocomplete="email" class="form-control" id="phone" name="phone" type="text">
+                                        <div class="input-group-prepend"><span class="input-group-text">Phone</span></div>
+                                        <!--
+                                          <input autocomplete="email" class="form-control" id="phone" name="phone" type="text">
+                                        -->
+                                        <input class="form-control"  pInputText id="phoneHome" [(ngModel)]="userProfile.phoneHome"  />
                                         <div class="input-group-append"><span class="input-group-text">
                                           <i class="fa fa-phone fa-1x" style="font-size: 20px;"></i></span></div>
                                       </div>
@@ -149,7 +167,10 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                               <div class="input-group-prepend"><span class="input-group-text">Mobile</span></div>
-                                              <input  class="form-control" id="mobile" name="mobile" type="text" placeholder="Primary Mobile number " >
+                                              <!--
+                                                <input  class="form-control" id="mobile" name="mobile" type="text" placeholder="Primary Mobile number " >
+                                              -->
+                                              <input class="form-control"  pInputText id="mobile" [(ngModel)]="userProfile.mobile"   />
                                               <div class="input-group-append"><span class="input-group-text"><i class="fa fa-mobile fa-1x" style="font-size: 23px;"></i></span>
                                               </div>
                                             </div>
@@ -166,8 +187,11 @@
                                 <div class="form-group col-sm-4">
 
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">N. Apt/House</span></div><input
-                                          class="form-control" id="addr_houseApNum" name="addr_houseApNum" type="text">
+                                        <div class="input-group-prepend"><span class="input-group-text">N. Apt/House</span></div>
+                                        <!--
+                                          <input class="form-control" id="addr_houseApNum" name="addr_houseApNum" type="text">
+                                        -->
+                                        <input class="form-control"  pInputText id="houseApNum" [(ngModel)]="userAddress.houseApNum"   />
 
                                     </div>
                                 </div>
@@ -175,8 +199,11 @@
                                 <div class="form-group col-sm-8">
 
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Street</span></div><input
-                                          class="form-control" id="street" name="street" type="text">
+                                        <div class="input-group-prepend"><span class="input-group-text">Street</span></div>
+                                        <!--
+                                          <input class="form-control" id="street" name="street" type="text">
+                                        -->
+                                        <input class="form-control"  pInputText id="street" [(ngModel)]="userAddress.street"   />
                                         <div class="input-group-append"><span class="input-group-text">
                                             <i class="fa fa-home fa-1x" style="font-size: 23px;"></i> </span>
                                         </div>
@@ -192,8 +219,11 @@
                                   <div class="form-group col-sm-8">
 
                                       <div class="input-group">
-                                          <div class="input-group-prepend"><span class="input-group-text">City</span></div><input
-                                            class="form-control" id="city" name="city" type="text">
+                                          <div class="input-group-prepend"><span class="input-group-text">City</span></div>
+                                          <!--
+                                            <input class="form-control" id="city" name="city" type="text">
+                                          -->
+                                          <input class="form-control"  pInputText id="city" [(ngModel)]="userAddress.city"   />
                                           <div class="input-group-append"><span class="input-group-text">
                                               <i class="fa fa-map-marker fa-1x" ></i> </span>
                                           </div>
@@ -203,8 +233,11 @@
                                   <div class="form-group col-sm-4">
 
                                       <div class="input-group">
-                                          <div class="input-group-prepend"><span class="input-group-text">Postal Code</span></div><input
-                                            class="form-control" id="postalCode" name="postalCode" type="text">
+                                          <div class="input-group-prepend"><span class="input-group-text">Postal Code</span></div>
+                                          <!--
+                                            <input class="form-control" id="postalCode" name="postalCode" type="text">
+                                          -->
+                                          <input class="form-control"  pInputText id="zip" [(ngModel)]="userAddress.zip"   />
 
                                       </div>
 
@@ -215,8 +248,12 @@
 
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Country</span></div><input
-                                          class="form-control" id="country" name="country" type="text">
+                                        <div class="input-group-prepend"><span class="input-group-text">Country*</span></div>
+                                        <!--
+                                          <input class="form-control" id="country" name="country" type="text">
+                                        -->
+                                        <input class="form-control"  pInputText id="country" [(ngModel)]="userAddress.country" required />
+
                                         <div class="input-group-append"><span class="input-group-text">
                                             <i class="fa fa-flag fa-md "></i> </span>
                                         </div>
@@ -224,7 +261,7 @@
 
                                 </div>
 
-                            </form>
+                           <!--  </form> -->
                           </div>
                           <div class="card-footer">
                             <button class="btn btn-md btn-primary" type="submit">
@@ -250,7 +287,7 @@
                           <div class="card">
                             <div class="card-header"> <strong>CHANGE PASSWORD</strong></div>
                             <div class="card-body">
-                              <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid">
+                              <!-- <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid"> -->
 
 
                                 <div class="form-group">
@@ -283,7 +320,7 @@
 
                                 <div class="form-group form-actions"><button class="btn btn-md btn-primary"
                                     type="submit">Submit</button></div>
-                              </form>
+                              <!-- </form> -->
                             </div>
                           </div>
                         </div>
@@ -310,9 +347,6 @@
 
 </div>
 </div>
-
-
-
 
 
 </div>

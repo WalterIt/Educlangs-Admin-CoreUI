@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-/**    PRIMENG IMPORTS    ***/ 
+/**    PRIMENG IMPORTS    ***/
 import { TableModule } from 'primeng/table';
 import {GrowlModule} from 'primeng/components/growl/growl';
 import {TabViewModule} from 'primeng/components/tabview/tabview';
@@ -37,7 +37,9 @@ import { UnitsComponent } from './units.component';
   imports: [
     CommonModule,
     TerminologyRoutingModule,
-   // BrowserAnimationsModule, 
+   // BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     GrowlModule,
     TabViewModule,
@@ -48,8 +50,6 @@ import { UnitsComponent } from './units.component';
     TableModule,
     MultiSelectModule,
     DropdownModule,
-    FormsModule,
-    ReactiveFormsModule,
     DataTableModule,
     InputTextModule,
     ContextMenuModule,

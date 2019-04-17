@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {TabViewModule} from 'primeng/tabview';
+/**    PRIMENG IMPORTS    ***/
+import { TableModule } from 'primeng/table';
+import {GrowlModule} from 'primeng/components/growl/growl';
+import {TabViewModule} from 'primeng/components/tabview/tabview';
+import {CodeHighlighterModule} from 'primeng/components/codehighlighter/codehighlighter';
+import {ToolbarModule} from 'primeng/components/toolbar/toolbar';
+import {ButtonModule} from 'primeng/components/button/button';
+import {SplitButtonModule} from 'primeng/components/splitbutton/splitbutton';
+import { MultiSelectModule, DropdownModule, DataTableModule, DialogModule } from 'primeng/primeng';
+import {ContextMenuModule} from 'primeng/components/contextmenu/contextmenu';
+import {InputTextModule} from 'primeng/components/inputtext/inputtext';
+
 
 import { UserProfileRoutingModule } from './user-profile-routing.module';
 import { UserProfileComponent } from './user-profile.component';
@@ -11,7 +23,23 @@ import { UserProfileComponent } from './user-profile.component';
   imports: [
     CommonModule,
     TabViewModule,
-    UserProfileRoutingModule
+    UserProfileRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    GrowlModule,
+    TabViewModule,
+    CodeHighlighterModule,
+    ToolbarModule,
+    ButtonModule,
+    SplitButtonModule,
+    TableModule,
+    MultiSelectModule,
+    DropdownModule,
+    DataTableModule,
+    InputTextModule,
+    ContextMenuModule,
+    DialogModule
   ]
 })
 export class UserProfileModule { }
