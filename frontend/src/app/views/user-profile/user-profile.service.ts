@@ -20,6 +20,7 @@ export class UserProfileService {
 
   }
 
+
   addUserProfile(request) {
     return this.http.post(`${this.baseUrl}/userprofile`, request);
   }
@@ -32,8 +33,20 @@ export class UserProfileService {
   deleteUserProfile(id) {
   return this.http.delete(`${this.baseUrl}/userprofile/${id}`);
   }
+
+  getUserDetails(id) {
+    return this.http.get<any>(`${this.baseUrl}/userprofile/${id}`)
+    .toPromise()
+    .then(res => <UserProfile[]>res.data)
+    .then(data => data);
+
+  }
+
+
+  /*
   getUserDetails(id) {
   return this.http.get(`${this.baseUrl}/get/${id}`);
   }
+  */
 
 }

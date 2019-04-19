@@ -44,7 +44,7 @@ class UserProfileController extends Controller
 
         // Creating a record in a different way
         $createItem = UserProfile::create([
-            'user_id' => $request->user()->id,
+            // 'user_id' => $request->user()->id,
             'gender' => $request->gender,
             'firstName'  => $request->firstName,
             'lastName'   => $request->lastName,
@@ -93,7 +93,7 @@ class UserProfileController extends Controller
         }
 
         // Updating user_id
-       $request['user_id'] = $request->user()->id;
+       // $request['user_id'] = $request->user()->id;
 
         $updateById = UserProfile::findOrFail($id);
         $updateById->update($request->all());
