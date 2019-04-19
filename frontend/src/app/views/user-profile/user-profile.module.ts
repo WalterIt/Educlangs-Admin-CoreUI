@@ -13,6 +13,7 @@ import {SplitButtonModule} from 'primeng/components/splitbutton/splitbutton';
 import { MultiSelectModule, DropdownModule, DataTableModule, DialogModule } from 'primeng/primeng';
 import {ContextMenuModule} from 'primeng/components/contextmenu/contextmenu';
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
+import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
 
 
 import { UserProfileRoutingModule } from './user-profile-routing.module';
@@ -39,7 +40,8 @@ import { UserProfileComponent } from './user-profile.component';
     DataTableModule,
     InputTextModule,
     ContextMenuModule,
-    DialogModule
+    DialogModule,
+    InputMaskModule
   ]
 })
 export class UserProfileModule { }

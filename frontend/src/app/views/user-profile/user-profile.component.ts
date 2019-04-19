@@ -54,7 +54,7 @@ export class UserProfileComponent implements OnInit {
         firstName: [this.userprofile.firstName],
         lastName: [this.userprofile.lastName],
         phoneHome: [this.userprofile.phoneHome],
-        mobile: [this.userprofile.mobile],
+        mobile: [this.userprofile.mobile, Validators.compose([ Validators.minLength(9), Validators.required, Validators.pattern('[0-9-]+') ] )],
         photo: [this.userprofile.photo],
         // status: [this.userprofile.status],
         // lang_id: [this.userprofile.lang_id],

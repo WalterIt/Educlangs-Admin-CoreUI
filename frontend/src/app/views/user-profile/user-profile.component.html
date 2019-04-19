@@ -15,6 +15,7 @@
 
 
               <h6>Upload a different photo...</h6>
+
               <form *ngIf="userprofile; else loading" [formGroup]="userProfileForm" (ngSubmit)="submit()"  class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate enctype="multipart/form-data">
 
                 <!--
@@ -136,21 +137,19 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                   <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">Email</span></div><input
+                                    <div class="input-group-prepend"><span class="input-group-text">Email<span class="asterisk">*</span></span></div><input
                                       autocomplete="email" class="form-control" id="email" formControlName="email" type="email" required>
                                     <div class="input-group-append"><span class="input-group-text"><i class="fa fa-envelope"></i></span></div>
                                   </div>
-
+ 
                                   <div class="ui-grid-col-6">
                                     <span class="ui-message ui-messages-error ui-corner-all"
                                           *ngIf="!userProfileForm.controls.email.valid && userProfileForm.controls.email.dirty">
                                                         <i class="fa fa-close"></i>
                                                         <span *ngIf="userProfileForm.controls.email.errors?.required">&nbsp;Email is required!</span>
                                                         <span *ngIf="userProfileForm.controls.email.errors?.email">&nbsp;Must be a valid Email!</span>
-                                                    </span>
-                                        </div>
-
-
+                                    </span>
+                                  </div>
 
                                   </div>
                                 </div>
@@ -184,11 +183,27 @@
                                   <div class="col-md-6">
                                       <div class="form-group">
                                           <div class="input-group">
-                                            <div class="input-group-prepend"><span class="input-group-text">Mobile</span></div>
-                                            <input  class="form-control" id="mobile" formControlName="mobile" type="text" placeholder="Primary Mobile number " >
+                                            <div class="input-group-prepend"><span class="input-group-text">Mobile<span class="asterisk">*</span></span></div>
+
+                                            <input   class="form-control" id="mobile" formControlName="mobile" type="text" placeholder="Primary Mobile number " >
+
                                             <div class="input-group-append"><span class="input-group-text"><i class="fa fa-mobile fa-1x" style="font-size: 23px;"></i></span>
                                             </div>
+
+
                                           </div>
+
+                                            <div class="ui-grid-col-6">
+                                              <span class="ui-message ui-messages-error ui-corner-all"
+                                              *ngIf="!userProfileForm.controls.mobile.valid && userProfileForm.controls.mobile.dirty">
+                                              <i class="fa fa-close"></i>
+                                                <span *ngIf="userProfileForm.controls.mobile.errors?.required">&nbsp;Mobile N. is required!</span>
+                                                <span *ngIf="userProfileForm.controls.mobile.errors?.minlength">&nbsp;Must be a valid Number!</span>
+                                                <span *ngIf="userProfileForm.controls.mobile.errors?.pattern">&nbsp;Only Number!</span>
+                                                
+                                              </span>
+                                            </div>
+
                                         </div>
 
                                   </div>
