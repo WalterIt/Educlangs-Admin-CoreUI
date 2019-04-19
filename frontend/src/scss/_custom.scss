@@ -69,3 +69,21 @@ img {
 .text-center {
   text-align: center!important;
 }
+
+
+.ui-corner-all {
+  border-radius: 0.25em;
+}
+
+
+.ui-message {
+  border: 1px solid;
+  margin: 0 .25em;
+  padding: .125em .25em;
+}
+
+.ui-messages-error {
+  color: #fff;
+  background-color: #f44336;
+  border-color: #f44336;
+}

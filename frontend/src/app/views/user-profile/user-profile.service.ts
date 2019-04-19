@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { UserProfile } from './user-profile';
+import { UserAddress } from './user-address';
+import { User } from '../../auth/user';
 
 
 @Injectable({
@@ -38,6 +40,22 @@ export class UserProfileService {
     return this.http.get<any>(`${this.baseUrl}/userprofile/${id}`)
     .toPromise()
     .then(res => <UserProfile[]>res.data)
+    .then(data => data);
+
+  }
+
+  getUserAddressDetails(id) {
+    return this.http.get<any>(`${this.baseUrl}/useraddress/${id}`)
+    .toPromise()
+    .then(res => <UserAddress[]>res.data)
+    .then(data => data);
+
+  }
+
+  getUserDetail(id) {
+    return this.http.get<any>(`${this.baseUrl}/users/${id}`)
+    .toPromise()
+    .then(res => <User[]>res.data)
     .then(data => data);
 
   }
