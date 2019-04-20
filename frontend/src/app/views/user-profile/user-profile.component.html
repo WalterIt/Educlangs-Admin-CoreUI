@@ -141,7 +141,7 @@
                                       autocomplete="email" class="form-control" id="email" formControlName="email" type="email" required>
                                     <div class="input-group-append"><span class="input-group-text"><i class="fa fa-envelope"></i></span></div>
                                   </div>
- 
+
                                   <div class="ui-grid-col-6">
                                     <span class="ui-message ui-messages-error ui-corner-all"
                                           *ngIf="!userProfileForm.controls.email.valid && userProfileForm.controls.email.dirty">
@@ -200,7 +200,7 @@
                                                 <span *ngIf="userProfileForm.controls.mobile.errors?.required">&nbsp;Mobile N. is required!</span>
                                                 <span *ngIf="userProfileForm.controls.mobile.errors?.minlength">&nbsp;Must be a valid Number!</span>
                                                 <span *ngIf="userProfileForm.controls.mobile.errors?.pattern">&nbsp;Only Number!</span>
-                                                
+
                                               </span>
                                             </div>
 
@@ -280,14 +280,82 @@
 
 
                                   <div class="form-group col-sm-6">
+
                                       <div class="form-group">
-                                          <div class="input-group">
-                                              <div class="input-group-prepend"><span class="input-group-text">Country</span></div><input
-                                                class="form-control" autocomplete="country" id="country" formControlName="country" type="text">
-                                              <div class="input-group-append"><span class="input-group-text">
-                                                  <i class="fa fa-flag fa-md "></i> </span>
-                                              </div>
+
+
+
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="height: 33px;/*! padding-right: 1px; */margin-right: -15px;width: 70px;">Country</span>
+
+
+
+
+
+                                              <!--
+
+
+                                                <div class="input-group-prepend"><span class="input-group-text">Country</span></div>
+
+
+                                                <input class="form-control" autocomplete="country" id="country" formControlName="country" type="text">
+
+                                                [(ngModel)]="showMoreControls" [ngModelOptions]="{standalone: true}"
+
+                                                <span class="input-group-text input-group-prepend">Country</span>
+
+
+                                              -->
+
+                                              <!--  COUNTRY DROPDOWN -->
+
+
+                                                <p-autoComplete
+                                                class="form-group col-sm-4"
+
+                                                id="country"  formControlName="country"
+
+                                                [(ngModel)]="customCountry" name="template"
+                                                [suggestions]="filteredCustomCountries" field="name"
+                                                [forceSelection]="true"
+                                                (completeMethod)="filterCustomCountries($event)" [size]="25"
+                                                [minLength]="1" placeholder="Type your Country 'a' or 'u'">
+
+
+
+                                                <ng-template let-country pTemplate="item" autocomplete="on">
+
+                                                  <div class="ui-helper-clearfix" class="template-border">
+                                                    <img
+                                                      src="/assets/data/images/country/{{country.code.toLowerCase()}}.png"
+                                                      class="country-image" />
+                                                    <div class="country-text"> {{country.name}}</div>
+                                                  </div>
+                                                </ng-template>
+
+
+
+
+                                              </p-autoComplete>
+
+
+
+
+
+
+
+
+
+                                              <!--
+
+
+                                              -->
                                           </div>
+
+
+
+
+
 
                                       </div>
 

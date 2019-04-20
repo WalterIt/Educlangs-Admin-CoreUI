@@ -6,9 +6,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserProfile } from './user-profile';
 import { User } from '../../auth/user';
 import { UserAddress } from './user-address';
+import Country from './service/country';
 
 import { UserProfileService } from './user-profile.service';
 import { AuthService } from '../../auth/_services/auth.service';
+import { CountryService } from './service/country.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -26,13 +28,21 @@ export class UserProfileComponent implements OnInit {
   userprofile1 = [];
   userAddress1 = [];
 
+  //  **  COUNTRY DROPDOWN //
+  country: Country;
+  countries: Country[];
+  customCountry: Country;
+  filteredCountries: Country[];
+  filteredCustomCountries: Country[];
+
 
 
 
   constructor(
     private userProfileService: UserProfileService,
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private countryService: CountryService
     ) {
       // this.createForm();
     }
@@ -54,7 +64,8 @@ export class UserProfileComponent implements OnInit {
         firstName: [this.userprofile.firstName],
         lastName: [this.userprofile.lastName],
         phoneHome: [this.userprofile.phoneHome],
-        mobile: [this.userprofile.mobile, Validators.compose([ Validators.minLength(9), Validators.required, Validators.pattern('[0-9-]+') ] )],
+        mobile: [this.userprofile.mobile, Validators.compose([
+                        Validators.minLength(9),   Validators.required, Validators.pattern('[0-9-]+') ] )],
         photo: [this.userprofile.photo],
         // status: [this.userprofile.status],
         // lang_id: [this.userprofile.lang_id],
@@ -98,6 +109,31 @@ export class UserProfileComponent implements OnInit {
 
     }
 
+    // COUNTRY DROPDOWN
+    filterCountries(event: any) {
+      let query = event.query;
+      this.countryService.getCountries().subscribe((countries: Country[]) => {
+          this.filteredCountries = this.filterCountry(query, countries);
+      });
+    }
+
+
+    filterCustomCountries(event: any) {
+      let query = event.query;
+      this.countryService.getCountries().subscribe((countries: Country[]) => {
+          this.filteredCustomCountries = this.filterCountry(query, countries);
+      });
+    }
+
+    filterCountry(query: any, countries: Country[]): Country[] {
+      let filtered: any[] = [];
+      for (let country of countries) {
+          if (country.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+              filtered.push(country);
+          }
+      }
+      return filtered;
+    }
 
     submit() {
       if (this.userProfileForm.valid) {
@@ -126,12 +162,13 @@ export class UserProfileComponent implements OnInit {
           this.userAddress1['city'] = this.userProfileForm.value.city;
           this.userAddress1['state'] = this.userProfileForm.value.state;
           this.userAddress1['zip'] = this.userProfileForm.value.zip;
-          this.userAddress1['country'] = this.userProfileForm.value.country;
+          this.userAddress1['country'] = this.userProfileForm.value.country['name'];
+
+
+
+          // country: {name: "Denmark", dial_code: "+45", code: "DK"}
 
           console.log(this.userAddress1);
-
-
-
 
 
       }
