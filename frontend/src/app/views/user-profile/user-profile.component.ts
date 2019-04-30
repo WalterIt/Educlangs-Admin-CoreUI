@@ -11,6 +11,7 @@ import Country from './service/country';
 import { UserProfileService } from './user-profile.service';
 import { AuthService } from '../../auth/_services/auth.service';
 import { CountryService } from './service/country.service';
+import { Column } from 'primeng/primeng';
 
 @Component({
   selector: 'app-user-profile',
@@ -27,6 +28,8 @@ export class UserProfileComponent implements OnInit {
   user1 = [];
   userprofile1 = [];
   userAddress1 = [];
+
+  data: any = [];
 
   //  **  COUNTRY DROPDOWN //
   country: Country;
@@ -93,7 +96,8 @@ export class UserProfileComponent implements OnInit {
 
 
       /**   USER PROFILE */
-      this.userProfileService.getUserDetails(this.auth.currentUser.id).then(userprofile => this.userProfileForm.patchValue(userprofile));
+      this.userProfileService.getUserProfileDetails(this.auth.currentUser.id)
+                .then(userprofile => this.userProfileForm.patchValue(userprofile));
 
       /**   USER EMAIL */
       this.userProfileService.getUserDetail(this.auth.currentUser.id).then(user => this.userProfileForm.patchValue(user));
@@ -103,9 +107,6 @@ export class UserProfileComponent implements OnInit {
       this.userProfileService.getUserAddressDetails(this.auth.currentUser.id)
             .then(userAddress => this.userProfileForm.patchValue(userAddress));
 
-
-
-      console.log(this.userProfileForm);
 
     }
 
@@ -135,43 +136,153 @@ export class UserProfileComponent implements OnInit {
       return filtered;
     }
 
-    submit() {
+    submit( ) {
+
       if (this.userProfileForm.valid) {
         // console.log(this.userProfileForm.value);
 
+        //  USER DATA
+        this.user1['email'] = this.userProfileForm.value.email;
 
-          //  USER DATA
-          this.user1['email'] = this.userProfileForm.value.email;
-          console.log(this.user1);
-
-
-          //  USERPROFILE DATA
-          this.userprofile1['gender'] = this.userProfileForm.value.gender;
-          this.userprofile1['firstName'] = this.userProfileForm.value.firstName;
-          this.userprofile1['lastName'] = this.userProfileForm.value.lastName;
-          this.userprofile1['phoneHome'] = this.userProfileForm.value.phoneHome;
-          this.userprofile1['mobile'] = this.userProfileForm.value.mobile;
-          this.userprofile1['photo'] = this.userProfileForm.value.photo;
-          this.userprofile1['birthdate'] = this.userProfileForm.value.birthdate;
-
-          console.log(this.userprofile1);
-
-          //  USER ADDRESS DATA  this.userAddress1
-          this.userAddress1['houseApNum'] = this.userProfileForm.value.houseApNum;
-          this.userAddress1['street'] = this.userProfileForm.value.street;
-          this.userAddress1['city'] = this.userProfileForm.value.city;
-          this.userAddress1['state'] = this.userProfileForm.value.state;
-          this.userAddress1['zip'] = this.userProfileForm.value.zip;
-          this.userAddress1['country'] = this.userProfileForm.value.country['name'];
+        // console.log(this.userProfileForm.value.email);
 
 
+        // console.log(this.auth.currentUser.email);
+        console.log(this.user1);  // ARRAY
 
-          // country: {name: "Denmark", dial_code: "+45", code: "DK"}
+        // this.auth.currentUser.id
+        if (this.auth.currentUser.email !== this.user1['email']) {
 
-          console.log(this.userAddress1);
+          let id = this.auth.currentUser.id;
+
+          this.userProfileService.editUserEmail(id, this.user1)
+            .subscribe(response => {
+
+              console.log('SUCCESSFULLY UpdateD Email!');
+
+            },
+              (error) => {
+                this.error = error.error;
+                console.log(this.error);
+            });
+
+
+
+            /*
+            onEditComplete(event: { column: Column, data: any }): void {
+              this.logs.push('onEditComplete -', JSON.stringify(event.data));
+              // let data = JSON.stringify(event.data);
+              let language = event.data;
+              // console.log('onEditComplete -', language);
+
+
+              let id = language.id;
+              // console.log('ID Accessed! ', id);
+              this.languageService.editLanguage(id, language)
+                .subscribe(response => {
+                  // this.isLoading = false;
+                  // this.language = response['data'];
+                },
+                (error) => {
+                  this.error = error.error;
+                  this.messages = [];
+                  if ((this.error['name'])) {
+                    this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['name'] });
+                  }
+
+                });
+            }
+            */
+
+
+
+          /*
+          this.unitService.editUnit(id, unit)
+          .subscribe(response => {
+            // this.isLoading = false;
+            // this.unit = response['data'];
+          },
+          (error) => {
+            this.error = error.error;
+            this.messages = [];
+
+            if ((this.error['l_id']) && (this.error['u_name'])) {
+              this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+              this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
+
+            } else if (this.error['l_id']) {
+                    this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
+            } else {
+                    this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
+            }
+          }
+          );
+          */
+
+
+
+        } else {
+          console.log('EMAIL: Do Nothing!');
+
+        }
+
+
+        //  USERPROFILE DATA
+        this.userprofile1['gender'] = this.userProfileForm.value.gender;
+        this.userprofile1['firstName'] = this.userProfileForm.value.firstName;
+        this.userprofile1['lastName'] = this.userProfileForm.value.lastName;
+        this.userprofile1['phoneHome'] = this.userProfileForm.value.phoneHome;
+        this.userprofile1['mobile'] = this.userProfileForm.value.mobile;
+        this.userprofile1['photo'] = this.userProfileForm.value.photo;
+        this.userprofile1['birthdate'] = this.userProfileForm.value.birthdate;
+
+        console.log(this.userprofile1);
+
+
+
+        //  USER ADDRESS DATA  this.userAddress1
+        this.userAddress1['houseApNum'] = this.userProfileForm.value.houseApNum;
+        this.userAddress1['street'] = this.userProfileForm.value.street;
+        this.userAddress1['city'] = this.userProfileForm.value.city;
+        this.userAddress1['state'] = this.userProfileForm.value.state;
+        this.userAddress1['zip'] = this.userProfileForm.value.zip;
+        this.userAddress1['country'] = this.userProfileForm.value.country['name'];
+
+
+
+
+        console.log(this.userAddress1);
 
 
       }
+
+      //  Check if USERPROFILE URL - userprofile/id exists
+      this.userProfileService.getUserProfileDetailsValidation(this.auth.currentUser.id)
+            .subscribe(
+              (response) => {
+                console.log('UserProfile Exists!');
+
+
+
+
+
+
+              },
+              (error) => {
+                  this.error = error.error;
+                 //  console.log(this.error);
+                  console.log('Create UserProfile & Address!');
+                }
+      );
+
+
+
+
+
+
+
+
+
     }
 
 

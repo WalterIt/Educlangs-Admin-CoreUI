@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { UserProfile } from './user-profile';
 import { UserAddress } from './user-address';
 import { User } from '../../auth/user';
+
+// Setup headers
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 
 
 @Injectable({
@@ -32,15 +41,62 @@ export class UserProfileService {
     return this.http.put(`${this.baseUrl}/userprofile/${id}`, request);  // return this.http.put<Bike>(this.bikesUrl + `/${id}`, bike)
   }
 
+
+  editUserEmail(id, request) {
+    return this.http.put(`${this.baseUrl}/users/${id}`, request);
+  }
+
+
+
+
+  /*
+
+  editUserEmail(id, user: User): Observable<User> {
+
+    const request = JSON.stringify(
+      { email: user.email}
+    );
+
+    return this.http.put(`${this.baseUrl}/users/${id}`, request, httpOptions)  // ; // ;(this.registerUrl, request, httpOptions)
+      .pipe(
+        map((response: User) => {
+
+          // Receive jwt token in the response
+          // const token: string = response['access_token'];
+          // If we have a token, proceed
+          /*
+          if (token) {
+            this.setToken(token);
+            this.getUser().subscribe();
+          }
+          return response;
+        }) // , catchError(error => this.handleError(error))
+      );
+  }
+  */
+
+
+
+
+
+
   deleteUserProfile(id) {
   return this.http.delete(`${this.baseUrl}/userprofile/${id}`);
   }
 
-  getUserDetails(id) {
+  getUserProfileDetails(id) {
     return this.http.get<any>(`${this.baseUrl}/userprofile/${id}`)
     .toPromise()
     .then(res => <UserProfile[]>res.data)
     .then(data => data);
+
+  }
+
+  getUserProfileDetailsValidation(id) {
+    return this.http.get<any>(`${this.baseUrl}/userprofile/${id}`);
+    // .toPromise()
+    // .then(res => <UserProfile[]>res.data)
+    // .then(data => data);
 
   }
 

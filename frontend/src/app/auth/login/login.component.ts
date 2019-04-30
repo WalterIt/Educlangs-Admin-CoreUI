@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.authService.onLogin(this.user).subscribe(
       (response) => {
         // get return url from route parameters or default to '/'
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/user-profile']);
       },
       (error) => {
         this.error = error.error;

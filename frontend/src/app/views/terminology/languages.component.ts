@@ -81,11 +81,11 @@ export class LanguagesComponent implements OnInit {
   }
 
 
-  onEditComplete(event: { column: Column, data: any }): void {
+  onEditComplete(event: {  data: any }): void {
     this.logs.push('onEditComplete -', JSON.stringify(event.data));
     // let data = JSON.stringify(event.data);
     let language = event.data;
-    // console.log('onEditComplete -', language);
+    console.log('onEditComplete -', language);
 
 
     let id = language.id;

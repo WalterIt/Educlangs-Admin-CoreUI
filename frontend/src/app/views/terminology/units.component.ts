@@ -141,7 +141,7 @@ export class UnitsComponent implements OnInit {
     this.logs.push('onEditComplete -', JSON.stringify(event.data));
     // let data = JSON.stringify(event.data);
     let unit = event.data;
-    // console.log('onEditComplete -', unit);
+    console.log('onEditComplete -', unit);
 
     let id = unit.id;
     // console.log('ID Accessed! ', id);

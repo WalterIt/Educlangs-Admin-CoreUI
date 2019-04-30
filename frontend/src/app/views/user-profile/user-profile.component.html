@@ -286,10 +286,8 @@
 
 
                                         <div class="input-group">
-                                            <span class="input-group-text" style="height: 33px;/*! padding-right: 1px; */margin-right: -15px;width: 70px;">Country</span>
-
-
-
+                                            <span class="input-group-text" style="height: 33px;/*! padding-right: 1px; */margin-right: -15px;width: 70px;">Country
+                                              <span class="asterisk">*</span> </span>
 
 
                                               <!--
@@ -319,7 +317,8 @@
                                                 [suggestions]="filteredCustomCountries" field="name"
                                                 [forceSelection]="true"
                                                 (completeMethod)="filterCustomCountries($event)" [size]="25"
-                                                [minLength]="1" placeholder="Type your Country 'a' or 'u'">
+                                                [minLength]="1" placeholder="Type your Country 'a' or 'u'"
+                                                required>
 
 
 
@@ -336,11 +335,8 @@
 
 
 
+
                                               </p-autoComplete>
-
-
-
-
 
 
 
@@ -351,6 +347,8 @@
 
                                               -->
                                           </div>
+
+
 
 
 
