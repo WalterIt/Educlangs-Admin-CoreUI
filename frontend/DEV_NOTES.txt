@@ -4,7 +4,7 @@ NEXT
 
 FRONT: USER PROFILE Implement Components Model Service (4h) - TOTAL TIME:
 
-
+- IMPLEMENTED FUNCTION ADD: UserProfile & UserAddress - 1h 20 min
 
 
 ###################################################################

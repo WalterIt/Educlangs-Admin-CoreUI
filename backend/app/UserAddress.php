@@ -11,8 +11,8 @@ class UserAddress extends Model
     // protected $primaryKey = 'd_id';
     // public $timestamps = false;
     protected $fillable = [
-        "id",
-        "user_id",
+        'id',
+        // "user_id",
         'houseApNum',
         'street' ,
         'city' ,
@@ -21,15 +21,6 @@ class UserAddress extends Model
         'country'
     ];
 
-        /**
-     * Relationship.
-     *
-     * @var array
-     */
-
-    public function userProfile() {
-        return $this->hasOne('App\UserProfile');
-    }
 
 
 }

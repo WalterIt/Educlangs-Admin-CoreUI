@@ -33,6 +33,9 @@ class UserAddressController extends Controller
      */
     public function store(Request $request)
     {
+        /*   DEBUG  */
+        // dd($request->all());
+
         $validator = Validator::make($request->all(), [
             'country'
         ]);
@@ -42,15 +45,15 @@ class UserAddressController extends Controller
 
         // Creating a record in a different way
         $createItem = UserAddress::create([
-            'user_id' => $request->user,
-            // 'user_id' => $request->user()->id,
+            // 'user_id' => $request->user,
+            'id' => $request->user()->id,
 
-            'houseApNum' =>$request->houseApNum,
-            'street' =>$request->street,
-            'city' =>$request->city,
-            'zip' =>$request->zip,
-            'state' =>$request->state,
-            'country' =>$request->country,
+            'houseApNum' => $request->houseApNum,
+            'street' => $request->street,
+            'city' =>   $request->city,
+            'zip' =>    $request->zip,
+            'state' =>  $request->state,
+            'country' =>    $request->country
         ]);
         return new UsersAddressResource($createItem);
 

@@ -239,19 +239,57 @@ export class UserProfileComponent implements OnInit {
         console.log(this.userprofile1);
 
 
+        // let id = this.auth.currentUser.id;
+
+          this.userProfileService.addUserProfile(this.userProfileForm.value)
+            .subscribe(response => {
+
+              console.log('SUCCESSFULLY UpdateD USERPROFILE!');
+
+            },
+              (error) => {
+                this.error = error.error;
+                console.log(this.error);
+            });
+
+
 
         //  USER ADDRESS DATA  this.userAddress1
-        this.userAddress1['houseApNum'] = this.userProfileForm.value.houseApNum;
-        this.userAddress1['street'] = this.userProfileForm.value.street;
-        this.userAddress1['city'] = this.userProfileForm.value.city;
-        this.userAddress1['state'] = this.userProfileForm.value.state;
-        this.userAddress1['zip'] = this.userProfileForm.value.zip;
-        this.userAddress1['country'] = this.userProfileForm.value.country['name'];
+        this.userAddress['houseApNum'] = this.userProfileForm.value.houseApNum;
+        this.userAddress['street'] = this.userProfileForm.value.street;
+        this.userAddress['city'] = this.userProfileForm.value.city;
+        this.userAddress['state'] = this.userProfileForm.value.state;
+        this.userAddress['zip'] = this.userProfileForm.value.zip;
+        this.userAddress['country'] = this.userProfileForm.value.country['name'];
+
+        /*
+
+
+        address.push(this.userProfileForm.value.houseApNum);
+        address.push(this.userProfileForm.value.street);
+        address.push(this.userProfileForm.value.city);
+        address.push(this.userProfileForm.value.state);
+        address.push(this.userProfileForm.value.zip);
+        address.push(this.userProfileForm.value.country['name']);
+        */
 
 
 
 
-        console.log(this.userAddress1);
+
+        console.log(this.userAddress);
+        console.log(this.userProfileForm.value);
+
+        this.userProfileService.addUserAddress(this.userAddress)
+            .subscribe(response => {
+
+              console.log('SUCCESSFULLY UpdateD USERADDRESS!');
+
+            },
+              (error) => {
+                this.error = error.error;
+                console.log(this.error);
+            });
 
 
       }

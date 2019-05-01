@@ -15,7 +15,7 @@ class UserProfile extends Model
         // 'user_id'   ,
 
         // 'user_address_user_id',
-
+        'id',
         'gender'   ,
         'firstName' ,
         'lastName'  ,
@@ -25,18 +25,10 @@ class UserProfile extends Model
         'photo'     ,
         'status'    , // '1-admin 2-Colaborador 3-User Premium 4-UsÃ¡rio PadrÃ£o',
         'lang_id'   ,  // System language
-        'birthdate' ,
+        'birthdate'
     ];
 
-    /**
-     * Relationship.
-     *
-     * @var string
-     */
 
-    public function userAddress() {
-        return $this->belongsTo('App\UserAddress', 'id');
-    }
 
 
 

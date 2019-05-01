@@ -34,8 +34,8 @@ class UserProfileController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'firstName' ,
-            'lastName'  ,
+            // 'firstName' ,
+            // 'lastName'  ,
             'mobile'
         ]);
         if ($validator->fails()) {
@@ -44,7 +44,7 @@ class UserProfileController extends Controller
 
         // Creating a record in a different way
         $createItem = UserProfile::create([
-            // 'user_id' => $request->user()->id,
+            'id' => $request->user()->id,
             'gender' => $request->gender,
             'firstName'  => $request->firstName,
             'lastName'   => $request->lastName,

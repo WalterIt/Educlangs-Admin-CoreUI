@@ -8,6 +8,9 @@ BACK: Users Profile
 php artisan route:list
 
 
+- IMPLEMENT FUNCTION ADD: UserProfile & UserAddress - 1h 20 min
+
+
 
 ###########################################################################33
 
