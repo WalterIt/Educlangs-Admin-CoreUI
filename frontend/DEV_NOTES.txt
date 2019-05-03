@@ -1,6 +1,11 @@
 NEXT
 
 
+P1 ADMIN - FRONT-BACK - FRONT: Users Profile - IMPLEMENT FUNCTION EDIT(UPDATE): UserEmail (2h)
+
+git commit -m'IMPLEMENTED FUNCTION EDIT(UPDATE): UserEmail | Updated user-profile comp.'
+
+#################################################################################
 
 FRONT: USER PROFILE Implement Components Model Service (4h) - TOTAL TIME:
 

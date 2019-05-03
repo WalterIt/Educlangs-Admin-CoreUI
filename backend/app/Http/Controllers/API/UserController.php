@@ -79,7 +79,7 @@ class UserController extends Controller
 
           $validator = Validator::make($request->all(), [
 
-              "email"  => 'required'
+            'email' => 'required|string|email|max:55'
               ]);
 
           if ($validator->fails()) {
