@@ -52,7 +52,7 @@ class UserProfileController extends Controller
             'phoneComercial'  => $request->phoneComercial,
             'mobile'     => $request->mobile,
             'photo'      => $request->photo,
-            'status'     => $request->status, // '1-admin 2-Colaborador 3-User Premium 4-UsÃ¡rio PadrÃ£o',
+            // 'status'     => $request->status, // '1-admin 2-Colaborador 3-User Premium 4-UsÃ¡rio PadrÃ£o',
             'lang_id'    => $request->lang_id,  // System language
             'birthdate'  => $request->birthdate
 

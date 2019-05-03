@@ -6,6 +6,10 @@ FRONT: USER PROFILE Implement Components Model Service (4h) - TOTAL TIME:
 
 - IMPLEMENTED FUNCTION ADD: UserProfile & UserAddress - 1h 20 min
 
+P1 ADMIN - FRONT-BACK - FRONT: Users Profile - IMPLEMENT FUNCTION EDIT(UPDATE): UserProfile & UserAddress (3h) 2h 10 min
+
+git commit -m'RETESTED CREATED FUNCTION | IMPLEMENTED FUNCTION EDIT(UPDATE): UserProfile & UserAddress | Implemented Messages'
+
 
 ###################################################################
 

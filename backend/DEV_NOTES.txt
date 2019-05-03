@@ -10,6 +10,9 @@ php artisan route:list
 
 - IMPLEMENT FUNCTION ADD: UserProfile & UserAddress - 1h 20 min
 
+        /*   DEBUG  */
+        // dd($request->all());
+
 
 
 ###########################################################################33

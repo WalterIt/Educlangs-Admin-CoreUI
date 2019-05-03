@@ -45,6 +45,10 @@ export class UserProfileService {
     return this.http.put(`${this.baseUrl}/userprofile/${id}`, request);  //  return this.http.put<Bike>(this.bikesUrl + `/${id}`, bike)
   }
 
+  editUserAddress(id, request) {
+    return this.http.put(`${this.baseUrl}/useraddress/${id}`, request);  //  return this.http.put<Bike>(this.bikesUrl + `/${id}`, bike)
+  }
+
 
   editUserEmail(id, request) {
     return this.http.put(`${this.baseUrl}/users/${id}`, request);

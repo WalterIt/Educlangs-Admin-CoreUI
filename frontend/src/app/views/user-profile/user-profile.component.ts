@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
+import { Column, Message } from 'primeng/primeng';
 
 import { UserProfile } from './user-profile';
 import { User } from '../../auth/user';
@@ -11,7 +12,6 @@ import Country from './service/country';
 import { UserProfileService } from './user-profile.service';
 import { AuthService } from '../../auth/_services/auth.service';
 import { CountryService } from './service/country.service';
-import { Column } from 'primeng/primeng';
 
 @Component({
   selector: 'app-user-profile',
@@ -30,6 +30,9 @@ export class UserProfileComponent implements OnInit {
   userAddress1 = [];
 
   data: any = [];
+
+  msgs: Message[] = [];
+  messages: Message[] = [];
 
   //  **  COUNTRY DROPDOWN //
   country: Country;
@@ -158,7 +161,7 @@ export class UserProfileComponent implements OnInit {
           this.userProfileService.editUserEmail(id, this.user1)
             .subscribe(response => {
 
-              console.log('SUCCESSFULLY UpdateD Email!');
+              console.log('SUCCESSFULLY CREATED Email!');
 
             },
               (error) => {
@@ -196,30 +199,6 @@ export class UserProfileComponent implements OnInit {
 
 
 
-          /*
-          this.unitService.editUnit(id, unit)
-          .subscribe(response => {
-            // this.isLoading = false;
-            // this.unit = response['data'];
-          },
-          (error) => {
-            this.error = error.error;
-            this.messages = [];
-
-            if ((this.error['l_id']) && (this.error['u_name'])) {
-              this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
-              this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
-
-            } else if (this.error['l_id']) {
-                    this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['l_id'] });
-            } else {
-                    this.messages.push({severity: 'error', summary: 'Error Message', detail: this.error['u_name'] });
-            }
-          }
-          );
-          */
-
-
 
         } else {
           console.log('EMAIL: Do Nothing!');
@@ -227,72 +206,31 @@ export class UserProfileComponent implements OnInit {
         }
 
 
-        //  USERPROFILE DATA
-        this.userprofile1['gender'] = this.userProfileForm.value.gender;
-        this.userprofile1['firstName'] = this.userProfileForm.value.firstName;
-        this.userprofile1['lastName'] = this.userProfileForm.value.lastName;
-        this.userprofile1['phoneHome'] = this.userProfileForm.value.phoneHome;
-        this.userprofile1['mobile'] = this.userProfileForm.value.mobile;
-        this.userprofile1['photo'] = this.userProfileForm.value.photo;
-        this.userprofile1['birthdate'] = this.userProfileForm.value.birthdate;
-
-        console.log(this.userprofile1);
-
-
-        // let id = this.auth.currentUser.id;
-
-          this.userProfileService.addUserProfile(this.userProfileForm.value)
-            .subscribe(response => {
-
-              console.log('SUCCESSFULLY UpdateD USERPROFILE!');
-
-            },
-              (error) => {
-                this.error = error.error;
-                console.log(this.error);
-            });
-
-
-
-        //  USER ADDRESS DATA  this.userAddress1
-        this.userAddress['houseApNum'] = this.userProfileForm.value.houseApNum;
-        this.userAddress['street'] = this.userProfileForm.value.street;
-        this.userAddress['city'] = this.userProfileForm.value.city;
-        this.userAddress['state'] = this.userProfileForm.value.state;
-        this.userAddress['zip'] = this.userProfileForm.value.zip;
-        this.userAddress['country'] = this.userProfileForm.value.country['name'];
-
-        /*
-
-
-        address.push(this.userProfileForm.value.houseApNum);
-        address.push(this.userProfileForm.value.street);
-        address.push(this.userProfileForm.value.city);
-        address.push(this.userProfileForm.value.state);
-        address.push(this.userProfileForm.value.zip);
-        address.push(this.userProfileForm.value.country['name']);
-        */
-
-
-
-
-
-        console.log(this.userAddress);
-        console.log(this.userProfileForm.value);
-
-        this.userProfileService.addUserAddress(this.userAddress)
-            .subscribe(response => {
-
-              console.log('SUCCESSFULLY UpdateD USERADDRESS!');
-
-            },
-              (error) => {
-                this.error = error.error;
-                console.log(this.error);
-            });
-
 
       }
+
+          //  CREATE USERPROFILE DATA
+          this.userprofile1['gender'] = this.userProfileForm.value.gender;
+          this.userprofile1['firstName'] = this.userProfileForm.value.firstName;
+          this.userprofile1['lastName'] = this.userProfileForm.value.lastName;
+          this.userprofile1['phoneHome'] = this.userProfileForm.value.phoneHome;
+          this.userprofile1['mobile'] = this.userProfileForm.value.mobile;
+          this.userprofile1['photo'] = this.userProfileForm.value.photo;
+          this.userprofile1['birthdate'] = this.userProfileForm.value.birthdate;
+
+          console.log(this.userprofile1);
+
+          //  CREATE USER ADDRESS DATA  this.userAddress1
+          this.userAddress['houseApNum'] = this.userProfileForm.value.houseApNum;
+          this.userAddress['street'] = this.userProfileForm.value.street;
+          this.userAddress['city'] = this.userProfileForm.value.city;
+          this.userAddress['state'] = this.userProfileForm.value.state;
+          this.userAddress['zip'] = this.userProfileForm.value.zip;
+          this.userAddress['country'] = this.userProfileForm.value.country['name'];
+
+          console.log(this.userAddress);
+
+
 
       //  Check if USERPROFILE URL - userprofile/id exists
       this.userProfileService.getUserProfileDetailsValidation(this.auth.currentUser.id)
@@ -300,18 +238,74 @@ export class UserProfileComponent implements OnInit {
               (response) => {
                 console.log('UserProfile Exists!');
 
+                // UPDATE USER PROFILE
+                this.userProfileService.editUserProfile(this.auth.currentUser.id, this.userProfileForm.value)
+                .subscribe(response => {
 
+                  console.log('SUCCESSFULLY CREATED USERPROFILE!');
+                  // tslint:disable-next-line:max-line-length
+                  this.messages = [];
+                  // tslint:disable-next-line:max-line-length
+                  this.messages.push({severity: 'success', summary: 'Success Message', detail: 'User Profile has been updated successfully!' });
 
+                },
+                  (error) => {
+                    this.error = error.error;
+                    console.log(this.error);
+                });
 
+                // UPDATE USER ADDRESS
+                this.userProfileService.editUserAddress(this.auth.currentUser.id, this.userAddress)
+                .subscribe(response => {
+
+                  // console.log('SUCCESSFULLY UpdateD USERADDRESS!');
+                  // tslint:disable-next-line:max-line-length
+                  // this.messages.push({severity: 'success', summary: 'Success Message', detail: 'User Address has been updated successfully!' });
+
+                },
+                  (error) => {
+                    this.error = error.error;
+                    console.log(this.error);
+                });
 
 
               },
               (error) => {
                   this.error = error.error;
                  //  console.log(this.error);
-                  console.log('Create UserProfile & Address!');
+                 // console.log('Create UserProfile & Address!');
+
+                 // CREATE USER PROFILE
+                    this.userProfileService.addUserProfile(this.userProfileForm.value)
+                      .subscribe(response => {
+
+                        // console.log('SUCCESSFULLY CREATED USERPROFILE!');
+                        // tslint:disable-next-line:max-line-length
+                        this.messages = [];
+                        // tslint:disable-next-line:max-line-length
+                        this.messages.push({severity: 'success', summary: 'Success Message', detail: 'User Profile has been created successfully!' });
+
+                      },
+                        (error) => {
+                          this.error = error.error;
+                          console.log(this.error);
+                      });
+
+
+                      // CREATE USER ADDRESS
+                      this.userProfileService.addUserAddress(this.userAddress)
+                          .subscribe(response => {
+
+                            // console.log('SUCCESSFULLY UpdateD USERADDRESS!');
+
+                          },
+                            (error) => {
+                              this.error = error.error;
+                              console.log(this.error);
+                          });
+
                 }
-      );
+            );
 
 
 
