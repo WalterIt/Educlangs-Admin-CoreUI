@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { UserProfile } from './user-profile';
 import { UserAddress } from './user-address';
-import { User } from '../../auth/user';
+import { User } from '../../../auth/user';
 
 // Setup headers
 const httpOptions = {

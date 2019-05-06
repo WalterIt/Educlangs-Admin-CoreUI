@@ -4,12 +4,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Column, Message } from 'primeng/primeng';
 
-import { UserProfile } from './user-profile';
+import { UserProfile } from './service/user-profile';
 import { User } from '../../auth/user';
-import { UserAddress } from './user-address';
+import { UserAddress } from './service/user-address';
 import Country from './service/country';
 
-import { UserProfileService } from './user-profile.service';
+import { UserProfileService } from './service/user-profile.service';
 import { AuthService } from '../../auth/_services/auth.service';
 import { CountryService } from './service/country.service';
 
