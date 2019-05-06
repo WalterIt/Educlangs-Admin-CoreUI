@@ -1,5 +1,11 @@
 NEXT
 
+P1 ADMIN: FRONT- DEBUG: Dictionary component PAGINATION#Debugging
+!! STILL SAME PROBLEM !!!
+
+
+
+###############################################################################################
 
 P1 ADMIN - FRONT-BACK - FRONT: Users Profile - IMPLEMENT FUNCTION EDIT(UPDATE): UserEmail (2h)
 

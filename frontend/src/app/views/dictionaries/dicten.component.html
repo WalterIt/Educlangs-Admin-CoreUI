@@ -20,10 +20,10 @@
       <!--   DATATABLE  -->
 
       <p-dataTable
-          class="table table-bordered table-striped table-sm"
-          [value]="dictens" [editable]="true" [globalFilter]="gb" #datatable [rows]="25" [paginator]="true"
-          [pageLinks]="25" [rowsPerPageOptions]="[25, 50, 100]" paginatorPosition="bottom" reorderableColumns="true"
-          resizableColumns="true" (onEditComplete)="onEditComplete($event)">
+      class="table table-bordered table-striped table-sm"
+      [value]="dictens" [editable]="true" [globalFilter]="gb" #datatable [rows]="50" [paginator]="true"
+      [pageLinks]="9"  [rowsPerPageOptions]="[50, 100, 200]" paginatorPosition="bottom" reorderableColumns="true"
+      resizableColumns="true" (onEditComplete)="onEditComplete($event)">
 
 
         <!--  -->

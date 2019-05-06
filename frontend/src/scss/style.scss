@@ -4,15 +4,15 @@
 // Import styles
 @import "~@coreui/coreui/scss/coreui";
 
-
+// If you want to add something do it here
+@import "custom";
 
 // Vendor files
 @import "~primeng/resources/primeng.min.css";
 
 @import "~primeng/resources/themes/bootstrap/theme.css";
 
-// If you want to add something do it here
-@import "custom";
+
 
 
 
