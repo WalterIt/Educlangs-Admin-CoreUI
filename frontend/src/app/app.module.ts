@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -70,6 +71,7 @@ import { GrammarClassService } from './views/terminology/shared/services/grammar
 import { GrammarTopicService } from './views/terminology/shared/services/grammar-topic.service';
 import { VocabularyTopicService } from './views/terminology/shared/services/vocabulary-topic.service';
 import { DictenService } from './views/dictionaries/dicten.service';
+import { CountryService } from './views/user-profile/service/country.service';
 
 @NgModule({
   imports: [
@@ -86,7 +88,8 @@ import { DictenService } from './views/dictionaries/dicten.service';
     TabsModule.forRoot(),
     ChartsModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
 
     /*
     TableModule,
@@ -123,6 +126,7 @@ import { DictenService } from './views/dictionaries/dicten.service';
     VocabularyTopicService,
     DictenService,
     HttpErrorHandler,
+    CountryService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptorService ,

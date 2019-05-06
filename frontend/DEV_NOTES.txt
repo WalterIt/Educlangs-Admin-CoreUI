@@ -1,5 +1,15 @@
 NEXT
 
+
+P1 ADMIN: FRONT- DEBUG: Dictionary component PAGINATION#Debugging
+
+- Recreate User Profile BACK-FRONT from BACK_FRONT_14/Errors-Messages (4h)
+
+ng g m user-profile --routing
+
+##########################################################################
+
+
  FRONT- IMPLEMENT HANDLE ERRORS TO ALL Components
 
 - Implement Error Msgs in Grammar Class Comp (0.5h) -

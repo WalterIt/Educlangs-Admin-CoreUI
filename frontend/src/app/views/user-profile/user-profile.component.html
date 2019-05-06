@@ -1,0 +1,472 @@
+<div class="animated fadeIn">
+
+
+  <div class="card">
+      <div class="card-header"><strong>USER NAME  </strong> </div>
+
+      <div class="card-body">
+
+  <div class="row">
+
+      <!--left col-->
+      <div class="col-sm-3">
+          <div class="text-center">
+              <img src="assets/img/avatars/5.jpg" class="avatar1 img-circle1 img-thumbnail1" alt="avatar">
+
+
+              <h6>Upload a different photo...</h6>
+
+              <form *ngIf="userprofile; else loading" [formGroup]="userProfileForm" (ngSubmit)="submit()"  class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate enctype="multipart/form-data">
+
+                <!--
+                  <form *ngIf="user | async; else loading" [formGroup]="form" (ngSubmit)="submit()">
+                -->
+
+                <input type="file" id="photo" formControlName="photo" class="text-center center-block file-upload">
+
+              </form>
+
+          </div><br>
+
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+              <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+            </div>
+
+
+            <ul class="list-group">
+              <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            </ul>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Social Media</div>
+              <div class="panel-body">
+                <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i
+                  class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+              </div>
+
+          </div>
+
+      </div>
+
+
+
+      <!--right col-->
+      <div class="col-md-9">
+
+          <p-tabView>
+              <p-tabPanel header="User Profile" leftIcon="pi pi-user">
+
+
+                  <div class="row">
+
+
+                      <div class="card">
+                        <!--  <div class="card-header"><strong>USER PROFILE</strong> </div> -->
+                        <div class="card-body">
+                          <!--<form  class="form-horizontal ng-untouched ng-pristine ng-valid" enctype="multipart/form-data"
+                            method="post" novalidate="">
+
+                          -->
+
+
+                          <!--
+
+                          -->
+                          <form *ngIf="userprofile; else loading" [formGroup]="userProfileForm" (ngSubmit)="submit()"  class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate enctype="multipart/form-data">
+
+
+
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">Gender</span></div>
+
+                            <div class="col-md-9 col-form-label">
+                                <div class="form-check form-check-inline mr-1" id="gender">
+
+                                  <input class="form-check-input"  id="inlineRadio1" formControlName="gender" type="radio" value="Male" checked="checked">
+                                  <label class="form-check-label" for="inlineRadio1">Male</label></div>
+                                <div class="form-check form-check-inline mr-1">
+                                  <input class="form-check-input" id="inlineRadio2" formControlName="gender" type="radio" value="Female">
+                                  <label class="form-check-label"    for="inlineRadio2">Female</label></div>
+                                <div class="form-check form-check-inline mr-1">
+                                  <input class="form-check-input" id="inlineRadio3"   formControlName="gender" type="radio" value="Other">
+                                  <label class="form-check-label"  for="inlineRadio3">Other</label></div>
+                              </div>
+                          </div>
+                        </div>
+
+
+
+
+
+
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend"><span class="input-group-text">Firstname</span></div><input
+                                        class="form-control" autocomplete="firstName"  id="firstName" formControlName="firstName" type="text">
+                                      <div class="input-group-append"><span class="input-group-text"><i class="fa fa-user"></i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                      <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text">Lastname</span></div><input
+                                          class="form-control" autocomplete="lastName"  id="lastName" formControlName="lastName" type="text">
+                                          <span> </span>
+                                        <div class="input-group-append"><span class="input-group-text"><i class="fa fa-user"></i></span>
+                                        </div>
+                                      </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                  <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text">Email<span class="asterisk">*</span></span></div><input
+                                      autocomplete="email" class="form-control" id="email" formControlName="email" type="email" required>
+                                    <div class="input-group-append"><span class="input-group-text"><i class="fa fa-envelope"></i></span></div>
+                                  </div>
+
+                                  <div class="ui-grid-col-6">
+                                    <span class="ui-message ui-messages-error ui-corner-all"
+                                          *ngIf="!userProfileForm.controls.email.valid && userProfileForm.controls.email.dirty">
+                                                        <i class="fa fa-close"></i>
+                                                        <span *ngIf="userProfileForm.controls.email.errors?.required">&nbsp;Email is required!</span>
+                                                        <span *ngIf="userProfileForm.controls.email.errors?.email">&nbsp;Must be a valid Email!</span>
+                                    </span>
+                                  </div>
+
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend"><span class="input-group-text">Birthday</span></div>
+                                      <input class="form-control" id="birthdate" formControlName="birthdate"
+                                    placeholder="Birthdate" type="date">
+                                      <div class="input-group-append"><span class="input-group-text"><i class="fa fa-birthday-cake"></i></span></div>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+
+
+                              <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend"><span class="input-group-text">Phone</span></div><input
+                                        autocomplete="phoneHome" class="form-control" id="phoneHome" formControlName="phoneHome" type="text">
+                                      <div class="input-group-append"><span class="input-group-text">
+                                        <i class="fa fa-phone fa-1x" style="font-size: 20px;"></i></span></div>
+                                    </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                      <div class="form-group">
+                                          <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text">Mobile<span class="asterisk">*</span></span></div>
+
+                                            <input   class="form-control" id="mobile" formControlName="mobile" type="text" placeholder="Primary Mobile number " >
+
+                                            <div class="input-group-append"><span class="input-group-text"><i class="fa fa-mobile fa-1x" style="font-size: 23px;"></i></span>
+                                            </div>
+
+
+                                          </div>
+
+                                            <div class="ui-grid-col-6">
+                                              <span class="ui-message ui-messages-error ui-corner-all"
+                                              *ngIf="!userProfileForm.controls.mobile.valid && userProfileForm.controls.mobile.dirty">
+                                              <i class="fa fa-close"></i>
+                                                <span *ngIf="userProfileForm.controls.mobile.errors?.required">&nbsp;Mobile N. is required!</span>
+                                                <span *ngIf="userProfileForm.controls.mobile.errors?.minlength">&nbsp;Must be a valid Number!</span>
+                                                <span *ngIf="userProfileForm.controls.mobile.errors?.pattern">&nbsp;Only Number!</span>
+
+                                              </span>
+                                            </div>
+
+                                        </div>
+
+                                  </div>
+                                </div>
+
+
+                              <h3>Address</h3>
+
+
+                            <div class="row">
+                              <div class="form-group col-sm-4">
+
+                                  <div class="input-group">
+                                      <div class="input-group-prepend"><span class="input-group-text">N. Apt/House</span></div><input
+                                        class="form-control" id="houseApNum" formControlName="houseApNum" type="text">
+
+                                  </div>
+                              </div>
+
+                              <div class="form-group col-sm-8">
+
+                                  <div class="input-group">
+                                      <div class="input-group-prepend"><span class="input-group-text">Street</span></div><input
+                                        class="form-control" autocomplete="street" id="street" formControlName="street" type="text">
+                                      <div class="input-group-append"><span class="input-group-text">
+                                          <i class="fa fa-home fa-1x" style="font-size: 23px;"></i> </span>
+                                      </div>
+                                    </div>
+
+
+
+                              </div>
+                            </div>
+
+
+                              <div class="row">
+                                <div class="form-group col-sm-6">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text">City</span></div><input
+                                          class="form-control" autocomplete="city" id="city" formControlName="city" type="text">
+                                        <div class="input-group-append"><span class="input-group-text">
+                                            <i class="fa fa-map-marker fa-1x" ></i> </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-sm-6">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text">State</span></div><input
+                                          class="form-control" autocomplete="state" id="state" formControlName="state" type="text">
+                                        <div class="input-group-append"><span class="input-group-text">
+                                            <i class="fa fa-map-marker fa-1x" ></i> </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                              </div>
+
+
+
+                              <div class="row">
+                                  <div class="form-group col-sm-6">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend"><span class="input-group-text">Postal Code</span></div><input
+                                            class="form-control" id="zip" formControlName="zip" type="text">
+
+                                      </div>
+
+                                  </div>
+
+
+                                  <div class="form-group col-sm-6">
+
+                                      <div class="form-group">
+
+
+
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="height: 33px;/*! padding-right: 1px; */margin-right: -15px;width: 70px;">Country
+                                              <span class="asterisk">*</span> </span>
+
+
+                                              <!--
+
+
+                                                <div class="input-group-prepend"><span class="input-group-text">Country</span></div>
+
+
+                                                <input class="form-control" autocomplete="country" id="country" formControlName="country" type="text">
+
+                                                [(ngModel)]="showMoreControls" [ngModelOptions]="{standalone: true}"
+
+                                                <span class="input-group-text input-group-prepend">Country</span>
+
+
+                                              -->
+
+                                              <!--  COUNTRY DROPDOWN -->
+
+
+                                                <p-autoComplete
+                                                class="form-group col-sm-4"
+
+                                                id="country"  formControlName="country"
+
+                                                [(ngModel)]="customCountry" name="template"
+                                                [suggestions]="filteredCustomCountries" field="name"
+                                                [forceSelection]="true"
+                                                (completeMethod)="filterCustomCountries($event)" [size]="25"
+                                                [minLength]="1" placeholder="Type your Country 'a' or 'u'"
+                                                required>
+
+
+
+                                                <ng-template let-country pTemplate="item" autocomplete="on">
+
+                                                  <div class="ui-helper-clearfix" class="template-border">
+                                                    <img
+                                                      src="/assets/data/images/country/{{country.code.toLowerCase()}}.png"
+                                                      class="country-image" />
+                                                    <div class="country-text"> {{country.name}}</div>
+                                                  </div>
+                                                </ng-template>
+
+
+
+
+
+                                              </p-autoComplete>
+
+
+
+
+
+                                              <!--
+
+
+                                              -->
+                                          </div>
+
+
+
+
+
+
+
+
+                                      </div>
+
+                                    </div>
+
+
+                              </div>
+
+
+
+
+
+                        <div class="card-footer">
+                          <button class="btn btn-md btn-primary" type="submit" [disabled]="!userProfileForm.valid">
+                            <i class="fa fa-dot-circle-o"></i> Submit</button> &nbsp;
+
+                            <button class="btn btn-md btn-danger" type="reset"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+
+                          </form>
+
+
+                        </div>
+
+
+
+
+                      </div>
+
+
+                    </div>
+
+
+              </p-tabPanel>
+
+
+
+              <p-tabPanel header="Change Password" leftIcon="pi pi-inbox">
+
+                  <div class="row">
+
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                          <div class="card-header"> <strong>CHANGE PASSWORD</strong></div>
+                          <div class="card-body">
+                            <form action="" method="post" novalidate="" class="ng-untouched ng-pristine ng-valid">
+
+
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend"><span class="input-group-text">Current Password</span></div><input
+                                     class="form-control" id="currentPassword" name="currentPassword"
+                                    type="password">
+                                  <div class="input-group-append"><span class="input-group-text"><i
+                                        class="fa fa-asterisk"></i></span></div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text">New Password</span></div><input
+                                     class="form-control" id="password" name="password"
+                                      type="password">
+                                    <div class="input-group-append"><span class="input-group-text"><i
+                                          class="fa fa-asterisk"></i></span></div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend"><span class="input-group-text">Confirm Password</span></div>
+                                      <input class="form-control" id="confirmPassword" name="confirmPassword" type="password">
+                                      <div class="input-group-append"><span class="input-group-text"><i
+                                            class="fa fa-asterisk"></i></span></div>
+                                    </div>
+                                  </div>
+
+
+                              <div class="form-group form-actions"><button class="btn btn-md btn-primary"
+                                  type="submit">Submit</button></div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+
+                  </div>
+              </p-tabPanel>
+
+
+              <!--
+                <p-tabPanel header="Godfather III" leftIcon="pi pi-user" rightIcon="pi pi-star">
+                  After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+              </p-tabPanel>
+
+              -->
+          </p-tabView>
+
+
+
+
+      </div>
+
+
+  </div>
+
+
+  <p-growl [value]="messages" name="lifespan" life="9999"></p-growl>
+
+</div> <!-- END OF BODY  -->
+</div>
+
+
+
+
+
+</div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\DB;
 use App\Http\Resources\UsersResource;
 
 class UserController extends Controller
@@ -73,26 +74,25 @@ class UserController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function update(Request $request, $id)
-     {
-         $validator = Validator::make($request->all(), [
+      public function update(Request $request, $id)
+      {
 
-             'status'    => 'required',
-             // 'email'    => 'required',
-             // 'password'    => 'required',
-         ]);
+          $validator = Validator::make($request->all(), [
 
-         if ($validator->fails()) {
-             return response()->json($validator->errors(), 422);
-         }
+            'email' => 'required|string|email|max:55'
+              ]);
 
-         // Updating user_id
-         $request['user_id'] = $request->user()->id;
+          if ($validator->fails()) {
+              return response()->json($validator->errors(), 422);
+          }
 
-         $updateById = User::findOrFail($id);
-         $updateById->update($request->all());
-         return $updateById;
-     }
+          // Updating user_id
+          $request['user_id'] = $request->user()->id;
+
+          $updateById = User::findOrFail($id);
+          $updateById->update($request->only(['user_id', 'email']));
+          return $updateById;
+      }
 
      /**
       * Remove the specified resource from storage.

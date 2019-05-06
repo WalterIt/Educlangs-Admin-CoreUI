@@ -20,6 +20,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'user-profile',
+    redirectTo: 'user-profile',
+    pathMatch: 'full',
+  },
+  {
     path: '404',
     component: P404Component,
     data: {
@@ -90,6 +95,12 @@ export const routes: Routes = [
       {
         path: 'users',
         loadChildren: './views/users/users.module#UsersModule'
+      },
+
+      /* -----    USER-PROFILE  --- */
+      {
+        path: 'user-profile',
+        loadChildren: './views/user-profile/user-profile.module#UserProfileModule'
       },
 
 
