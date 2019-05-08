@@ -12,7 +12,7 @@ export class UserProfile {
     public phoneHome?: any,
     public phoneComercial?: any,
     public mobile?: any  ,
-    public photo?: string   ,
+    public photo?: any   ,
     public status?: any  , // 1-admin 2-Colaborador 3-User Premium 4-UsÃ¡rio PadrÃ£o,
     public lang_id?: any ,  // System language
     public birthdate?: any

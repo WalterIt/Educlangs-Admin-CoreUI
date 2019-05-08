@@ -41,11 +41,13 @@ export class UserProfileService {
   }
 
 
-  editUserProfile(id, request) {
-    return this.http.put(`${this.baseUrl}/userprofile/${id}`, request);  //  return this.http.put<Bike>(this.bikesUrl + `/${id}`, bike)
+  editUserProfile(id,  request) {
+    // tslint:disable-next-line:max-line-length
+    return this.http.put(`${this.baseUrl}/userprofile/${id}`,  request);  //  return this.http.put<Bike>(this.bikesUrl + `/${id}`, bike)
   }
 
   editUserAddress(id, request) {
+    // tslint:disable-next-line:max-line-length
     return this.http.put(`${this.baseUrl}/useraddress/${id}`, request);  //  return this.http.put<Bike>(this.bikesUrl + `/${id}`, bike)
   }
 

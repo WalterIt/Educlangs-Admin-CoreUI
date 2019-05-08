@@ -41,6 +41,10 @@ export class UserProfileComponent implements OnInit {
   filteredCountries: Country[];
   filteredCustomCountries: Country[];
 
+  // ** IMAGE UPLOAD
+  imageUrl: any = 'assets/img/avatars/5.jpg'; // "/assets/img/default-image.png";
+  fileToUpload: File = null;
+
 
 
 
@@ -117,6 +121,20 @@ export class UserProfileComponent implements OnInit {
       });
     }
 
+    // ** IMAGE UPLOAD
+    handleFileInput(file: FileList) {
+      this.fileToUpload = file.item(0);
+
+      // Show image preview
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.imageUrl = <File>event.target.result;
+      };
+      reader.readAsDataURL(this.fileToUpload);
+    }
+
+
+
     filterCountry(query: any, countries: Country[]): Country[] {
       let filtered: any[] = [];
       for (let country of countries) {
@@ -172,15 +190,16 @@ export class UserProfileComponent implements OnInit {
       }
 
           //  CREATE USERPROFILE DATA
-          this.userprofile1['gender'] = this.userProfileForm.value.gender;
-          this.userprofile1['firstName'] = this.userProfileForm.value.firstName;
-          this.userprofile1['lastName'] = this.userProfileForm.value.lastName;
-          this.userprofile1['phoneHome'] = this.userProfileForm.value.phoneHome;
-          this.userprofile1['mobile'] = this.userProfileForm.value.mobile;
-          this.userprofile1['photo'] = this.userProfileForm.value.photo;
-          this.userprofile1['birthdate'] = this.userProfileForm.value.birthdate;
+          this.userprofile['gender'] = this.userProfileForm.value.gender;
+          this.userprofile['firstName'] = this.userProfileForm.value.firstName;
+          this.userprofile['lastName'] = this.userProfileForm.value.lastName;
+          this.userprofile['phoneHome'] = this.userProfileForm.value.phoneHome;
+          this.userprofile['mobile'] = this.userProfileForm.value.mobile;
+          // this.userprofile['photo'] = this.userProfileForm.value.photo;
+          this.userprofile['photo'] = 'this.fileToUpload';
+          this.userprofile['birthdate'] = this.userProfileForm.value.birthdate;
 
-          // console.log(this.userprofile1);
+          console.log(this.userprofile);
 
           //  CREATE USER ADDRESS DATA  this.userAddress1
           this.userAddress['houseApNum'] = this.userProfileForm.value.houseApNum;
@@ -194,6 +213,7 @@ export class UserProfileComponent implements OnInit {
 
 
 
+
       //  Check if USERPROFILE URL - userprofile/id exists
       this.userProfileService.getUserProfileDetailsValidation(this.auth.currentUser.id)
             .subscribe(
@@ -201,7 +221,7 @@ export class UserProfileComponent implements OnInit {
                 // console.log('UserProfile Exists!');
 
                 // UPDATE USER PROFILE
-                this.userProfileService.editUserProfile(this.auth.currentUser.id, this.userProfileForm.value)
+                this.userProfileService.editUserProfile(this.auth.currentUser.id, this.userprofile)
                 .subscribe(response => {
 
                   console.log('SUCCESSFULLY CREATED USERPROFILE!');
@@ -238,7 +258,7 @@ export class UserProfileComponent implements OnInit {
                  // console.log('Create UserProfile & Address!');
 
                  // CREATE USER PROFILE
-                    this.userProfileService.addUserProfile(this.userProfileForm.value)
+                    this.userProfileService.addUserProfile(this.userprofile)
                       .subscribe(response => {
 
                         // console.log('SUCCESSFULLY CREATED USERPROFILE!');
