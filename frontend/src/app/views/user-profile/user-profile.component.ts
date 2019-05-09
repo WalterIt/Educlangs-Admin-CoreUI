@@ -41,6 +41,10 @@ export class UserProfileComponent implements OnInit {
   filteredCountries: Country[];
   filteredCustomCountries: Country[];
 
+   // ** IMAGE UPLOAD
+   imageUrl: any = 'assets/img/avatars/avatar_placeholder.png'; // "/assets/img/default-image.png";
+   fileToUpload: File = null;
+
 
 
 
@@ -125,6 +129,19 @@ export class UserProfileComponent implements OnInit {
           }
       }
       return filtered;
+    }
+
+
+    // ** IMAGE UPLOAD
+    handleFileInput(file: FileList) {
+      this.fileToUpload = file.item(0);
+
+      // Show image preview
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.imageUrl = <File>event.target.result;
+      };
+      reader.readAsDataURL(this.fileToUpload);
     }
 
     submit( ) {

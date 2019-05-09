@@ -11,7 +11,7 @@
       <!--left col-->
       <div class="col-sm-3">
           <div class="text-center">
-              <img src="assets/img/avatars/5.jpg" class="avatar1 img-circle1 img-thumbnail1" alt="avatar">
+              <img [src]="imageUrl" class="avatar1 img-circle1 img-thumbnail1" alt="avatar">
 
 
               <h6>Upload a different photo...</h6>
@@ -20,9 +20,13 @@
 
                 <!--
                   <form *ngIf="user | async; else loading" [formGroup]="form" (ngSubmit)="submit()">
+
+
+                  <input type="file" id="photo" formControlName="photo" class="text-center center-block file-upload">
                 -->
 
-                <input type="file" id="photo" formControlName="photo" class="text-center center-block file-upload">
+                <input type="file" accept="image/*" (change)="handleFileInput($event.target.files)" id="photo" formControlName="photo" class="text-center center-block file-upload">
+
 
               </form>
 
