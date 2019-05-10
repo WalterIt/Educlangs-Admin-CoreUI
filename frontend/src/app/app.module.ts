@@ -72,6 +72,7 @@ import { GrammarTopicService } from './views/terminology/shared/services/grammar
 import { VocabularyTopicService } from './views/terminology/shared/services/vocabulary-topic.service';
 import { DictenService } from './views/dictionaries/dicten.service';
 import { CountryService } from './views/user-profile/service/country.service';
+import { FileService } from './views/dictionaries/file.service';
 
 @NgModule({
   imports: [
@@ -127,6 +128,7 @@ import { CountryService } from './views/user-profile/service/country.service';
     DictenService,
     HttpErrorHandler,
     CountryService,
+    FileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptorService ,

@@ -189,13 +189,16 @@ export class UserProfileComponent implements OnInit {
       }
 
           //  CREATE USERPROFILE DATA
-          this.userprofile1['gender'] = this.userProfileForm.value.gender;
-          this.userprofile1['firstName'] = this.userProfileForm.value.firstName;
-          this.userprofile1['lastName'] = this.userProfileForm.value.lastName;
-          this.userprofile1['phoneHome'] = this.userProfileForm.value.phoneHome;
-          this.userprofile1['mobile'] = this.userProfileForm.value.mobile;
-          this.userprofile1['photo'] = this.userProfileForm.value.photo;
-          this.userprofile1['birthdate'] = this.userProfileForm.value.birthdate;
+          this.userprofile['gender'] = this.userProfileForm.value.gender;
+          this.userprofile['firstName'] = this.userProfileForm.value.firstName;
+          this.userprofile['lastName'] = this.userProfileForm.value.lastName;
+          this.userprofile['phoneHome'] = this.userProfileForm.value.phoneHome;
+          this.userprofile['mobile'] = this.userProfileForm.value.mobile;
+
+          // this.userprofile1['photo'] = this.userProfileForm.value.photo;  // this.fileToUpload
+          // this.userprofile['photo'] = this.fileToUpload;
+
+          this.userprofile['birthdate'] = this.userProfileForm.value.birthdate;
 
           // console.log(this.userprofile1);
 
@@ -218,10 +221,10 @@ export class UserProfileComponent implements OnInit {
                 // console.log('UserProfile Exists!');
 
                 // UPDATE USER PROFILE
-                this.userProfileService.editUserProfile(this.auth.currentUser.id, this.userProfileForm.value)
+                this.userProfileService.editUserProfile(this.auth.currentUser.id, this.userprofile)
                 .subscribe(response => {
 
-                  console.log('SUCCESSFULLY CREATED USERPROFILE!');
+                  console.log('SUCCESSFULLY UPDATED USERPROFILE!');
                   // tslint:disable-next-line:max-line-length
                   this.messages = [];
                   // tslint:disable-next-line:max-line-length

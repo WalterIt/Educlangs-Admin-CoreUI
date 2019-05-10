@@ -1,5 +1,11 @@
 NEXT
 
+P1 ADMIN: BACK-FRONT
+
+- Implement more 2 fields in the English Component Form (username, photo ) - See 1rst Link for help |
+Create DB table English  and English Model for EnglishController |  Test API  (4h)
+
+############################################################################
 
 P1 ADMIN: FRONT- DEBUG: Dictionary component PAGINATION#Debugging
 
