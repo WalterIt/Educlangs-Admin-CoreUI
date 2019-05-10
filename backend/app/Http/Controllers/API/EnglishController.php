@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\English;
+use Validator;
+use App\Http\Resources\EnglishResource;
 
 class EnglishController extends Controller
 {
@@ -29,13 +32,33 @@ class EnglishController extends Controller
     {
         //  dd($request->all());   <== CAUSE CORS TROBLE!!!
 
+
+        $validator = Validator::make($request->all(), [
+            // 'name'    => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
     	$File = $request -> file('myfile'); //line 1
         $sub_path = 'files'; //line 2
-        $real_name = $File -> getClientOriginalName(); //line 3
+        $real_name = date('YmdHis') . "_" .  $File->getClientOriginalName(); //line 3
 
         $destination_path = public_path($sub_path);  //line 4
 
         $File->move($destination_path,  $real_name);  //line 5
+
+        $request['photo'] = $real_name;
+
+
+        // Creating a record in a different way
+        $createItem = English::create([
+            // 'user_id' => $request->user()->id,
+            'name' => $request->name,
+            'photo' => $request->photo
+        ]);
+        return new EnglishResource($createItem);
+
         return response()->json('File(s) Saved!');
     }
 

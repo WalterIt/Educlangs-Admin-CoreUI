@@ -43,7 +43,10 @@ export class UserProfileComponent implements OnInit {
 
    // ** IMAGE UPLOAD
    imageUrl: any = 'assets/img/avatars/avatar_placeholder.png'; // "/assets/img/default-image.png";
-   fileToUpload: File = null;
+   // fileToUpload: File = null;
+   imageUrl1: File = null;
+   fileToUpload: any = null;
+
 
 
 
@@ -133,8 +136,36 @@ export class UserProfileComponent implements OnInit {
 
 
     // ** IMAGE UPLOAD
-    handleFileInput(file: FileList) {
+    handleFileInput(event) {
+
+      let elem = event.target;  // line 2
+      if(elem.files.length > 0){     // line 3
+        const formData = new FormData();  // line 4
+
+        this.fileToUpload = elem.files[0];
+        this.imageUrl1 = elem.files[0];
+
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.imageUrl = <File>event.target.result;
+        };
+        reader.readAsDataURL(this.imageUrl1);
+
+
+
+
+        this.imageUrl = <File>event.target.result;
+        formData.append('myphoto', this.fileToUpload);  // line 5
+
+        console.log(this.fileToUpload);
+      }
+
+
+
+
+      /*
       this.fileToUpload = file.item(0);
+
 
       // Show image preview
       let reader = new FileReader();
@@ -142,6 +173,11 @@ export class UserProfileComponent implements OnInit {
         this.imageUrl = <File>event.target.result;
       };
       reader.readAsDataURL(this.fileToUpload);
+      // const formData = new FormData();  // line 4
+      // formData.append('myphoto', this.fileToUpload);  // line 5
+
+      console.log(this.fileToUpload);
+      */
     }
 
     submit( ) {
@@ -188,19 +224,23 @@ export class UserProfileComponent implements OnInit {
 
       }
 
+      const formData = new FormData();
+
           //  CREATE USERPROFILE DATA
-          this.userprofile['gender'] = this.userProfileForm.value.gender;
-          this.userprofile['firstName'] = this.userProfileForm.value.firstName;
-          this.userprofile['lastName'] = this.userProfileForm.value.lastName;
-          this.userprofile['phoneHome'] = this.userProfileForm.value.phoneHome;
-          this.userprofile['mobile'] = this.userProfileForm.value.mobile;
+          formData.append('gender' , this.userProfileForm.value.gender);
+          formData.append('firstName' , this.userProfileForm.value.firstName);
+          formData.append('lastName' , this.userProfileForm.value.lastName);
+          formData.append('phoneHome' , this.userProfileForm.value.phoneHome);
+          formData.append('mobile' , this.userProfileForm.value.mobile);
 
           // this.userprofile1['photo'] = this.userProfileForm.value.photo;  // this.fileToUpload
-          // this.userprofile['photo'] = this.fileToUpload;
+          formData.append('myphoto', this.fileToUpload);
 
-          this.userprofile['birthdate'] = this.userProfileForm.value.birthdate;
+          formData.append('birthdate' , this.userProfileForm.value.birthdate);
 
           // console.log(this.userprofile1);
+
+          console.log(this.fileToUpload);
 
           //  CREATE USER ADDRESS DATA  this.userAddress1
           this.userAddress['houseApNum'] = this.userProfileForm.value.houseApNum;
@@ -221,14 +261,14 @@ export class UserProfileComponent implements OnInit {
                 // console.log('UserProfile Exists!');
 
                 // UPDATE USER PROFILE
-                this.userProfileService.editUserProfile(this.auth.currentUser.id, this.userprofile)
+                this.userProfileService.editUserProfile(this.auth.currentUser.id, formData)
                 .subscribe(response => {
 
                   console.log('SUCCESSFULLY UPDATED USERPROFILE!');
                   // tslint:disable-next-line:max-line-length
                   this.messages = [];
                   // tslint:disable-next-line:max-line-length
-                  this.messages.push({severity: 'success', summary: 'Success Message', detail: 'User Profile has been updated successfully!' });
+                  // this.messages.push({severity: 'success', summary: 'Success Message', detail: 'User Profile has been updated successfully!' });
 
                 },
                   (error) => {
@@ -258,7 +298,7 @@ export class UserProfileComponent implements OnInit {
                  // console.log('Create UserProfile & Address!');
 
                  // CREATE USER PROFILE
-                    this.userProfileService.addUserProfile(this.userProfileForm.value)
+                    this.userProfileService.addUserProfile(formData)
                       .subscribe(response => {
 
                         // console.log('SUCCESSFULLY CREATED USERPROFILE!');

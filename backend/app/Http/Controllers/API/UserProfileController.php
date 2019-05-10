@@ -35,13 +35,26 @@ class UserProfileController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'firstName' ,
-            // 'lastName'  ,
+            'firstName' ,
+            'lastName'  ,
             'mobile'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
+
+        // IMAGE UPLOAD
+        $File = $request -> file('myphoto'); //line 1
+        $sub_path = 'image/profile'; //line 2
+        $real_name = date('YmdHis') . "_" .  $File->getClientOriginalName(); //line 3
+
+        $destination_path = public_path($sub_path);  //line 4
+
+        // $destination_path = 'public/image/profile';    !!! NOT WORKING
+
+        $File->move($destination_path,  $real_name);  //line 5
+
+        $request['photo'] = $real_name;
 
         // Creating a record in a different way
         $createItem = UserProfile::create([
@@ -83,7 +96,7 @@ class UserProfileController extends Controller
      public function update(Request $request, $id)
      {
          /*   DEBUG  */
-         dd($request->all());
+         // dd($request->all());
          //
          $validator = Validator::make($request->all(), [
              'firstName',
@@ -93,16 +106,41 @@ class UserProfileController extends Controller
          if ($validator->fails()) {
              return response()->json($validator->errors(), 422);
          }
-         // ** UPLOAD IMAGE
-         if ($File = $request->file('photo')) {
-             $File = $request->file('photo'); //line 1
-             $sub_path = 'image'; //line 2
+
+
+        // IMAGE UPLOAD
+        if ($request->file('myphoto')) {
+            $File = $request -> file('myphoto'); //line 1
+            $sub_path = 'image/profile'; //line 2
+            $real_name = date('YmdHis') . "_" .  $File->getClientOriginalName(); //line 3
+
+            $destination_path = public_path($sub_path);  //line 4
+
+            // $destination_path = 'public/image/profile';    !!! NOT WORKING
+
+            $File->move($destination_path,  $real_name);  //line 5
+
+            $request['photo'] = $real_name;
+        }
+
+        $updateById = UserProfile::findOrFail($id);
+        $updateById->update($request->all());
+        return $updateById;
+
+
+
+
+
+         /*
+         if ($File = $request->file('myphoto')) {
+             $File = $request->file('myphoto'); //line 1
+             // $sub_path = 'image'; //line 2
              $real_name = $File->getClientOriginalName(); //line 3
-             $destination_path = public_path($sub_path);  //line 4
+             $destination_path = 'public/image/profile/';  //line 4
              $File->move($destination_path,  $real_name);  //line 5
              // $request->photo = '';
              $request['photo'] = $real_name;
-             /*
+
              $destinationPath = 'public/image/profile/'; // upload path
              $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
              $files->move($destinationPath, $profileImage);
@@ -115,14 +153,14 @@ class UserProfileController extends Controller
              $request->photo = $cover->getFilename().'.'.$extension;
              */
              /*   DEBUG  */
-             dd($request->all());
-          }
+             // dd($request->all());
+
          // Updating user_id
         // $request['user_id'] = $request->user()->id;
         // $request['photo'] = $insert['photo'];
-         $updateById = UserProfile::findOrFail($id);
-         $updateById->update($request->all());
-         return $updateById;
+
+        // $request['photo'] = $real_name;
+
      }
 
     /**
