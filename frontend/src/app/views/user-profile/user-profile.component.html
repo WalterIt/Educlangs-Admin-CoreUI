@@ -16,7 +16,7 @@
 
               <h6>Upload a different photo...</h6>
 
-              <form *ngIf="userprofile; else loading" [formGroup]="userProfileForm" (submit)="submit()"  class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate >
+              <form *ngIf="userprofile; else loading" [formGroup]="userProfileForm" (submit)="submit()"  class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate enctype="multipart/form-data">
 
                 <!--
                   <form *ngIf="user | async; else loading" [formGroup]="form" (ngSubmit)="submit()">
@@ -28,7 +28,7 @@
                 <input type="file" name="file" accept="image/*" (change)="handleFileInput()" id="photo" formControlName="photo" class="text-center center-block file-upload">
                 -->
 
-                <input type="file" class="form-control" name="file" (change)="handleFileInput($event)" />
+                <input type="file" accept="image/*" class="form-control" name="file" (change)="handleFileInput($event)" class="text-center center-block file-upload" />
 
               </form>
 

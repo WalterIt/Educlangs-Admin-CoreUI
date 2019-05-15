@@ -96,7 +96,7 @@ class UserProfileController extends Controller
      public function update(Request $request, $id)
      {
          /*   DEBUG  */
-         // dd($request->all());
+           // dd($request->all());
          //
          $validator = Validator::make($request->all(), [
              'firstName',
@@ -107,10 +107,8 @@ class UserProfileController extends Controller
              return response()->json($validator->errors(), 422);
          }
 
-
         // IMAGE UPLOAD
-        if ($request->file('myphoto')) {
-            $File = $request -> file('myphoto'); //line 1
+        if ($File = $request->file('myphoto')) {
             $sub_path = 'image/profile'; //line 2
             $real_name = date('YmdHis') . "_" .  $File->getClientOriginalName(); //line 3
 
@@ -121,9 +119,29 @@ class UserProfileController extends Controller
             $File->move($destination_path,  $real_name);  //line 5
 
             $request['photo'] = $real_name;
-        }
+        } //line 1
 
+
+        /* / Creating a record in a different way
+        $updateItem = [
+            // 'id' => $request->user()->id,
+            'gender' => $request->gender,
+            'firstName'  => $request->firstName,
+            'lastName'   => $request->lastName,
+            'phoneHome'  => $request->phoneHome,
+            'phoneComercial'  => $request->phoneComercial,
+            'mobile'     => $request->mobile,
+            'photo'      => $request->photo,
+            // 'status'     => $request->status, // '1-admin 2-Colaborador 3-User Premium 4-UsÃ¡rio PadrÃ£o',
+            'lang_id'    => $request->lang_id,  // System language
+            'birthdate'  => $request->birthdate
+
+        ];
+        */
         $updateById = UserProfile::findOrFail($id);
+        // return new UserProfileResource($updateItem);
+
+        // $updateById = UserProfile::findOrFail($id);
         $updateById->update($request->all());
         return $updateById;
 

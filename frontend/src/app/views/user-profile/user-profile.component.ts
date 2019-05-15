@@ -234,7 +234,7 @@ export class UserProfileComponent implements OnInit {
           formData.append('mobile' , this.userProfileForm.value.mobile);
 
           // this.userprofile1['photo'] = this.userProfileForm.value.photo;  // this.fileToUpload
-          formData.append('myphoto', this.fileToUpload);
+          formData.append('photo', this.fileToUpload);
 
           formData.append('birthdate' , this.userProfileForm.value.birthdate);
 
