@@ -2,6 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { CropperModule } from 'ngx-cropper';
+import 'cropperjs/dist/cropper.min.css';  // frontend\node_modules\cropperjs\dist\cropper.min.css
+
+import { NgxCroppieModule } from 'ngx-croppie';
+
+import { ImageCropperModule } from './image-cropper/image-cropper.module';
+
+
+import {
+  MatIconModule,
+  MatButtonModule,
+  MatFormFieldModule
+} from '@angular/material';
+
+
 /**    PRIMENG IMPORTS    ***/
 import { TableModule } from 'primeng/table';
 import {GrowlModule} from 'primeng/components/growl/growl';
@@ -21,6 +36,7 @@ import { FrenchComponent } from './french.component';
 import { SpanishComponent } from './spanish.component';
 import { PortugueseComponent } from './portuguese.component';
 import { JapaneseComponent } from './japanese.component';
+import { CustomImageFormControlComponent } from './custom-image-form-control/custom-image-form-control.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +45,8 @@ import { JapaneseComponent } from './japanese.component';
     FrenchComponent,
     SpanishComponent,
     PortugueseComponent,
-    JapaneseComponent
+    JapaneseComponent,
+    CustomImageFormControlComponent
   ],
 
   imports: [
@@ -50,7 +67,13 @@ import { JapaneseComponent } from './japanese.component';
     DataTableModule,
     InputTextModule,
     ContextMenuModule,
-    DialogModule
+    DialogModule,
+    CropperModule,
+    NgxCroppieModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ImageCropperModule
   ]
 })
 export class DictionariesModule { }
