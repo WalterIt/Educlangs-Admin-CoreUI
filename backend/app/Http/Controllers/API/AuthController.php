@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\User;
 use Validator;
 
@@ -125,7 +127,9 @@ public function login(Request $request)
         return response()->json(['error' => 'Invalid Credentials'], 400);
     }
 
+
     $current_user = $request->email;
+
     return response()->json([
         'access_token' => $token,
         'token_type' => 'bearer',

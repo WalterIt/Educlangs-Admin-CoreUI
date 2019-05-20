@@ -16,6 +16,7 @@ import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
 import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
 
+import { ImageCropperModule } from '../../shared/image-cropper/image-cropper.module';
 
 import { UserProfileRoutingModule } from './user-profile-routing.module';
 import { UserProfileComponent } from './user-profile.component';
@@ -43,7 +44,8 @@ import { UserProfileComponent } from './user-profile.component';
     ContextMenuModule,
     DialogModule,
     InputMaskModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    ImageCropperModule
   ]
 })
 export class UserProfileModule { }

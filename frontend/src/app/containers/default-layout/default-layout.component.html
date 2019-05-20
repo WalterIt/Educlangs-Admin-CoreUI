@@ -32,7 +32,7 @@
     </li>
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
-        <img src="assets/img/user1-128x128.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
+        <img [src]="avatar" class="img-avatar" alt="admin@bootstrapmaster.com"/>
         <span>{{ auth.currentUser?.name }}</span>
       </a>
 

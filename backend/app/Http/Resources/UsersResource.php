@@ -21,6 +21,7 @@ class UsersResource extends JsonResource
             "name"  => $this->name,
             "email"  => $this->email,
             "password"    => $this->password,
+            // 'photo'  => $this->photo,
             // 'level_name' => $this->level['l_name'],
             // 'level'   => $this->level, // Retrive all  obj of level table as an array
             // Casting objects to string, to avoid receive create_at and update_at as object

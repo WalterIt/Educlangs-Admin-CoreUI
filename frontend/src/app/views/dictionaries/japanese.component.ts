@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { ImageCroppedEvent } from './image-cropper/interfaces/image-cropped-event.interface';
-import { ImageCropperComponent } from './image-cropper/component/image-cropper.component';
+import { ImageCroppedEvent } from '../../shared/image-cropper/interfaces/image-cropped-event.interface';
+import { ImageCropperComponent } from '../../shared/image-cropper/component/image-cropper.component';
+
+
 
 @Component({
   selector: 'app-japanese',
@@ -15,9 +17,13 @@ export class JapaneseComponent  {
   croppedImage: any = '';
   showCropper = false;
 
+  displayDialog: boolean;
+
   @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
 
   fileChangeEvent(event: any): void {
+      this.displayDialog = true;
+
       this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
@@ -25,10 +31,14 @@ export class JapaneseComponent  {
     console.log('Just Cropped:', event);
     // console.log(event.base64);
   }
+
+
   imageLoaded() {
     this.showCropper = true;
      console.log('Image loaded');
   }
+
+
   cropperReady() {
     console.log('Cropper ready');
   }
@@ -47,5 +57,13 @@ export class JapaneseComponent  {
   flipVertical() {
     this.imageCropper.flipVertical();
   }
+
+  save() {
+    this.displayDialog = false;
+
+  }
+
+
+
 }
 

@@ -1,8 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AuthService } from '../../auth/_services/auth.service';
 
 import { navItems } from './../../_nav';
+
+import { AuthService } from '../../auth/_services/auth.service';
+import { UserProfileService } from '../../views/user-profile/service/user-profile.service';
+
+import { UserProfile } from '../../views/user-profile/service/user-profile';
+import { User } from '../../auth/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +20,16 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   private changes: MutationObserver;
   public element: HTMLElement = document.body;
 
+  public currentUser: User;
+
+  userprofiles: UserProfile[];
+  avatar: any = 'assets/img/avatars/avatar_placeholder.png';
+
 
   constructor(
     private titleTagService: Title,
-    public auth: AuthService
+    private auth: AuthService,
+    private userProfileService: UserProfileService
   ) {
 
     this.changes = new MutationObserver((mutations) => {
@@ -29,6 +40,27 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
       attributes: true,
       attributeFilter: [ 'class' ]
     });
+
+    /*
+
+    this.userProfileService.getUserProfileDetails(this.auth.currentUser.id).then(
+      (data) => {
+
+        this.userprofiles = data;
+
+        // console.log('TEST 0 : ', this.userprofiles['photo'].length);
+
+
+        // tslint:disable-next-line:max-line-length
+        this.avatar = (this.userprofiles['photo'].length > 100) ? this.userprofiles['photo'] : 'assets/img/avatars/avatar_placeholder.png';
+
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    */
+
   }
 
   ngOnDestroy(): void {
@@ -41,7 +73,42 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (this.auth.getToken()) {
-      this.auth.getUser().subscribe();
+
+      this.auth.getUser().subscribe(
+        (user: User) => {
+          this.currentUser = user;
+
+          // console.log(this.currentUser.id);
+
+
+          this.userProfileService.getUserProfileDetails(this.currentUser.id).then(
+            (data) => {
+
+              this.userprofiles = data;
+
+              // console.log('TEST 0 : ', this.userprofiles['photo'].length);
+
+
+              // tslint:disable-next-line:max-line-length
+              this.avatar = (this.userprofiles['photo'].length > 100) ? this.userprofiles['photo'] : 'assets/img/avatars/avatar_placeholder.png';
+
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+
+
+
+
+
+
+
+        }
+      );
+
+
+
     }
   }
 
@@ -49,6 +116,8 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
     this.auth.onLogout().subscribe();
     localStorage.removeItem('token');
   }
+
+
 
 
 

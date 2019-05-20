@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Validator;
-use Illuminate\Support\Facades\DB;
 use App\Http\Resources\UsersResource;
 
 class UserController extends Controller

@@ -7,7 +7,7 @@ import 'cropperjs/dist/cropper.min.css';  // frontend\node_modules\cropperjs\dis
 
 import { NgxCroppieModule } from 'ngx-croppie';
 
-import { ImageCropperModule } from './image-cropper/image-cropper.module';
+import { ImageCropperModule } from '../../shared/image-cropper/image-cropper.module';
 
 
 import {

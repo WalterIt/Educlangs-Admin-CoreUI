@@ -67,5 +67,7 @@ Route::apiResources([
    //Route::put('language', 'LanguageController@update');
 
 Route::middleware('jwt.auth')->get('me', function(Request $request) {
+
     return auth()->user();
+
 });

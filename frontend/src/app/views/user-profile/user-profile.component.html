@@ -11,7 +11,8 @@
       <!--left col-->
       <div class="col-sm-3">
           <div class="text-center">
-              <img [src]="imageUrl" class="avatar1 img-circle1 img-thumbnail1" alt="avatar">
+              <img [src]="croppedImage" class="avatar1 img-circle1 img-thumbnail1" alt="avatar">
+              <!-- <img [src]="croppedImage" />  -->
 
 
               <h6>Upload a different photo...</h6>
@@ -21,11 +22,15 @@
                 <!--
                   <form *ngIf="user | async; else loading" [formGroup]="form" (ngSubmit)="submit()">
 
-
                   <input type="file" id="photo" formControlName="photo" class="text-center center-block file-upload">
                 -->
 
-                <input type="file" accept="image/*" (change)="handleFileInput($event.target.files)" id="photo" formControlName="photo" class="text-center center-block file-upload">
+                <!--
+                  <input type="file" accept="image/*" (change)="handleFileInput($event.target.files)" id="photo" formControlName="photo" class="text-center center-block file-upload">
+
+                -->
+                <input type="file" (change)="fileChangeEvent($event)" id="photo"   />
+
 
 
               </form>
@@ -135,6 +140,12 @@
                                 </div>
                               </div>
                             </div>
+
+                            <!--
+                              <span style="margin-top: 16px;padding-right: -1px;color: red;margin-left: 70%;">Current: {{ data.birthdate }}</span>
+
+                            -->
+
 
 
                             <div class="row">
@@ -270,6 +281,8 @@
 
                               </div>
 
+                              <span style="margin-top: 16px;padding-right: -1px;color: red;margin-left: 65%;">Current: {{  userAddress1.country }}</span>
+
 
 
                               <div class="row">
@@ -290,7 +303,8 @@
 
 
                                         <div class="input-group">
-                                            <span class="input-group-text" style="height: 33px;/*! padding-right: 1px; */margin-right: -15px;width: 70px;">Country
+
+                                            <span class="input-group-text" style="height: 33px;/*! padding-right: 1px; */margin-right: -13px;width: 70px;">Country
                                               <span class="asterisk">*</span> </span>
 
 
@@ -462,6 +476,38 @@
 
 
   </div>
+
+
+  <p-dialog header="Choose" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+  [modal]="true">
+
+  <div class="ui-grid ui-grid-responsive ui-fluid">
+    <!--  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="level"> -->
+    <button (click)="rotateLeft()">Rotate left</button>
+    <button (click)="rotateRight()">Rotate right</button>
+    <button (click)="flipHorizontal()">Flip horizontal</button>
+    <button (click)="flipVertical()">Flip vertical</button>&nbsp; &nbsp;
+
+
+
+
+        <button style="width:40%;" type="button" pButton icon="fa fa-check" (click)="save()"
+        label="Save"></button>
+
+      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+        [aspectRatio]="3 / 3" [resizeToWidth]="340" [cropperMinWidth]="440" [onlyScaleDown]="true"
+        [roundCropper]="false" format="png" outputType="base64" (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()" [style.display]="showCropper ? null : 'none'">
+      </image-cropper>
+
+
+  </div>
+
+
+
+</p-dialog>
+
 
 
   <p-growl [value]="messages" name="lifespan" life="9999"></p-growl>

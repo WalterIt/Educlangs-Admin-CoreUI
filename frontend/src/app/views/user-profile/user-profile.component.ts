@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 import { Column, Message } from 'primeng/primeng';
+// ***  IMAGE CROPPER
+import { ImageCroppedEvent } from '../../shared/image-cropper/interfaces/image-cropped-event.interface';
+import { ImageCropperComponent } from '../../shared/image-cropper/component/image-cropper.component';
 
 import { UserProfile } from './service/user-profile';
 import { User } from '../../auth/user';
@@ -13,16 +16,20 @@ import { UserProfileService } from './service/user-profile.service';
 import { AuthService } from '../../auth/_services/auth.service';
 import { CountryService } from './service/country.service';
 
+
+
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styles: []
 })
 export class UserProfileComponent implements OnInit {
-  userProfiles: UserProfile[];
+  userprofiles: UserProfile[];
   userprofile: UserProfile = new UserProfile();
   user: User = new User();
   userAddress: UserAddress = new UserAddress();
+  userCountry: any = '';
   error: any;
   userProfileForm: FormGroup;
   user1 = [];
@@ -41,11 +48,21 @@ export class UserProfileComponent implements OnInit {
   filteredCountries: Country[];
   filteredCustomCountries: Country[];
 
+
    // ** IMAGE UPLOAD
    imageUrl: any = 'assets/img/avatars/avatar_placeholder.png'; // "/assets/img/default-image.png";
    fileToUpload: File = null;
 
+  // **  IMAGE CROPPER
+  imageChangedEvent: any = '';
+  croppedImage: any = 'assets/img/avatars/avatar_placeholder.png';
+  // croppedImage: any = '';
+  showCropper = false;
 
+  displayDialog: boolean;
+
+
+  @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
 
 
   constructor(
@@ -55,6 +72,42 @@ export class UserProfileComponent implements OnInit {
     private countryService: CountryService
     ) {
       // this.createForm();
+
+      this.userProfileService.getUserProfileDetails(this.auth.currentUser.id).then(
+        (data) => {
+
+          this.userprofiles = data;
+
+          // console.log('TEST 0 : ', this.userprofiles['photo'].length);
+
+
+          // tslint:disable-next-line:max-line-length
+          this.croppedImage = (this.userprofiles['photo'].length > 100) ? this.userprofiles['photo'] : 'assets/img/avatars/avatar_placeholder.png';
+
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+
+      this.userProfileService.getUserAddressDetails(this.auth.currentUser.id).then(
+        (data) => {
+
+          this.userAddress1 = data;
+
+          // console.log('TEST 0 : ', this.userprofiles['photo'].length);
+
+
+          // tslint:disable-next-line:max-line-length
+          // this.croppedImage = (this.userprofiles['photo'].length > 100) ? this.userprofiles['photo'] : 'assets/img/avatars/avatar_placeholder.png';
+
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+
+
     }
 
     ngOnInit() {
@@ -94,6 +147,8 @@ export class UserProfileComponent implements OnInit {
       this.userProfileService.getUserProfileDetails(this.auth.currentUser.id)
                 .then(userprofile => this.userProfileForm.patchValue(userprofile));
 
+
+
       /**   USER EMAIL */
       this.userProfileService.getUserDetail(this.auth.currentUser.id).then(user => this.userProfileForm.patchValue(user));
 
@@ -104,6 +159,65 @@ export class UserProfileComponent implements OnInit {
 
 
     }
+
+
+    // ** IMAGE CROPPER
+    fileChangeEvent(event: any): void {
+      this.displayDialog = true;
+
+      this.imageChangedEvent = event;
+
+
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    // console.log('Just Cropped:', event);
+    // console.log('Just Cropped 1:', this.croppedImage);
+    // console.log(event.base64);
+
+
+
+    /*
+
+    this.userProfileForm = this.fb.group({
+
+      photo: [this.croppedImage]
+
+    });
+    */
+  }
+
+
+  imageLoaded() {
+    this.showCropper = true;
+     // console.log('Image loaded');
+  }
+
+
+  cropperReady() {
+    // console.log('Cropper ready');
+  }
+  loadImageFailed () {
+    // console.log('Load failed');
+  }
+  rotateLeft() {
+    this.imageCropper.rotateLeft();
+  }
+  rotateRight() {
+    this.imageCropper.rotateRight();
+  }
+  flipHorizontal() {
+    this.imageCropper.flipHorizontal();
+  }
+  flipVertical() {
+    this.imageCropper.flipVertical();
+  }
+
+  save() {
+    this.displayDialog = false;
+
+  }
+
 
     // COUNTRY DROPDOWN
     filterCountries(event: any) {
@@ -133,6 +247,7 @@ export class UserProfileComponent implements OnInit {
 
 
     // ** IMAGE UPLOAD
+    /*
     handleFileInput(file: FileList) {
       this.fileToUpload = file.item(0);
 
@@ -143,6 +258,7 @@ export class UserProfileComponent implements OnInit {
       };
       reader.readAsDataURL(this.fileToUpload);
     }
+    */
 
     submit( ) {
 
@@ -189,6 +305,13 @@ export class UserProfileComponent implements OnInit {
       }
 
           //  CREATE USERPROFILE DATA
+
+          this.userProfileForm.value.photo = this.croppedImage;
+
+          // console.log(this.userProfileForm.value.photo);
+
+
+          /*
           this.userprofile1['gender'] = this.userProfileForm.value.gender;
           this.userprofile1['firstName'] = this.userProfileForm.value.firstName;
           this.userprofile1['lastName'] = this.userProfileForm.value.lastName;
@@ -198,6 +321,7 @@ export class UserProfileComponent implements OnInit {
           this.userprofile1['birthdate'] = this.userProfileForm.value.birthdate;
 
           // console.log(this.userprofile1);
+          */
 
           //  CREATE USER ADDRESS DATA  this.userAddress1
           this.userAddress['houseApNum'] = this.userProfileForm.value.houseApNum;
@@ -207,7 +331,9 @@ export class UserProfileComponent implements OnInit {
           this.userAddress['zip'] = this.userProfileForm.value.zip;
           this.userAddress['country'] = this.userProfileForm.value.country['name'];
 
+
           // console.log(this.userAddress);
+
 
 
 
@@ -221,7 +347,7 @@ export class UserProfileComponent implements OnInit {
                 this.userProfileService.editUserProfile(this.auth.currentUser.id, this.userProfileForm.value)
                 .subscribe(response => {
 
-                  console.log('SUCCESSFULLY CREATED USERPROFILE!');
+                  console.log('SUCCESSFULLY UPDATED USERPROFILE!');
                   // tslint:disable-next-line:max-line-length
                   this.messages = [];
                   // tslint:disable-next-line:max-line-length
@@ -288,6 +414,11 @@ export class UserProfileComponent implements OnInit {
 
 
     }
+
+
+
+
+
 
 
 

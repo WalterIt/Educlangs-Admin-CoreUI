@@ -1,11 +1,13 @@
 NEXT
 
 
+$email = DB::table('users')->where('name', 'John')->value('email');
+
 
 BACKEND
 
-- CREATE 
- 
+- CREATE
+
 APIs: USERS
 
 php artisan make:controller API/UserController --api
@@ -22,7 +24,7 @@ git push
 
 
 BACKEND
- 
+
 
 APIs: LESSONS & LEVELS - Implemented & Tested
 
@@ -39,7 +41,7 @@ BACKEND
 php artisan route:list
 
 
-$ php artisan make:model GrammarTopic 
+$ php artisan make:model GrammarTopic
 
 Creating and updating the controller function
 	1. Open your Terminal window and type the following command:
